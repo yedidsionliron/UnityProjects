@@ -1,9 +1,10 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Spawns a random box prefab above the conveyor belt at a set interval.
-/// Attach to an empty GameObject positioned above the belt start.
-/// Assign the NAACo Box_1 … Box_4 Built-in prefabs to the boxPrefabs array.
+/// Controls only spawn rate and box size.
+/// Other scripts can subscribe to OnBoxSpawned to do further setup.
 /// </summary>
 public class BoxSpawner : MonoBehaviour
 {
@@ -11,13 +12,12 @@ public class BoxSpawner : MonoBehaviour
     public GameObject[] boxPrefabs;
 
     [Tooltip("Seconds between spawns")]
-    public float spawnInterval = 3f;
+    public float spawnInterval = 1.2f;
 
-    [Tooltip("Uniform scale applied to every spawned box (NAACo boxes are ~0.2-0.4 m; 3 = ~0.6-1.2 m)")]
-    public float spawnScale = 3f;
+    [Tooltip("Uniform scale applied to every spawned box")]
+    public float spawnScale = 1f;
 
-    [Tooltip("Mass given to each spawned box (kg)")]
-    public float boxMass = 1f;
+    public event Action<GameObject> OnBoxSpawned;
 
     private float timer;
 
@@ -25,11 +25,9 @@ public class BoxSpawner : MonoBehaviour
     {
         if (boxPrefabs == null || boxPrefabs.Length == 0)
         {
-            Debug.LogWarning("BoxSpawner: no prefabs assigned — drag Box_1…Box_4 into the Box Prefabs array.", this);
+            Debug.LogWarning("BoxSpawner: no prefabs assigned.", this);
             return;
         }
-        Debug.Log($"BoxSpawner: Start() — {boxPrefabs.Length} prefabs assigned, interval={spawnInterval}s", this);
-        // Spawn one immediately so you don't wait for the first interval.
         SpawnBox();
     }
 
@@ -47,47 +45,17 @@ public class BoxSpawner : MonoBehaviour
 
     private void SpawnBox()
     {
-        GameObject prefab = boxPrefabs[Random.Range(0, boxPrefabs.Length)];
+        GameObject prefab = boxPrefabs[UnityEngine.Random.Range(0, boxPrefabs.Length)];
         if (prefab == null)
         {
-            Debug.LogError("BoxSpawner: selected prefab is null — check the Box Prefabs array for missing references.", this);
+            Debug.LogError("BoxSpawner: selected prefab is null.", this);
             return;
         }
-        Debug.Log($"BoxSpawner: Spawning {prefab.name} at {transform.position}", this);
-        GameObject box = Instantiate(prefab, transform.position, Quaternion.identity);
 
+        Quaternion randomYaw = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
+        GameObject box = Instantiate(prefab, transform.position, randomYaw);
         box.transform.localScale = Vector3.one * spawnScale;
 
-        // Ensure a Rigidbody exists so physics drives the box.
-        Rigidbody rb = box.GetComponent<Rigidbody>();
-        if (rb == null)
-            rb = box.AddComponent<Rigidbody>();
-
-        rb.mass = boxMass;
-        rb.useGravity = true;
-        rb.isKinematic = false;
-        // Freeze rotation so boxes don't tumble off the belt.
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-
-        // Replace any Built-in pipeline materials with URP Lit so boxes aren't pink.
-        Shader urpLit = Shader.Find("Universal Render Pipeline/Lit");
-        if (urpLit != null)
-        {
-            foreach (Renderer r in box.GetComponentsInChildren<Renderer>())
-            {
-                Material[] mats = r.sharedMaterials;
-                for (int i = 0; i < mats.Length; i++)
-                {
-                    if (mats[i] != null && mats[i].shader.name != "Universal Render Pipeline/Lit")
-                    {
-                        Material m = new Material(urpLit);
-                        m.mainTexture = mats[i].mainTexture;
-                        mats[i] = m;
-                    }
-                }
-                r.materials = mats;
-            }
-        }
+        OnBoxSpawned?.Invoke(box);
     }
 }
