@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 10e08fa8fd5966e46946d0c621e2d621
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/railingCapDouble.prefab
+  uploadId: 468445

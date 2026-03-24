@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 52bc81f822ac9a141be457500021f776
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/railing.prefab
+  uploadId: 468445

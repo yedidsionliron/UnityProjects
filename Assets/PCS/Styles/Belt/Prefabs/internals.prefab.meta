@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 37db2a60dc78d9244b7575addb69c0d8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/internals.prefab
+  uploadId: 468445

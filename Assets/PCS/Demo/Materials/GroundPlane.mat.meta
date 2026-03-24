@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e94e656dceed9a5428b40916bc255842
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Demo/Materials/GroundPlane.mat
+  uploadId: 468445

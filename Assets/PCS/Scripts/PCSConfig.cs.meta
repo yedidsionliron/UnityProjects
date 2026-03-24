@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5e0f6ca173426bf4c85fa84c5f8bd152
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Scripts/PCSConfig.cs
+  uploadId: 468445

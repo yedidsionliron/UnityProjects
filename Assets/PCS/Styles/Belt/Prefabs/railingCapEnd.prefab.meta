@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dc8a8c9a09b67d346b44e361f0491121
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/railingCapEnd.prefab
+  uploadId: 468445

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7c061d189dc788945b54f2f0f7069b27
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/style.json
+  uploadId: 468445

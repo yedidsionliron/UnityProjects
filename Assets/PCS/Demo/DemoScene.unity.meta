@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e186db10bbde05d498f452255f4211ec
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Demo/DemoScene.unity
+  uploadId: 468445

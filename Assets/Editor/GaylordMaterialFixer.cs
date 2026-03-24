@@ -66,6 +66,18 @@ public static class GaylordMaterialFixer
             if (mat == null) continue;
 
             mat.shader = urpLit;
+
+            // Force opaque — prevents see-through from leftover alpha/blend settings
+            mat.SetFloat("_Surface", 0f);          // 0 = Opaque, 1 = Transparent
+            mat.SetFloat("_Blend", 0f);            // Alpha blend mode (irrelevant for opaque, but reset)
+            mat.SetFloat("_AlphaClip", 0f);        // disable alpha cutout
+            mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
+            mat.SetOverrideTag("RenderType", "Opaque");
+            mat.DisableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            mat.DisableKeyword("_ALPHATEST_ON");
+            mat.DisableKeyword("_ALPHABLEND_ON");
+            mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+
             mat.SetColor("_EmissionColor", Color.black);
             mat.DisableKeyword("_EMISSION");
             mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;

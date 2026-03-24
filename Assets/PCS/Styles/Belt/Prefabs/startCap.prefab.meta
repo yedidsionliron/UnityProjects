@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c3e40689b9fcc4f46876e5eea743dddb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/startCap.prefab
+  uploadId: 468445

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bc46cdc8ef23da94c94ae6da5190a152
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Demo/DemoSceneSettings.lighting
+  uploadId: 468445

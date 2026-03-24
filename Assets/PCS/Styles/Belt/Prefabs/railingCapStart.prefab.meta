@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b72f6fd25a644ef4f9662b13326cf33e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143616
+  packageName: Procedural Conveyor System // Works with all Rigidbodies
+  packageVersion: 1.2.1
+  assetPath: Assets/PCS/Styles/Belt/Prefabs/railingCapStart.prefab
+  uploadId: 468445
