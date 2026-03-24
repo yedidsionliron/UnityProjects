@@ -12,10 +12,9 @@ public class GaylordContainerEditor : Editor
 
         EditorGUILayout.Space(8);
 
-        if (GUILayout.Button("Auto-Detect from Mesh", GUILayout.Height(28)))
+        if (GUILayout.Button("Rebuild Colliders", GUILayout.Height(28)))
         {
-            Undo.RecordObject(gc, "Auto-Detect Gaylord Bounds");
-            gc.AutoDetectFromMesh();
+            Undo.RecordObject(gc, "Rebuild Gaylord Colliders");
             gc.RebuildColliders();
             EditorUtility.SetDirty(gc);
         }
@@ -26,7 +25,7 @@ public class GaylordContainerEditor : Editor
         if (GUILayout.Button("Remove Colliders"))
         {
             Undo.RegisterFullObjectHierarchyUndo(gc.gameObject, "Remove Gaylord Colliders");
-            gc.RebuildColliders();
+            gc.DestroyColliders();
             EditorUtility.SetDirty(gc.gameObject);
         }
         GUI.backgroundColor = Color.white;
