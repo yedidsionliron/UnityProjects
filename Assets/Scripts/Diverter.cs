@@ -24,6 +24,7 @@ public class Diverter : MonoBehaviour
 
     [HideInInspector] public int addressOffset = 0;
     [HideInInspector] public int totalLanes = 1;
+    [HideInInspector] public float beltCenterLocalZ = 0f;
 
     [Header("Physics")]
     [Tooltip("Target lateral speed the divert surface drives the box toward (m/s).")]
@@ -52,7 +53,44 @@ public class Diverter : MonoBehaviour
 
     private void Start()
     {
+        MeasureBeltLength();
         BuildZones();
+    }
+
+    private void MeasureBeltLength()
+    {
+        var renderers = GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return;
+
+        // Accumulate world-space bounds of all renderers on this belt.
+        Bounds wb = renderers[0].bounds;
+        foreach (var r in renderers) wb.Encapsulate(r.bounds);
+
+        // Project the world bounds half-extents onto this transform's local Z axis
+        // to get the true belt length regardless of rotation or scale.
+        Vector3 localZ = transform.forward;
+        float halfLen = Mathf.Abs(Vector3.Dot(wb.extents,
+            new Vector3(Mathf.Abs(localZ.x), Mathf.Abs(localZ.y), Mathf.Abs(localZ.z))));
+        float measured = halfLen * 2f;
+
+        // Record where the belt centre sits in this transform's local Z space.
+        beltCenterLocalZ = transform.InverseTransformPoint(wb.center).z;
+
+        Debug.Log($"Diverter '{name}': beltLength={measured:F3} (was {beltLength:F3})  beltCenterLocalZ={beltCenterLocalZ:F3}", this);
+        beltLength = measured;
+    }
+
+    /// <summary>
+    /// Z-distance a package travels along the belt while its centre of mass
+    /// crosses from belt centre to belt edge.
+    /// dz = vz * sqrt( (triggerWidth/2) / (frictionCoefficient * g) )
+    /// </summary>
+    public float ExitOffset()
+    {
+        var belt = GetComponentInChildren<ConveyorBelt>();
+        float vz = belt != null ? belt.beltSpeed : 0f;
+        float g  = Mathf.Abs(Physics.gravity.y);
+        return vz * Mathf.Sqrt((triggerWidth / 2f) / (frictionCoefficient * g));
     }
 
     private void BuildZones()
@@ -63,12 +101,17 @@ public class Diverter : MonoBehaviour
             return;
         }
 
-        float start = -beltLength / 2f;
-        float step  = (numDivertPoints > 1) ? beltLength / (numDivertPoints - 1) : 0f;
+        int   n          = numDivertPoints;
+        float exitOffset = ExitOffset();
+        float beltStart  = beltCenterLocalZ - beltLength / 2f;
+        float firstPoint = beltLength / (2f * n) - exitOffset;
+        float step       = beltLength / n;
 
-        for (int i = 0; i < numDivertPoints; i++)
+        Debug.Log($"Diverter '{name}': exitOffset={exitOffset:F3}  firstPoint={firstPoint:F3}  step={step:F3}", this);
+
+        for (int i = 0; i < n; i++)
         {
-            float localZ = start + i * step;
+            float localZ = beltStart + firstPoint + i * step;
 
             GameObject zoneGO = new GameObject($"DivertZone_{i}");
             zoneGO.transform.SetParent(transform, worldPositionStays: false);
@@ -99,12 +142,15 @@ public class Diverter : MonoBehaviour
     {
         if (numDivertPoints <= 0) return;
 
-        float start = -beltLength / 2f;
-        float step  = (numDivertPoints > 1) ? beltLength / (numDivertPoints - 1) : 0f;
+        int   n          = numDivertPoints;
+        float exitOffset = ExitOffset();
+        float beltStart  = beltCenterLocalZ - beltLength / 2f;
+        float firstPoint = beltLength / (2f * n) - exitOffset;
+        float step       = beltLength / n;
 
-        for (int i = 0; i < numDivertPoints; i++)
+        for (int i = 0; i < n; i++)
         {
-            float localZ = start + i * step;
+            float localZ = beltStart + firstPoint + i * step;
             Vector3 centre = transform.TransformPoint(new Vector3(0f, triggerY, localZ));
             Vector3 size = new Vector3(triggerWidth, triggerHeight, triggerDepth);
             // Alternate colours so adjacent zones are easy to distinguish.
