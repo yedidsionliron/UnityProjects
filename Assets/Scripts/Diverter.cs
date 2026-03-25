@@ -37,10 +37,8 @@ public class Diverter : MonoBehaviour
     [Tooltip("Length of the conveyor belt in local Z (used to space divert points evenly).")]
     public float beltLength = 6f;
 
-    [Tooltip("Y offset above the belt root where trigger centres are placed. " +
-             "Keep this above the belt surface (y≈0.967 + half box height). Default 2.0 puts " +
-             "the trigger bottom at ~1.4, well clear of the belt collider at y≈0.967.")]
-    public float triggerY = 2.0f;
+    // triggerY is computed at runtime from the belt mesh — not a constant.
+    private float triggerY;
 
     [Tooltip("Trigger zone width in X — should match belt width (~1.5 m).")]
     public float triggerWidth = 1.4f;
@@ -76,7 +74,13 @@ public class Diverter : MonoBehaviour
         // Record where the belt centre sits in this transform's local Z space.
         beltCenterLocalZ = transform.InverseTransformPoint(wb.center).z;
 
-        Debug.Log($"Diverter '{name}': beltLength={measured:F3} (was {beltLength:F3})  beltCenterLocalZ={beltCenterLocalZ:F3}", this);
+        // Derive triggerY from the belt's actual top surface in local space,
+        // so trigger zones always sit above the belt regardless of scale or position.
+        float worldSurfaceY = wb.max.y;
+        float localSurfaceY = transform.InverseTransformPoint(new Vector3(wb.center.x, worldSurfaceY, wb.center.z)).y;
+        triggerY = localSurfaceY + triggerHeight * 0.5f;
+
+        Debug.Log($"Diverter '{name}': beltLength={measured:F3} (was {beltLength:F3})  beltCenterLocalZ={beltCenterLocalZ:F3}  triggerY={triggerY:F3}", this);
         beltLength = measured;
     }
 
@@ -137,6 +141,16 @@ public class Diverter : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    private float GizmoTriggerY()
+    {
+        var renderers = GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return triggerY;
+        var wb = renderers[0].bounds;
+        foreach (var r in renderers) wb.Encapsulate(r.bounds);
+        float localSurfaceY = transform.InverseTransformPoint(new Vector3(wb.center.x, wb.max.y, wb.center.z)).y;
+        return localSurfaceY + triggerHeight * 0.5f;
+    }
+
     // Draw trigger zone gizmos in the Scene view for easy placement.
     private void OnDrawGizmosSelected()
     {
@@ -147,11 +161,12 @@ public class Diverter : MonoBehaviour
         float beltStart  = beltCenterLocalZ - beltLength / 2f;
         float firstPoint = beltLength / (2f * n) - exitOffset;
         float step       = beltLength / n;
+        float gizmoY     = GizmoTriggerY();
 
         for (int i = 0; i < n; i++)
         {
             float localZ = beltStart + firstPoint + i * step;
-            Vector3 centre = transform.TransformPoint(new Vector3(0f, triggerY, localZ));
+            Vector3 centre = transform.TransformPoint(new Vector3(0f, gizmoY, localZ));
             Vector3 size = new Vector3(triggerWidth, triggerHeight, triggerDepth);
             // Alternate colours so adjacent zones are easy to distinguish.
             Gizmos.color = (i % 2 == 0)

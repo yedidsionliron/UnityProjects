@@ -17,6 +17,9 @@ public class BoxSpawner : MonoBehaviour
     [Tooltip("Uniform scale applied to every spawned box")]
     public float spawnScale = 1f;
 
+    [Tooltip("Physics material applied to package colliders to reduce inter-package friction")]
+    public PhysicsMaterial packageMaterial;
+
     public event Action<GameObject> OnBoxSpawned;
 
     private float timer;
@@ -55,6 +58,12 @@ public class BoxSpawner : MonoBehaviour
         Quaternion randomYaw = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
         GameObject box = Instantiate(prefab, transform.position, randomYaw);
         box.transform.localScale = Vector3.one * spawnScale;
+
+        if (packageMaterial != null)
+        {
+            foreach (var col in box.GetComponentsInChildren<Collider>())
+                col.material = packageMaterial;
+        }
 
         OnBoxSpawned?.Invoke(box);
     }

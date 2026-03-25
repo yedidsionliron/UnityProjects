@@ -4,8 +4,9 @@ using UnityEngine;
 /// Maintains 5 interior BoxColliders (floor + 4 walls) fitted to the Gaylord's
 /// world-space bounds. Colliders are placed at scene root (not parented to the
 /// Gaylord) and are world-axis-aligned regardless of the Gaylord's rotation.
+/// Colliders are only created at runtime (Play mode). In Edit mode, gizmos show
+/// the intended bounds without creating any scene objects.
 /// </summary>
-[ExecuteAlways]
 public class GaylordContainer : MonoBehaviour
 {
     [Tooltip("Wall collider thickness")]
@@ -22,23 +23,18 @@ public class GaylordContainer : MonoBehaviour
     [Header("Physics")]
     public PhysicsMaterial interiorMaterial;
 
-    [HideInInspector]
+    [System.NonSerialized]
     public GameObject collidersRoot;
 
     // ------------------------------------------------------------------ //
 
-    void OnEnable()  => RebuildColliders();
-    void OnDisable() => DestroyColliders();
-
-#if UNITY_EDITOR
-    void OnValidate()
+    void OnEnable()
     {
-        UnityEditor.EditorApplication.delayCall += () =>
-        {
-            if (this != null) RebuildColliders();
-        };
+        if (Application.isPlaying)
+            RebuildColliders();
     }
-#endif
+
+    void OnDisable() => DestroyColliders();
 
     // ------------------------------------------------------------------ //
 
@@ -110,11 +106,6 @@ public class GaylordContainer : MonoBehaviour
         }
 
         collidersRoot = root;
-
-#if UNITY_EDITOR
-        if (!Application.isPlaying)
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
-#endif
     }
 
     // ------------------------------------------------------------------ //
