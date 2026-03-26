@@ -22,6 +22,11 @@ public class Diverter : MonoBehaviour
     [Tooltip("Number of divert points (X). Gives 2*X destination lanes.")]
     public int numDivertPoints = 2;
 
+    [Range(0f, 1f)]
+    [Tooltip("Normalised Z position within each Gaylord slot where packages land. " +
+             "0 = slot start, 0.5 = centre, 1 = slot end.")]
+    public float landingNormalized = 0.5f;
+
     [HideInInspector] public int addressOffset = 0;
     [HideInInspector] public int totalLanes = 1;
     [HideInInspector] public float beltCenterLocalZ = 0f;
@@ -86,15 +91,48 @@ public class Diverter : MonoBehaviour
 
     /// <summary>
     /// Z-distance a package travels along the belt while its centre of mass
-    /// crosses from belt centre to belt edge.
-    /// dz = vz * sqrt( (triggerWidth/2) / (frictionCoefficient * g) )
+    /// crosses from belt centre to belt edge, accounting for the divertSpeed cap.
+    ///
+    /// Phase 1 — constant acceleration (a = μg) until lateral velocity = divertSpeed:
+    ///   x1 = divertSpeed² / (2a),  t1 = divertSpeed / a
+    /// Phase 2 — constant lateral velocity divertSpeed until belt edge:
+    ///   t2 = (triggerWidth/2 - x1) / divertSpeed  (only if divertSpeed is reached before the edge)
+    ///
+    /// If divertSpeed is never reached before the edge, pure kinematics applies:
+    ///   t  = sqrt( triggerWidth / a )   [note: the ½ in d=½at² and the ½ in triggerWidth/2 cancel]
     /// </summary>
     public float ExitOffset()
     {
         var belt = GetComponentInChildren<ConveyorBelt>();
         float vz = belt != null ? belt.beltSpeed : 0f;
-        float g  = Mathf.Abs(Physics.gravity.y);
-        return vz * Mathf.Sqrt((triggerWidth / 2f) / (frictionCoefficient * g));
+        if (vz <= 0f) return 0f;
+
+        float a = frictionCoefficient * Mathf.Abs(Physics.gravity.y);
+        if (a <= 0f) return 0f;          // no friction → no diversion, avoid divide-by-zero
+
+        if (divertSpeed <= 0f) return 0f; // no target speed → no diversion, avoid divide-by-zero
+
+        float halfWidth = triggerWidth / 2f;
+
+        // Lateral distance covered while accelerating to divertSpeed from rest.
+        float x1 = (divertSpeed * divertSpeed) / (2f * a);
+
+        float t;
+        if (x1 >= halfWidth)
+        {
+            // Package is still accelerating when it reaches the belt edge — pure kinematics.
+            // d = ½at²  →  t = sqrt(2d/a) = sqrt(triggerWidth/a)  (the ½ and /2 cancel)
+            t = Mathf.Sqrt(triggerWidth / a);
+        }
+        else
+        {
+            // Package reaches divertSpeed at x1, then coasts the rest of the way.
+            float t1 = divertSpeed / a;
+            float t2 = (halfWidth - x1) / divertSpeed;
+            t = t1 + t2;
+        }
+
+        return vz * t;
     }
 
     private void BuildZones()
@@ -108,8 +146,11 @@ public class Diverter : MonoBehaviour
         int   n          = numDivertPoints;
         float exitOffset = ExitOffset();
         float beltStart  = beltCenterLocalZ - beltLength / 2f;
-        float firstPoint = beltLength / (2f * n) - exitOffset;
         float step       = beltLength / n;
+        // Diversion force starts when the package ENTERS the trigger zone (at triggerCenter - triggerDepth/2),
+        // not at the trigger centre. Shift the centre forward by triggerDepth/2 so that the
+        // force-start point lands exactly exitOffset before the slot centre.
+        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f;
 
         Debug.Log($"Diverter '{name}': exitOffset={exitOffset:F3}  firstPoint={firstPoint:F3}  step={step:F3}", this);
 
@@ -159,8 +200,8 @@ public class Diverter : MonoBehaviour
         int   n          = numDivertPoints;
         float exitOffset = ExitOffset();
         float beltStart  = beltCenterLocalZ - beltLength / 2f;
-        float firstPoint = beltLength / (2f * n) - exitOffset;
         float step       = beltLength / n;
+        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f;
         float gizmoY     = GizmoTriggerY();
 
         for (int i = 0; i < n; i++)
