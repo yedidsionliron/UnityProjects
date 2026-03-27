@@ -59,6 +59,8 @@ namespace PCS
 		public Color32 colour = new Color32(50, 50, 50 , 255);
 
 		public PCSConveyor pcsC;
+		public PCSsingulator pcsS;
+		public bool singulatorMode = false;
 
 		public bool settingsImported;
 		
@@ -851,8 +853,17 @@ namespace PCS
 			conveyorCollider.center = belt.parent.transform.localPosition - new Vector3(0, 0.005f, 0);
 			Rigidbody coveyorRB = physicsParent.AddComponent<Rigidbody>();
 			coveyorRB.isKinematic = true;
-			pcsC = physicsParent.AddComponent<PCSConveyor>();
-			pcsC.speed = speed;
+			if (singulatorMode)
+			{
+				pcsC = null;
+				pcsS = physicsParent.AddComponent<PCSsingulator>();
+			}
+			else
+			{
+				pcsS = null;
+				pcsC = physicsParent.AddComponent<PCSConveyor>();
+				pcsC.speed = speed;
+			}
 
 		}
 

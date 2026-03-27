@@ -15,4 +15,24 @@ public class Package : MonoBehaviour
 {
     [Tooltip("Destination address used by Diverter to route this package.")]
     public int address;
+
+    private static PhysicsMaterial _sharedMaterial;
+
+    private void Awake()
+    {
+        if (_sharedMaterial == null)
+        {
+            _sharedMaterial = new PhysicsMaterial("PackageSurface")
+            {
+                dynamicFriction = 0f,
+                staticFriction  = 0f,
+                frictionCombine = PhysicsMaterialCombine.Minimum,
+                bounciness      = 0f,
+                bounceCombine   = PhysicsMaterialCombine.Minimum,
+            };
+        }
+
+        foreach (Collider col in GetComponentsInChildren<Collider>())
+            col.material = _sharedMaterial;
+    }
 }

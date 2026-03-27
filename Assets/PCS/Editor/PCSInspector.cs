@@ -226,6 +226,17 @@ namespace PCS
 
 
 			EditorGUI.BeginChangeCheck();
+			bool singulatorMode = EditorGUILayout.Toggle("Singulator Mode", config.singulatorMode);
+			if (EditorGUI.EndChangeCheck())
+			{
+				Undo.RecordObject(config, "PCS");
+				config.singulatorMode = singulatorMode;
+				config.CreatePCS();
+			}
+
+			GUILayout.Space(8);
+
+			EditorGUI.BeginChangeCheck();
 			float speed = EditorGUILayout.FloatField("Speed", config.speed);
 			if (EditorGUI.EndChangeCheck())
 			{
