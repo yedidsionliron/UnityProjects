@@ -17,6 +17,9 @@ public class BoxSpawner : MonoBehaviour
     [Tooltip("Uniform scale applied to every spawned box")]
     public float spawnScale = 1f;
 
+    [Tooltip("Random lateral offset applied to each spawn position (±A metres on the X axis).")]
+    public float spawnLateralRange = 0.5f;
+
     [Tooltip("Physics material applied to package colliders to reduce inter-package friction")]
     public PhysicsMaterial packageMaterial;
 
@@ -55,8 +58,9 @@ public class BoxSpawner : MonoBehaviour
             return;
         }
 
-        Quaternion randomYaw = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
-        GameObject box = Instantiate(prefab, transform.position, randomYaw);
+        Quaternion randomYaw    = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
+        Vector3    spawnPos     = transform.position + transform.right * UnityEngine.Random.Range(-spawnLateralRange, spawnLateralRange);
+        GameObject box = Instantiate(prefab, spawnPos, randomYaw);
         box.transform.localScale = Vector3.one * spawnScale;
 
         if (packageMaterial != null)

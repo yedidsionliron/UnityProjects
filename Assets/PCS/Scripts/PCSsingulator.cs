@@ -71,8 +71,7 @@ namespace PCS
 
         private readonly List<PackageAgent> activeAgents = new List<PackageAgent>();
 
-        private int   nextSlotIndex;
-        private float lastSlotArrivalTime;
+        private int nextSlotIndex;
 
         // Belt geometry — computed once in Start.
         private BoxCollider     surfaceCollider;
@@ -126,6 +125,7 @@ namespace PCS
         {
             Step1_UpdateRegistry();
             if (agentMap.Count == 0) return;
+            RerankPreConvergenceAgents();
             Step2_DriveAgents();
         }
 
@@ -178,19 +178,12 @@ namespace PCS
 
             foreach (var (rb, pkgLen) in newAgents)
             {
-
-                float minTravelTime = zConvergence / Mathf.Max(beltSpeed, 0.001f);
-                float slotDuration  = (pkgLen + desiredGap) / Mathf.Max(beltSpeed, 0.001f);
-                float earliestSlot  = Time.fixedTime + minTravelTime;
-                float T_i           = Mathf.Max(earliestSlot, lastSlotArrivalTime + slotDuration);
-                lastSlotArrivalTime = T_i;
-
                 var agent = new PackageAgent
                 {
                     body                 = rb,
                     packageLength        = pkgLen,
                     slotIndex            = nextSlotIndex++,
-                    scheduledArrivalTime = T_i,
+                    scheduledArrivalTime = 0f,   // assigned by RerankPreConvergenceAgents
                     pastConvergence      = BeltLocalZ(rb.position) >= zConvergence,
                 };
 
@@ -207,6 +200,48 @@ namespace PCS
             {
                 activeAgents.Remove(agentMap[rb]);
                 agentMap.Remove(rb);
+            }
+        }
+
+        // ── Rerank ────────────────────────────────────────────────────────────
+
+        private void RerankPreConvergenceAgents()
+        {
+            // Find the latest scheduled arrival among packages already past convergence —
+            // the first pre-convergence package must not arrive before that clears.
+            float anchorT        = 0f;
+            float anchorDuration = 0f;
+            foreach (PackageAgent agent in activeAgents)
+            {
+                if (agent.pastConvergence && agent.scheduledArrivalTime >= anchorT)
+                {
+                    anchorT        = agent.scheduledArrivalTime;
+                    anchorDuration = (agent.packageLength + desiredGap) / Mathf.Max(beltSpeed, 0.001f);
+                }
+            }
+
+            // Collect and sort pre-convergence agents: closest to convergence point first.
+            var preConv = new List<PackageAgent>();
+            foreach (PackageAgent agent in activeAgents)
+                if (!agent.pastConvergence)
+                    preConv.Add(agent);
+
+            Vector3 convergenceWorld = beltOrigin + beltFwd * zConvergence;
+            preConv.Sort((a, b) =>
+            {
+                int cmp = Vector3.Distance(a.body.position, convergenceWorld)
+                              .CompareTo(Vector3.Distance(b.body.position, convergenceWorld));
+                return cmp != 0 ? cmp : a.slotIndex.CompareTo(b.slotIndex);
+            });
+
+            float prevT = anchorT + anchorDuration;
+            foreach (PackageAgent agent in preConv)
+            {
+                float distToConv   = Mathf.Max(0f, zConvergence - BeltLocalZ(agent.body.position));
+                float minArrival   = Time.fixedTime + distToConv / Mathf.Max(beltSpeed, 0.001f);
+                float slotDuration = (agent.packageLength + desiredGap) / Mathf.Max(beltSpeed, 0.001f);
+                agent.scheduledArrivalTime = Mathf.Max(minArrival, prevT);
+                prevT = agent.scheduledArrivalTime + slotDuration;
             }
         }
 
@@ -251,12 +286,27 @@ namespace PCS
                 }
 
                 // ── Forward drive — kinematic arrival at (z_c, beltSpeed, T_i)
+                // If the package can reach convergence at beltSpeed before T_i (slack),
+                // just drive at beltSpeed — don't brake to hit the scheduled time.
                 float distToConv = zConvergence - z;
                 float denom      = distToConv - beltSpeed * tau;
-                float a_z        = Mathf.Abs(denom) < epsilon
-                    ? 0f
-                    : -0.5f * (beltSpeed - vz) * (beltSpeed - vz) / denom;
-                a_z = Mathf.Clamp(a_z, -maxDeceleration, maxAcceleration);
+                float a_z;
+                if (denom <= 0f)
+                {
+                    // Slack branch. Target constant-speed arrival at T_i rather than beltSpeed.
+                    // Gap packages:          tau ≈ distToConv/beltSpeed  → target ≈ beltSpeed (cruise freely).
+                    // Side-by-side packages: tau includes yielding time   → target < beltSpeed (slow to yield).
+                    float targetVz = distToConv / Mathf.Max(tau, 0.001f);
+                    float slip     = targetVz - vz;
+                    a_z = Mathf.Clamp(slip / dt, -maxDeceleration, maxAcceleration);
+                }
+                else
+                {
+                    a_z = Mathf.Abs(denom) < epsilon
+                        ? 0f
+                        : -0.5f * (beltSpeed - vz) * (beltSpeed - vz) / denom;
+                    a_z = Mathf.Clamp(a_z, -maxDeceleration, maxAcceleration);
+                }
                 rb.AddForce(beltFwd * rb.mass * a_z, ForceMode.Force);
 
                 // ── Lateral drive — minimum-time centering (−4x/τ²) ─────────

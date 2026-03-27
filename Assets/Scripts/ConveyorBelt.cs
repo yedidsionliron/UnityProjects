@@ -12,7 +12,6 @@ using UnityEngine;
 /// counter-force that fights our explicit drive force.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(BoxCollider))]
 public class ConveyorBelt : MonoBehaviour
 {
     [Tooltip("Belt surface speed in m/s (along +Z of this transform)")]
@@ -29,6 +28,12 @@ public class ConveyorBelt : MonoBehaviour
         Physics.defaultContactOffset = 0.001f;
 
         bc = GetComponent<BoxCollider>();
+        if (bc == null)
+        {
+            Debug.LogError($"ConveyorBelt '{name}': no BoxCollider found. Add one manually or let PCS create it.", this);
+            enabled = false;
+            return;
+        }
 
         // Zero PhysX friction — we drive the box ourselves.
         // Non-zero friction here would create a counter-force opposing our drive.
