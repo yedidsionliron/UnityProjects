@@ -56,6 +56,12 @@ namespace PCS
 		public bool internalsEnabled = false;
 		public int internalsCount = 3;
 		public float speed = 0.6f;
+
+		[Header("Conveyor Supports")]
+		[Tooltip("ConveyorSupport prefab to place under both ends of the conveyor.")]
+		public GameObject conveyorSupportPrefab;
+		[Tooltip("Local Y position of each support. Default matches Conveyor_Long1 (0.927).")]
+		public float conveyorSupportHeight = 0.927f;
 		public Color32 colour = new Color32(50, 50, 50 , 255);
 
 		public PCSConveyor pcsC;
@@ -70,6 +76,7 @@ namespace PCS
 		private List<Collider> visibleColliders;
 
 		private PCSTransform parentTransform;
+		private GameObject _supportsParent;
 
 		public List<GameObject> conveyorChildren;// = new List<GameObject>();
 
@@ -120,6 +127,7 @@ namespace PCS
 				conveyorChildren.Add(endCap.parent);
 				conveyorChildren.Add(internals.parent);
 				conveyorChildren.Add(physicsParent);
+				conveyorChildren.Add(_supportsParent);
 
 			}
 
@@ -295,6 +303,11 @@ namespace PCS
 			physicsParent.transform.parent = transform;
 			physicsParent.transform.localPosition = Vector3.zero;
 			physicsParent.hideFlags = HideFlags.HideInHierarchy;
+
+			_supportsParent = new GameObject("Conveyor Supports");
+			_supportsParent.transform.parent = transform;
+			_supportsParent.transform.localPosition = Vector3.zero;
+			_supportsParent.hideFlags = HideFlags.HideInHierarchy;
 			//-------------------------------------------------------------
 		}
 
@@ -512,6 +525,10 @@ namespace PCS
 			//-------------------------------------------------------------
 
 
+			//-------------------Spawn conveyor supports-------------------
+			SpawnConveyorSupports();
+			//-------------------------------------------------------------
+
 			//--------------------Instantiate internals--------------------
 			if (internalsEnabled)
 			{
@@ -555,6 +572,24 @@ namespace PCS
 
 			//-------------------------------------------------------------
 
+		}
+
+		void SpawnConveyorSupports()
+		{
+			if (conveyorSupportPrefab == null) return;
+
+			float startZ = startCap.positionOffset.z;
+			float endZ   = startCap.positionOffset.z + belt.positionOffset.z * length;
+
+			for (int i = 0; i < 2; i++)
+			{
+				float z = i == 0 ? startZ : endZ;
+				GameObject support = Instantiate(conveyorSupportPrefab);
+				support.name = i == 0 ? "ConveyorSupport" : "ConveyorSupport (1)";
+				support.transform.parent = _supportsParent.transform;
+				support.transform.localPosition = new Vector3(0f, conveyorSupportHeight, z);
+				support.transform.localRotation = Quaternion.Euler(-90f, 0f, -90f);
+			}
 		}
 
 		GameObject InstantiateCap(GameObject capPrefab, GameObject capParent, Vector3 instantiatePosition, bool mirrorCap, string name)
