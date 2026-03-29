@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:/Users/Lirony/Downloads/Unity/My project \\(1\\)/Assets/EKstudio\" -name \"*.fbx\" -o -name \"*.FBX\")",
+      "Bash(find \"C:/Users/Lirony/Downloads/Unity/My project \\(1\\)/Assets\" -iname \"*.prefab\")",
+      "Bash(find \"C:/Users/Lirony/Downloads/Unity/My project \\(1\\)/Assets/NAACo\" -iname \"*.prefab\")",
+      "Bash(find \"C:\\\\Users\\\\Lirony\\\\Downloads\\\\Unity\\\\My project \\(1\\)\\\\Assets\" -name \"*.meta\")",
+      "Bash(xargs grep:*)",
+      "Bash(ls:*)",
+      "Bash(grep -h \"guid:\" \"C:\\\\Users\\\\Lirony\\\\Documents\\\\Unity\\\\ConveyorEditor\\\\Assets\\\\PCS\\\\Styles\\\\Belt\\\\Prefabs\"/*.prefab)",
+      "Bash(grep -h \"guid:\" \"/c/Users/Lirony/Documents/Unity/ConveyorEditor/Assets/PCS/Styles/Belt/Prefabs/\"*.prefab)",
+      "Bash(find /c/Users/Lirony/Documents/Unity/ConveyorEditor/Temp -name *.unity)",
+      "Bash(find /c/Users/Lirony/Documents/Unity/ConveyorEditor/Library -name *DemoScene*)",
+      "Bash(powershell -Command \"\\(Get-Content 'C:\\\\Users\\\\Lirony\\\\Documents\\\\Unity\\\\ConveyorEditor\\\\Assets\\\\PCS\\\\Demo\\\\DemoScene.unity' -Raw\\) -replace '\\\\{fileID: 46, guid: 0000000000000000f000000000000000, type: 0\\\\}', '{fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}' | Set-Content 'C:\\\\Users\\\\Lirony\\\\Documents\\\\Unity\\\\ConveyorEditor\\\\Assets\\\\PCS\\\\Demo\\\\DemoScene.unity' -NoNewline\")",
+      "Bash(grep:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
