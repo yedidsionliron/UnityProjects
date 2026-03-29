@@ -274,6 +274,23 @@ namespace PCS
 
 			GUILayout.Space(8);
 
+			EditorGUILayout.LabelField("Conveyor Supports", EditorStyles.boldLabel);
+
+			EditorGUI.BeginChangeCheck();
+			GameObject conveyorSupportPrefab = (GameObject)EditorGUILayout.ObjectField("Support Prefab", config.conveyorSupportPrefab, typeof(GameObject), false);
+			float conveyorSupportHeight = EditorGUILayout.FloatField("Support Height", config.conveyorSupportHeight);
+			Vector3 conveyorSupportScale = EditorGUILayout.Vector3Field("Support Scale", config.conveyorSupportScale);
+			if (EditorGUI.EndChangeCheck())
+			{
+				Undo.RecordObject(config, "PCS");
+				config.conveyorSupportPrefab = conveyorSupportPrefab;
+				config.conveyorSupportHeight = conveyorSupportHeight;
+				config.conveyorSupportScale = conveyorSupportScale;
+				config.CreatePCS();
+			}
+
+			GUILayout.Space(8);
+
 			EditorGUI.BeginChangeCheck();
 			//PCSConfig.EditModes editMode = (PCSConfig.EditModes)EditorGUILayout.EnumPopup("Edit Mode", config.editMode);
 			bool edit = GUILayout.Toggle(config.editMode == PCSConfig.EditModes.None ? false : true, "Edit Railings", GUI.skin.button);
