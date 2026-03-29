@@ -62,6 +62,8 @@ namespace PCS
 		public GameObject conveyorSupportPrefab;
 		[Tooltip("Local Y position of each support. Default matches Conveyor_Long1 (0.927).")]
 		public float conveyorSupportHeight = 0.927f;
+		[Tooltip("Scale applied to each support. Default matches Conveyor_Long1 (13, 13, 91).")]
+		public Vector3 conveyorSupportScale = new Vector3(13f, 13f, 91f);
 		public Color32 colour = new Color32(50, 50, 50 , 255);
 
 		public PCSConveyor pcsC;
@@ -589,6 +591,7 @@ namespace PCS
 				support.transform.parent = _supportsParent.transform;
 				support.transform.localPosition = new Vector3(0f, conveyorSupportHeight, z);
 				support.transform.localRotation = Quaternion.Euler(-90f, 0f, -90f);
+				support.transform.localScale = conveyorSupportScale;
 			}
 		}
 
