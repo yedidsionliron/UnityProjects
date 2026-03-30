@@ -86,6 +86,20 @@ namespace PCS
 
 		public PCSUVScroller[] uvS = new PCSUVScroller[4];
 		
+#if UNITY_EDITOR
+		private void Reset() => ApplyDefaultSupportPrefab();
+		private void OnValidate() => ApplyDefaultSupportPrefab();
+
+		private void ApplyDefaultSupportPrefab()
+		{
+			if (conveyorSupportPrefab == null)
+			{
+				conveyorSupportPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(
+					"Assets/LastMileAssets/Models/ConveyorSupport.fbx");
+			}
+		}
+#endif
+
 		public void CreatePCS()
 		{
 			deleteAllColliders();
@@ -307,7 +321,7 @@ namespace PCS
 			physicsParent.hideFlags = HideFlags.HideInHierarchy;
 
 			_supportsParent = new GameObject("Conveyor Supports");
-			_supportsParent.transform.parent = transform;
+			_supportsParent.transform.parent = physicsParent.transform;
 			_supportsParent.transform.localPosition = Vector3.zero;
 			_supportsParent.hideFlags = HideFlags.HideInHierarchy;
 			//-------------------------------------------------------------
@@ -589,9 +603,16 @@ namespace PCS
 				GameObject support = Instantiate(conveyorSupportPrefab);
 				support.name = i == 0 ? "ConveyorSupport" : "ConveyorSupport (1)";
 				support.transform.parent = _supportsParent.transform;
-				support.transform.localPosition = new Vector3(0f, conveyorSupportHeight, z);
+				support.transform.localPosition = new Vector3(0f, -conveyorSupportHeight, z);
 				support.transform.localRotation = Quaternion.Euler(-90f, 0f, -90f);
 				support.transform.localScale = conveyorSupportScale;
+
+				Renderer supportRenderer = support.GetComponentInChildren<Renderer>();
+				if (supportRenderer != null)
+				{
+					float meshCenterX = _supportsParent.transform.InverseTransformPoint(supportRenderer.bounds.center).x;
+					support.transform.localPosition = new Vector3(-meshCenterX, -conveyorSupportHeight, z);
+				}
 			}
 		}
 
