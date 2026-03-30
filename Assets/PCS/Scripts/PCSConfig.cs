@@ -321,7 +321,7 @@ namespace PCS
 			physicsParent.hideFlags = HideFlags.HideInHierarchy;
 
 			_supportsParent = new GameObject("Conveyor Supports");
-			_supportsParent.transform.parent = physicsParent.transform;
+			_supportsParent.transform.parent = transform;
 			_supportsParent.transform.localPosition = Vector3.zero;
 			_supportsParent.hideFlags = HideFlags.HideInHierarchy;
 			//-------------------------------------------------------------
@@ -612,6 +612,12 @@ namespace PCS
 				{
 					float meshCenterX = _supportsParent.transform.InverseTransformPoint(supportRenderer.bounds.center).x;
 					support.transform.localPosition = new Vector3(-meshCenterX, -conveyorSupportHeight, z);
+				}
+
+				foreach (MeshFilter mf in support.GetComponentsInChildren<MeshFilter>())
+				{
+					MeshCollider mc = mf.gameObject.AddComponent<MeshCollider>();
+					mc.convex = true;
 				}
 			}
 		}
@@ -912,6 +918,15 @@ namespace PCS
 			conveyorCollider.center = belt.parent.transform.localPosition - new Vector3(0, 0.005f, 0);
 			Rigidbody coveyorRB = physicsParent.AddComponent<Rigidbody>();
 			coveyorRB.isKinematic = true;
+
+			Rigidbody rootRb = GetComponent<Rigidbody>();
+			if (rootRb != null && !rootRb.isKinematic)
+			{
+				rootRb.constraints = RigidbodyConstraints.FreezePositionX |
+				                     RigidbodyConstraints.FreezePositionZ |
+				                     RigidbodyConstraints.FreezeRotation;
+			}
+
 			if (singulatorMode)
 			{
 				pcsC = null;
