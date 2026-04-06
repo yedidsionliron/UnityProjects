@@ -69,6 +69,11 @@ public class BoxSpawner : MonoBehaviour
                 col.material = packageMaterial;
         }
 
+        // Stamp routing address from the global address space.
+        Package pkg = box.GetComponent<Package>() ?? box.AddComponent<Package>();
+        int total = AddressInit.TotalAddressSpace;
+        pkg.address = total > 0 ? UnityEngine.Random.Range(1, total + 1) : 1;
+
         OnBoxSpawned?.Invoke(box);
     }
 }

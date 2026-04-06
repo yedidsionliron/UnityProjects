@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,10 +60,12 @@ namespace PCS
 		[Header("Conveyor Supports")]
 		[Tooltip("ConveyorSupport prefab to place under both ends of the conveyor.")]
 		public GameObject conveyorSupportPrefab;
-		[Tooltip("Local Y position of each support. Default matches Conveyor_Long1 (0.927).")]
-		public float conveyorSupportHeight = 0.927f;
+		[Tooltip("Local Y position of the support.")]
+		public float conveyorSupportHeight = 1.05f;
 		[Tooltip("Scale applied to each support. Default matches Conveyor_Long1 (13, 13, 91).")]
 		public Vector3 conveyorSupportScale = new Vector3(13f, 13f, 91f);
+		[Tooltip("Slope angle in degrees. Positive = front elevated, negative = back elevated.")]
+		public float conveyorSlopeAngle = 0f;
 		public Color32 colour = new Color32(50, 50, 50 , 255);
 
 		public PCSConveyor pcsC;
@@ -76,8 +78,10 @@ namespace PCS
 		public Dictionary<Collider, int> railingEditCollidersSideIndex;
 		public Dictionary<Collider, int> railingEditCollidersRailingIndex;
 		private List<Collider> visibleColliders;
+		private List<Collider> railingColliders;
 
 		private PCSTransform parentTransform;
+		private GameObject _conveyorBody;
 		private GameObject _supportsParent;
 
 		public List<GameObject> conveyorChildren;// = new List<GameObject>();
@@ -108,6 +112,7 @@ namespace PCS
 			{
 				CheckRailingData();
 				visibleColliders = new List<Collider>();
+				railingColliders = new List<Collider>();
 
 				if (conveyorChildren != null)
 				{
@@ -134,15 +139,18 @@ namespace PCS
 
 				}
 
+				// Railing colliders go on physicsParent (kinematic RB) so they reliably block packages.
+				foreach (Collider c in railingColliders)
+				{
+					Collider newC = physicsParent.AddDuplicateCollider(c);
+					newC.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
+					DestroyImmediate(c);
+				}
+
 				ApplyTransform();
 
 				conveyorChildren = new List<GameObject>();
-				conveyorChildren.Add(belt.parent);
-				conveyorChildren.Add(railing.parent);
-				conveyorChildren.Add(startCap.parent);
-				conveyorChildren.Add(endCap.parent);
-				conveyorChildren.Add(internals.parent);
-				conveyorChildren.Add(physicsParent);
+				conveyorChildren.Add(_conveyorBody);
 				conveyorChildren.Add(_supportsParent);
 
 			}
@@ -243,8 +251,14 @@ namespace PCS
 
 
 			//--------------------Create parent objects--------------------
+			_conveyorBody = new GameObject("Conveyor Body");
+			_conveyorBody.transform.parent = transform;
+			_conveyorBody.transform.localPosition = Vector3.zero;
+			_conveyorBody.transform.localRotation = Quaternion.identity; // rotation applied after mesh baking in ApplyTransform
+			_conveyorBody.hideFlags = HideFlags.HideInHierarchy;
+
 			belt.parent = new GameObject("Belt");
-			belt.parent.transform.parent = transform;
+			belt.parent.transform.parent = _conveyorBody.transform;
 			belt.parent.transform.localPosition = PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
 			belt.parent.hideFlags = HideFlags.HideInHierarchy;
 			uvS[2] = belt.parent.AddComponent<PCSUVScroller>();
@@ -253,7 +267,7 @@ namespace PCS
 
 
 			railing.parent = new GameObject("Railing");
-			railing.parent.transform.parent = transform;
+			railing.parent.transform.parent = _conveyorBody.transform;
 			railing.parent.transform.localPosition = PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
 			railing.parent.hideFlags = HideFlags.HideInHierarchy;
 			if (editMode == EditModes.Railings)
@@ -269,7 +283,7 @@ namespace PCS
 			}
 
 			startCap.parent = new GameObject("Start Cap");
-			startCap.parent.transform.parent = transform;
+			startCap.parent.transform.parent = _conveyorBody.transform;
 			startCap.parent.transform.localPosition = PCSUtils.GetStartCapTopEdge(startCap.positionOffset);
 			startCap.parent.hideFlags = HideFlags.HideInHierarchy;
 
@@ -289,7 +303,7 @@ namespace PCS
 			}
 
 			endCap.parent = new GameObject("End Cap");
-			endCap.parent.transform.parent = transform;
+			endCap.parent.transform.parent = _conveyorBody.transform;
 			endCap.parent.transform.localPosition = PCSUtils.GetEndCapTopEdge(startCap.positionOffset, belt.positionOffset, length);
 			endCap.parent.hideFlags = HideFlags.HideInHierarchy;
 
@@ -309,14 +323,14 @@ namespace PCS
 			}
 
 			internals.parent = new GameObject("Internals");
-			internals.parent.transform.parent = transform;
+			internals.parent.transform.parent = _conveyorBody.transform;
 			internals.parent.transform.localPosition = Vector3.zero; //PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
 			internals.parent.hideFlags = HideFlags.HideInHierarchy;
 			uvS[3] = internals.parent.AddComponent<PCSUVScroller>();
 			uvS[3].speed = speed / (0.18f*Mathf.PI);
 
 			physicsParent = new GameObject("Physics");
-			physicsParent.transform.parent = transform;
+			physicsParent.transform.parent = _conveyorBody.transform;
 			physicsParent.transform.localPosition = Vector3.zero;
 			physicsParent.hideFlags = HideFlags.HideInHierarchy;
 
@@ -594,25 +608,56 @@ namespace PCS
 		{
 			if (conveyorSupportPrefab == null) return;
 
+			float angleRad = conveyorSlopeAngle * Mathf.Deg2Rad;
 			float startZ = startCap.positionOffset.z;
 			float endZ   = startCap.positionOffset.z + belt.positionOffset.z * length;
 
+			// Positive angle elevates endZ (larger Z) due to Unity X-rotation convention.
+			// Front support (i=0) is assigned to endZ so it is the elevated end for positive angle.
+			// Back support  (i=1) is assigned to startZ.
+			float[] bodyZ     = { endZ,   startZ  };
+			string[] names    = { "ConveyorSupport", "ConveyorSupport (1)" };
+
 			for (int i = 0; i < 2; i++)
 			{
-				float z = i == 0 ? startZ : endZ;
+				float capZ = bodyZ[i] * Mathf.Cos(angleRad);
+
+				// Instantiate with base scale first so we can measure the world-space depth
 				GameObject support = Instantiate(conveyorSupportPrefab);
-				support.name = i == 0 ? "ConveyorSupport" : "ConveyorSupport (1)";
+				support.name = names[i];
 				support.transform.parent = _supportsParent.transform;
-				support.transform.localPosition = new Vector3(0f, -conveyorSupportHeight, z);
 				support.transform.localRotation = Quaternion.Euler(-90f, 0f, -90f);
 				support.transform.localScale = conveyorSupportScale;
+				support.transform.localPosition = Vector3.zero;
 
+				// Measure world-space Z depth of the support at base scale.
+				// A vertical support of depth D at slope angle θ would pierce (D/2)*tan(θ)
+				// above the angled belt surface, blocking packages. Subtract as clearance.
+				float clearance = 0f;
 				Renderer supportRenderer = support.GetComponentInChildren<Renderer>();
-				if (supportRenderer != null)
-				{
-					float meshCenterX = _supportsParent.transform.InverseTransformPoint(supportRenderer.bounds.center).x;
-					support.transform.localPosition = new Vector3(-meshCenterX, -conveyorSupportHeight, z);
-				}
+				if (supportRenderer != null && Mathf.Abs(angleRad) > 0.0001f)
+					clearance = (supportRenderer.bounds.size.z * 0.5f) * Mathf.Abs(Mathf.Tan(angleRad));
+
+				// Belt-end Y after slope rotation, pulled back by clearance so the support
+				// top sits flush below the angled belt surface rather than piercing it.
+				float capY = bodyZ[i] * Mathf.Sin(angleRad) - clearance;
+
+				// Ground level is fixed: flat support goes from Y=0 (belt) to Y=-(2*halfH)
+				float groundY = -(2f * conveyorSupportHeight);
+
+				// Support spans from belt end (top=capY) down to ground (bottom=groundY).
+				// Pivot is at center, so center = midpoint and scale.z stretches equally both ways.
+				float totalHeight = capY - groundY;
+				float centerY     = (capY + groundY) * 0.5f;
+
+				Vector3 scale = conveyorSupportScale;
+				scale.z *= totalHeight / (2f * conveyorSupportHeight);
+				support.transform.localScale = scale;
+
+				float meshCenterX = supportRenderer != null
+					? _supportsParent.transform.InverseTransformPoint(supportRenderer.bounds.center).x
+					: 0f;
+				support.transform.localPosition = new Vector3(-meshCenterX, centerY, capZ);
 
 				foreach (MeshFilter mf in support.GetComponentsInChildren<MeshFilter>())
 				{
@@ -768,7 +813,7 @@ namespace PCS
 						if (editMode == EditModes.None)
 						{
 							BoxCollider oldCollider = railingTempParents[i][j].transform.GetChild(0).GetComponent<BoxCollider>();
-							visibleColliders.Add(railing.parent.AddDuplicateCollider(oldCollider));
+							railingColliders.Add(railing.parent.AddDuplicateCollider(oldCollider));
 							BoxCollider.DestroyImmediate(oldCollider);
 						}
 
@@ -797,7 +842,7 @@ namespace PCS
 						if (editMode == EditModes.None)
 						{
 							BoxCollider oldCollider = railingTempParentsStartCap[i].transform.GetChild(0).GetComponent<BoxCollider>();
-							visibleColliders.Add(railingStartCap.parent.AddDuplicateCollider(oldCollider));
+							railingColliders.Add(railingStartCap.parent.AddDuplicateCollider(oldCollider));
 							BoxCollider.DestroyImmediate(oldCollider);
 						}
 
@@ -825,7 +870,7 @@ namespace PCS
 						if (editMode == EditModes.None)
 						{
 							BoxCollider oldCollider = railingTempParentsEndCap[i].transform.GetChild(0).GetComponent<BoxCollider>();
-							visibleColliders.Add(railingEndCap.parent.AddDuplicateCollider(oldCollider));
+							railingColliders.Add(railingEndCap.parent.AddDuplicateCollider(oldCollider));
 							BoxCollider.DestroyImmediate(oldCollider);
 						}
 
@@ -853,12 +898,12 @@ namespace PCS
 			{
 				for (int j = 0; j < railingTempParents[0].Length; j++)
 				{
-					railingTempParents[0][j].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParents[0][j].transform.GetChild(i).gameObject);
 				}
 
 				for (int j = 0; j < railingTempParents[1].Length; j++)
 				{
-					railingTempParents[1][j].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParents[1][j].transform.GetChild(i).gameObject);
 				}
 			}
 
@@ -869,14 +914,14 @@ namespace PCS
 				{
 					if (railingTempParentsStartCap[0].transform.localScale != Vector3.one)
 						railingTempParentsStartCap[0].FixScale(railingStartCap.renderers);
-					railingTempParentsStartCap[0].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParentsStartCap[0].transform.GetChild(i).gameObject);
 				}
 
 				if (railingData[1].enabledStates[0])
 				{
 					if (railingTempParentsStartCap[1].transform.localScale != Vector3.one)
 						railingTempParentsStartCap[1].FixScale(railingStartCap.renderers);
-					railingTempParentsStartCap[1].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParentsStartCap[1].transform.GetChild(i).gameObject);
 				}
 			}
 
@@ -887,19 +932,31 @@ namespace PCS
 				{
 					if (railingTempParentsEndCap[0].transform.localScale != Vector3.one)
 						railingTempParentsEndCap[0].FixScale(railingEndCap.renderers);
-					railingTempParentsEndCap[0].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParentsEndCap[0].transform.GetChild(i).gameObject);
 				}
 
 				if (railingData[1].enabledStates[railingData[1].enabledStates.Count - 1])
 				{
 					if (railingTempParentsEndCap[1].transform.localScale != Vector3.one)
 						railingTempParentsEndCap[1].FixScale(railingEndCap.renderers);
-					railingTempParentsEndCap[1].transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+					AddFittedBoxCollider(railingTempParentsEndCap[1].transform.GetChild(i).gameObject);
 				}
 			}
 		}
 
-		void CreatePhysicsComponenets()
+		static void AddFittedBoxCollider(GameObject go)
+		{
+			// AddComponent<BoxCollider>() via script does not auto-fit to the mesh --
+			// it creates a default 1x1x1 collider. Explicitly size from Renderer bounds.
+			MeshFilter mf = go.GetComponent<MeshFilter>();
+			BoxCollider bc = go.AddComponent<BoxCollider>();
+			if (mf == null || mf.sharedMesh == null) return;
+			// Mesh.bounds is always valid immediately after CombineChildMeshes; Renderer.bounds may not be.
+			bc.center = mf.sharedMesh.bounds.center;
+			bc.size   = mf.sharedMesh.bounds.size;
+		}
+
+	void CreatePhysicsComponenets()
 		{
 			BoxCollider beltCollider = belt.parent.AddComponent<BoxCollider>();
 			beltCollider.size = new Vector3(beltCollider.size.x, beltCollider.size.y-0.01f, PCSUtils.GetBeltLength(belt.prefab, length, startCap.prefab, endCap.prefab));
@@ -946,6 +1003,7 @@ namespace PCS
 			transform.position = parentTransform.position;
 			transform.rotation = parentTransform.rotation;
 			transform.localScale = parentTransform.scale;
+			_conveyorBody.transform.localRotation = Quaternion.Euler(-conveyorSlopeAngle, 0, 0);
 		}
 
 		int[] GetRailingCount()

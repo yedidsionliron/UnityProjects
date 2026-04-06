@@ -50,6 +50,15 @@ public class GaylordContainer : MonoBehaviour
     {
         DestroyColliders();
 
+        // Fallback: collidersRoot is [NonSerialized] so it's null after a recompile.
+        // Destroy any surviving child by name so we never stack colliders on top of each other.
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Transform c = transform.GetChild(i);
+            if (c.name == "__GaylordColliders")
+                DestroyImmediate(c.gameObject);
+        }
+
         var renderers = GetComponentsInChildren<Renderer>();
         if (renderers.Length == 0) return;
 
@@ -93,6 +102,7 @@ public class GaylordContainer : MonoBehaviour
         };
 
         var root = new GameObject("__GaylordColliders");
+        root.transform.SetParent(transform, worldPositionStays: true);
 
         foreach (var (worldPos, size) in panels)
         {

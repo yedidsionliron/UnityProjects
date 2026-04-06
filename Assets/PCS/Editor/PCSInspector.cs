@@ -278,14 +278,16 @@ namespace PCS
 
 			EditorGUI.BeginChangeCheck();
 			GameObject conveyorSupportPrefab = (GameObject)EditorGUILayout.ObjectField("Support Prefab", config.conveyorSupportPrefab, typeof(GameObject), false);
-			float conveyorSupportHeight = EditorGUILayout.FloatField("Support Height", config.conveyorSupportHeight);
 			Vector3 conveyorSupportScale = EditorGUILayout.Vector3Field("Support Scale", config.conveyorSupportScale);
+			float conveyorSlopeAngle = EditorGUILayout.FloatField("Slope Angle", config.conveyorSlopeAngle);
+			float conveyorSupportHeight = EditorGUILayout.FloatField("Height", config.conveyorSupportHeight);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(config, "PCS");
 				config.conveyorSupportPrefab = conveyorSupportPrefab;
-				config.conveyorSupportHeight = conveyorSupportHeight;
 				config.conveyorSupportScale = conveyorSupportScale;
+				config.conveyorSlopeAngle = conveyorSlopeAngle;
+				config.conveyorSupportHeight = conveyorSupportHeight;
 				config.CreatePCS();
 			}
 

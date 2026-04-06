@@ -24,9 +24,9 @@ public class Package : MonoBehaviour
         {
             _sharedMaterial = new PhysicsMaterial("PackageSurface")
             {
-                dynamicFriction = 0f,
-                staticFriction  = 0f,
-                frictionCombine = PhysicsMaterialCombine.Minimum,
+                dynamicFriction = 0.5f,
+                staticFriction  = 0.5f,
+                frictionCombine = PhysicsMaterialCombine.Average,
                 bounciness      = 0f,
                 bounceCombine   = PhysicsMaterialCombine.Minimum,
             };

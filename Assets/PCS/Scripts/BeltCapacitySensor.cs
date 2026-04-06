@@ -44,18 +44,27 @@ namespace PCS
         {
             if (singulatorBelt != null)
             {
-                var config = singulatorBelt.GetComponentInChildren<PCSConfig>(true);
+                var config = singulatorBelt.GetComponentInParent<PCSConfig>(true)
+                          ?? singulatorBelt.GetComponentInChildren<PCSConfig>(true);
                 if (config != null) _singulator = config.pcsS;
                 if (_singulator == null)
-                    _singulator = singulatorBelt.GetComponentInChildren<PCSsingulator>(true);
+                    _singulator = singulatorBelt.GetComponentInParent<PCSsingulator>(true)
+                               ?? singulatorBelt.GetComponentInChildren<PCSsingulator>(true);
             }
             if (_singulator == null)
                 Debug.LogError("BeltCapacitySensor: no PCSsingulator found on Singulator Belt. Enable Singulator Mode on its PCSConfig.", this);
 
             if (feederBelt != null)
-                _feederConfig = feederBelt.GetComponentInChildren<PCSConfig>(true);
+                _feederConfig = feederBelt.GetComponentInParent<PCSConfig>(true)
+                             ?? feederBelt.GetComponentInChildren<PCSConfig>(true);
             if (_feederConfig == null)
-                Debug.LogError("BeltCapacitySensor: no PCSConfig found on Feeder Belt.", this);
+            {
+                string diagnosis = feederBelt == null
+                    ? "Feeder Belt field is not assigned."
+                    : $"Feeder Belt is '{feederBelt.name}' (root: '{feederBelt.transform.root.name}'). " +
+                      $"No PCSConfig found in its hierarchy. Make sure the field points to a conveyor that has PCSConfig on its root.";
+                Debug.LogError($"BeltCapacitySensor: no PCSConfig found on Feeder Belt. {diagnosis}", this);
+            }
             else
                 _savedSpeed = _feederConfig.speed;
         }

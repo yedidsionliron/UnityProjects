@@ -61,21 +61,14 @@ public class PackageRouter : MonoBehaviour
             return;
         }
 
-        // Assign each diverter its address offset and propagate totalLanes.
+        // Count total lanes across all diverters.
         int offset = 0;
         foreach (Diverter d in diverters)
         {
             if (d == null) { Debug.LogWarning("PackageRouter: null entry in diverters array — skipping.", this); continue; }
-            d.addressOffset = offset;
             offset += d.numDivertPoints * 2;
         }
         _totalLanes = offset;
-
-        foreach (Diverter d in diverters)
-        {
-            if (d == null) continue;
-            d.totalLanes = _totalLanes;
-        }
 
         if (_totalLanes == 0)
             Debug.LogWarning("PackageRouter: all diverters have 0 divert points.", this);
@@ -84,8 +77,7 @@ public class PackageRouter : MonoBehaviour
         {
             if (diverters[i] == null) continue;
             Debug.Log($"PackageRouter: Diverter[{i}] '{diverters[i].name}' " +
-                      $"offset={diverters[i].addressOffset} lanes={diverters[i].numDivertPoints * 2} " +
-                      $"totalLanes={diverters[i].totalLanes}", diverters[i]);
+                      $"lanes={diverters[i].numDivertPoints * 2}", diverters[i]);
         }
 
         _spawner.OnBoxSpawned += OnBoxSpawned;

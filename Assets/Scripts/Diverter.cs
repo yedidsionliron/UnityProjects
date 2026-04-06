@@ -27,9 +27,14 @@ public class Diverter : MonoBehaviour
              "0 = slot start, 0.5 = centre, 1 = slot end.")]
     public float landingNormalized = 0.5f;
 
-    [HideInInspector] public int addressOffset = 0;
-    [HideInInspector] public int totalLanes = 1;
     [HideInInspector] public float beltCenterLocalZ = 0f;
+
+    /// <summary>Belt speed (m/s). Set by DiverterConfigEditor at build time — ExitOffset() uses this
+    /// to avoid a cross-assembly dependency on PCSConveyor.</summary>
+    [HideInInspector] public float beltSpeed = 0f;
+
+    /// <summary>Set by DiverterConfig.Build(). Linked into DivertZones at runtime by BuildZones().</summary>
+    [HideInInspector] public SortPoint[] sortPoints;
 
     [Header("Physics")]
     [Tooltip("Target lateral speed the divert surface drives the box toward (m/s).")]
@@ -45,7 +50,7 @@ public class Diverter : MonoBehaviour
     // triggerY is computed at runtime from the belt mesh — not a constant.
     private float triggerY;
 
-    [Tooltip("Trigger zone width in X — should match belt width (~1.5 m).")]
+    [Tooltip("Trigger zone width in X — auto-measured from belt renderers at runtime. Override only if measurement is wrong.")]
     public float triggerWidth = 1.4f;
 
     [Tooltip("Trigger zone depth in Z — narrow enough that zones don't overlap.")]
@@ -60,33 +65,43 @@ public class Diverter : MonoBehaviour
         BuildZones();
     }
 
+    /// <summary>Callable at edit time by DiverterConfig.Build() to populate beltCenterLocalZ.</summary>
+    public void MeasureBelt() => MeasureBeltLength();
+
     private void MeasureBeltLength()
     {
-        var renderers = GetComponentsInChildren<Renderer>();
+        var allRenderers = GetComponentsInChildren<Renderer>();
+        // Exclude renderers under SortPoints (gaylords) — they inflate X bounds.
+        var renderers = System.Array.FindAll(allRenderers, r => r.GetComponentInParent<SortPoint>() == null);
         if (renderers.Length == 0) return;
 
-        // Accumulate world-space bounds of all renderers on this belt.
+        // Accumulate world-space bounds of all belt renderers.
         Bounds wb = renderers[0].bounds;
         foreach (var r in renderers) wb.Encapsulate(r.bounds);
 
-        // Project the world bounds half-extents onto this transform's local Z axis
-        // to get the true belt length regardless of rotation or scale.
+        // Project onto local Z for length.
         Vector3 localZ = transform.forward;
         float halfLen = Mathf.Abs(Vector3.Dot(wb.extents,
             new Vector3(Mathf.Abs(localZ.x), Mathf.Abs(localZ.y), Mathf.Abs(localZ.z))));
         float measured = halfLen * 2f;
 
+        // Project onto local X for width → drives triggerWidth and ExitOffset().
+        Vector3 localX = transform.right;
+        float halfX = Mathf.Abs(Vector3.Dot(wb.extents,
+            new Vector3(Mathf.Abs(localX.x), Mathf.Abs(localX.y), Mathf.Abs(localX.z))));
+        triggerWidth = halfX * 2f;
+
         // Record where the belt centre sits in this transform's local Z space.
         beltCenterLocalZ = transform.InverseTransformPoint(wb.center).z;
 
-        // Derive triggerY from the belt's actual top surface in local space,
-        // so trigger zones always sit above the belt regardless of scale or position.
+        // Derive triggerY from the belt's actual top surface in local space.
         float worldSurfaceY = wb.max.y;
         float localSurfaceY = transform.InverseTransformPoint(new Vector3(wb.center.x, worldSurfaceY, wb.center.z)).y;
         triggerY = localSurfaceY + triggerHeight * 0.5f;
 
-        Debug.Log($"Diverter '{name}': beltLength={measured:F3} (was {beltLength:F3})  beltCenterLocalZ={beltCenterLocalZ:F3}  triggerY={triggerY:F3}", this);
-        beltLength = measured;
+        // beltLength is intentionally NOT updated here — it is configured by DiverterConfig.Build()
+        // to match the gaylord row length exactly.
+        Debug.Log($"Diverter '{name}': meshLength={measured:F3}  triggerWidth={triggerWidth:F3}  configuredBeltLength={beltLength:F3}  beltCenterLocalZ={beltCenterLocalZ:F3}  triggerY={triggerY:F3}", this);
     }
 
     /// <summary>
@@ -103,8 +118,7 @@ public class Diverter : MonoBehaviour
     /// </summary>
     public float ExitOffset()
     {
-        var belt = GetComponentInChildren<ConveyorBelt>();
-        float vz = belt != null ? belt.beltSpeed : 0f;
+        float vz = beltSpeed;
         if (vz <= 0f) return 0f;
 
         float a = frictionCoefficient * Mathf.Abs(Physics.gravity.y);
@@ -174,8 +188,18 @@ public class Diverter : MonoBehaviour
             // surface + this zone) which causes packages to phase through the belt.
 
             DivertZone dz = zoneGO.AddComponent<DivertZone>();
-            dz.diverter = this;
-            dz.pointIndex = i;
+            dz.divertSpeed        = divertSpeed;
+            dz.frictionCoefficient = frictionCoefficient;
+
+            if (sortPoints != null && i * 2 + 1 < sortPoints.Length)
+            {
+                dz.leftPoint  = sortPoints[i * 2];
+                dz.rightPoint = sortPoints[i * 2 + 1];
+            }
+            else
+            {
+                Debug.LogWarning($"Diverter '{name}': no SortPoints for position {i} — press Build on DiverterConfig.", this);
+            }
         }
 
         Debug.Log($"Diverter: built {numDivertPoints} divert points → {numDivertPoints * 2} lanes.", this);
@@ -217,11 +241,18 @@ public class Diverter : MonoBehaviour
             Gizmos.color = new Color(Gizmos.color.r, Gizmos.color.g, Gizmos.color.b, 1f);
             Gizmos.DrawWireCube(centre, size);
 
-            // Label each zone with its address range.
-            int addrA = i * 2;
-            int addrB = i * 2 + 1;
+            // Label each zone with SortPoint ID and address range (if DiverterConfig is assigned).
+            string leftLabel  = "L: ?";
+            string rightLabel = "R: ?";
+            if (sortPoints != null && i * 2 + 1 < sortPoints.Length)
+            {
+                var l = sortPoints[i * 2];
+                var r = sortPoints[i * 2 + 1];
+                if (l != null) leftLabel  = $"L[{l.id}]: {l.addressMin}–{l.addressMax}";
+                if (r != null) rightLabel = $"R[{r.id}]: {r.addressMin}–{r.addressMax}";
+            }
             UnityEditor.Handles.Label(centre + Vector3.up * (triggerHeight * 0.5f + 0.1f),
-                $"Point {i}\nAddr {addrA}=L  {addrB}=R");
+                $"Point {i}\n{leftLabel}\n{rightLabel}");
         }
     }
 #endif

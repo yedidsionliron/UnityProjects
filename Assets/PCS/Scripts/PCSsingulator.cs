@@ -62,6 +62,7 @@ namespace PCS
             public int       slotIndex;
             public float     scheduledArrivalTime;
             public bool      pastConvergence;
+            public float     cruiseAcceleration;
         }
 
         // ── Private State ─────────────────────────────────────────────────────
@@ -70,6 +71,10 @@ namespace PCS
             new Dictionary<Rigidbody, PackageAgent>();
 
         private readonly List<PackageAgent> activeAgents = new List<PackageAgent>();
+
+        // Collider materials saved on entry so they can be restored when a package leaves.
+        private readonly Dictionary<Rigidbody, PhysicsMaterial[]> savedMaterials =
+            new Dictionary<Rigidbody, PhysicsMaterial[]>();
 
         private int nextSlotIndex;
 
@@ -162,6 +167,16 @@ namespace PCS
                 // have default friction and need it overwritten as soon as they're seen.
                 if (materialised.Add(rb))
                 {
+                    // Save original materials on first encounter so we can restore on exit.
+                    if (!savedMaterials.ContainsKey(rb))
+                    {
+                        Collider[] cols = rb.GetComponentsInChildren<Collider>();
+                        var mats = new PhysicsMaterial[cols.Length];
+                        for (int i = 0; i < cols.Length; i++)
+                            mats[i] = cols[i].sharedMaterial;
+                        savedMaterials[rb] = mats;
+                    }
+
                     foreach (Collider col in rb.GetComponentsInChildren<Collider>())
                         col.material = packageMaterial;
                 }
@@ -198,6 +213,15 @@ namespace PCS
 
             foreach (var rb in toRemove)
             {
+                // Restore collider materials to what they were before entering the singulator.
+                if (savedMaterials.TryGetValue(rb, out PhysicsMaterial[] mats))
+                {
+                    Collider[] cols = rb.GetComponentsInChildren<Collider>();
+                    for (int i = 0; i < cols.Length && i < mats.Length; i++)
+                        cols[i].material = mats[i];
+                    savedMaterials.Remove(rb);
+                }
+
                 activeAgents.Remove(agentMap[rb]);
                 agentMap.Remove(rb);
             }
@@ -231,7 +255,7 @@ namespace PCS
             {
                 int cmp = Vector3.Distance(a.body.position, convergenceWorld)
                               .CompareTo(Vector3.Distance(b.body.position, convergenceWorld));
-                return cmp != 0 ? cmp : a.slotIndex.CompareTo(b.slotIndex);
+                return cmp != 0 ? cmp : b.slotIndex.CompareTo(a.slotIndex);
             });
 
             float prevT = anchorT + anchorDuration;
@@ -261,19 +285,22 @@ namespace PCS
                 float     vx  = Vector3.Dot(rb.linearVelocity, beltRight);
                 float     tau = agent.scheduledArrivalTime - Time.fixedTime;
 
-                if (tau <= 0f || z >= zConvergence)
+                if (!agent.pastConvergence && (tau <= 0f || z >= zConvergence))
+                {
                     agent.pastConvergence = true;
+                    float d = beltLength * (1f - convergencePoint);
+                    agent.cruiseAcceleration = d > 0.001f
+                        ? Mathf.Clamp((beltSpeed * beltSpeed - vz * vz) / (2f * d), -maxDeceleration, maxAcceleration)
+                        : 0f;
+                }
 
                 // ── Cruise mode (past convergence) ──────────────────────────
                 if (agent.pastConvergence)
                 {
-                    // Forward: match belt speed.
-                    float slip = beltSpeed - vz;
-                    if (Mathf.Abs(slip) > epsilon)
-                    {
-                        float a = Mathf.Clamp(slip / dt, -maxDeceleration, maxAcceleration);
-                        rb.AddForce(beltFwd * rb.mass * a, ForceMode.Force);
-                    }
+                    // Forward: apply the one-time kinematic acceleration computed at the
+                    // convergence crossing — chosen so the package reaches beltSpeed exactly
+                    // at the belt exit, given distance = beltLength * (1 - convergencePoint).
+                    rb.AddForce(beltFwd * rb.mass * agent.cruiseAcceleration, ForceMode.Force);
 
                     // Lateral: spring toward centerline + damping.
                     // Prevents packages that crossed center from drifting to the rail.
