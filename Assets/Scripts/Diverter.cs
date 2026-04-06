@@ -1,3 +1,4 @@
+using PCS;
 using UnityEngine;
 
 /// <summary>
@@ -25,13 +26,13 @@ public class Diverter : MonoBehaviour
     [Range(0f, 1f)]
     [Tooltip("Normalised Z position within each Gaylord slot where packages land. " +
              "0 = slot start, 0.5 = centre, 1 = slot end.")]
-    public float landingNormalized = 0.5f;
+    public float landingNormalized = 0.3f;
 
     [HideInInspector] public float beltCenterLocalZ = 0f;
 
     /// <summary>Belt speed (m/s). Set by DiverterConfigEditor at build time — ExitOffset() uses this
     /// to avoid a cross-assembly dependency on PCSConveyor.</summary>
-    [HideInInspector] public float beltSpeed = 0f;
+    [HideInInspector] public float beltSpeed = 2f;
 
     /// <summary>Set by DiverterConfig.Build(). Linked into DivertZones at runtime by BuildZones().</summary>
     [HideInInspector] public SortPoint[] sortPoints;
@@ -41,7 +42,7 @@ public class Diverter : MonoBehaviour
     public float divertSpeed = 2f;
 
     [Tooltip("Friction coefficient between divert surface and box (μ). Same formula as ConveyorBelt: F = μ × mass × g.")]
-    public float frictionCoefficient = 0.7f;
+    public float frictionCoefficient = 0.6f;
 
     [Header("Geometry")]
     [Tooltip("Length of the conveyor belt in local Z (used to space divert points evenly).")]
@@ -61,6 +62,9 @@ public class Diverter : MonoBehaviour
 
     private void Start()
     {
+        var conv = GetComponentInChildren<PCSConveyor>();
+        if (conv != null) beltSpeed = conv.speed;
+
         MeasureBeltLength();
         BuildZones();
     }

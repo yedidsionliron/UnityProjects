@@ -88,6 +88,8 @@ public class DiverterConfigEditor : Editor
                              $"prefab's Z footprint ({gaylordFootprintZ:F3} m). Slot pitch clamped to {effectiveSlotPitch:F3} m.", cfg);
 
         // 2. Size and rebuild the conveyor belt with all railings disabled.
+        float gaylordFootprintX = MeasureGaylordFootprintX(cfg.gaylordPrefab);
+        if (gaylordFootprintX > 0f) pcs.width = gaylordFootprintX;
         pcs.length = ComputeTileCount(pcs, targetBeltLength);
         pcs.CheckRailingData();
         for (int side = 0; side < 2; side++)
@@ -118,9 +120,9 @@ public class DiverterConfigEditor : Editor
 
         EditorUtility.SetDirty(diverter);
 
-        Debug.Log($"DiverterConfig: gaylordFootprintZ={gaylordFootprintZ:F3} m  effectiveSlotPitch={effectiveSlotPitch:F3} m  " +
-                  $"beltHalfX={beltHalfX:F3} m  → {cfg.numDivertPoints} positions, " +
-                  $"belt={targetBeltLength:F2} m ({pcs.length} tiles).", cfg);
+        Debug.Log($"DiverterConfig: gaylordFootprintX={gaylordFootprintX:F3} m  gaylordFootprintZ={gaylordFootprintZ:F3} m  " +
+                  $"effectiveSlotPitch={effectiveSlotPitch:F3} m  beltHalfX={beltHalfX:F3} m  " +
+                  $"→ {cfg.numDivertPoints} positions, belt={targetBeltLength:F2} m × {pcs.width:F3} m ({pcs.length} tiles).", cfg);
     }
 
     private bool Validate(DiverterConfig cfg)
@@ -192,6 +194,29 @@ public class DiverterConfigEditor : Editor
     /// (depth along belt direction when localRotation = identity), then destroys it.
     /// Returns 0 if measurement fails.
     /// </summary>
+    private float MeasureGaylordFootprintX(GameObject prefab)
+    {
+        if (prefab == null) return 0f;
+
+        var tmp = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+        if (tmp == null) return 0f;
+
+        try
+        {
+            tmp.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            var renderers = tmp.GetComponentsInChildren<Renderer>(includeInactive: true);
+            if (renderers.Length == 0) return 0f;
+
+            Bounds wb = renderers[0].bounds;
+            foreach (var r in renderers) wb.Encapsulate(r.bounds);
+            return wb.size.x;
+        }
+        finally
+        {
+            DestroyImmediate(tmp);
+        }
+    }
+
     private float MeasureGaylordFootprintZ(GameObject prefab)
     {
         if (prefab == null) return 0f;
