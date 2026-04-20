@@ -115,6 +115,16 @@ public class GaylordContainer : MonoBehaviour
                 col.material = interiorMaterial;
         }
 
+        // Landing trigger — a thin trigger slab just above the floor that detects packages.
+        var triggerGo = new GameObject("LandingTrigger");
+        triggerGo.transform.SetParent(root.transform, true);
+        triggerGo.transform.position = new Vector3(cx, minY + wallThickness + 0.01f, cz);
+        var trigger = triggerGo.AddComponent<BoxCollider>();
+        trigger.isTrigger = true;
+        trigger.size = new Vector3(sizeX - wallThickness * 2f, 0.05f, sizeZ - wallThickness * 2f);
+        var detector = triggerGo.AddComponent<GaylordLandingDetector>();
+        detector.owner = this;
+
         collidersRoot = root;
     }
 

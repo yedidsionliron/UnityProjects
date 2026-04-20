@@ -27,7 +27,7 @@ public class DiverterConfigEditor : Editor
             Undo.AddComponent<Diverter>(cfg.gameObject);
 
         // Auto-find AddressInit in the scene.
-        var addressInit = FindFirstObjectByType<AddressInit>(FindObjectsInactive.Include);
+        var addressInit = FindAnyObjectByType<AddressInit>(FindObjectsInactive.Include);
         if (addressInit != null)
             cfg.addressInit = addressInit;
 

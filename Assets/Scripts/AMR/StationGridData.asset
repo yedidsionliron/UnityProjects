@@ -1,0 +1,9233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7966a4f79844c54e8a24e125066ef73, type: 3}
+  m_Name: StationGridData
+  m_EditorClassIdentifier: ConveyorEditor::StationGridData
+  rows: 64
+  cols: 24
+  _cells:
+  - row: 1
+    col: 1
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 2
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 3
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 4
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 5
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 6
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 7
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 8
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 9
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 10
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 11
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 12
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 13
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 14
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 15
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 16
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 17
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 18
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 19
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 20
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 21
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 22
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 23
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 1
+    col: 24
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 2
+    col: 1
+    cellType: 1
+    label: 1
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 2
+    col: 3
+    cellType: 1
+    label: 31
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 4
+    cellType: 1
+    label: 61
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 2
+    col: 6
+    cellType: 1
+    label: 91
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 7
+    cellType: 1
+    label: 121
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 2
+    col: 9
+    cellType: 1
+    label: 151
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 10
+    cellType: 1
+    label: 181
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 2
+    col: 12
+    cellType: 1
+    label: 211
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 13
+    cellType: 1
+    label: 241
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 2
+    col: 15
+    cellType: 1
+    label: 271
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 16
+    cellType: 1
+    label: 301
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 2
+    col: 18
+    cellType: 1
+    label: 331
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 19
+    cellType: 1
+    label: 361
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 2
+    col: 21
+    cellType: 1
+    label: 391
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 22
+    cellType: 1
+    label: 421
+    direction: 0
+    isNoRobot: 0
+  - row: 2
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 2
+    col: 24
+    cellType: 1
+    label: 451
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 1
+    cellType: 1
+    label: 2
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 3
+    col: 3
+    cellType: 1
+    label: 32
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 4
+    cellType: 1
+    label: 62
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 3
+    col: 6
+    cellType: 1
+    label: 92
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 7
+    cellType: 1
+    label: 122
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 3
+    col: 9
+    cellType: 1
+    label: 152
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 10
+    cellType: 1
+    label: 182
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 3
+    col: 12
+    cellType: 1
+    label: 212
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 13
+    cellType: 1
+    label: 242
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 3
+    col: 15
+    cellType: 1
+    label: 272
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 16
+    cellType: 1
+    label: 302
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 3
+    col: 18
+    cellType: 1
+    label: 332
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 19
+    cellType: 1
+    label: 362
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 3
+    col: 21
+    cellType: 1
+    label: 392
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 22
+    cellType: 1
+    label: 422
+    direction: 0
+    isNoRobot: 0
+  - row: 3
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 3
+    col: 24
+    cellType: 1
+    label: 452
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 1
+    cellType: 1
+    label: 3
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 4
+    col: 3
+    cellType: 1
+    label: 33
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 4
+    cellType: 1
+    label: 63
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 4
+    col: 6
+    cellType: 1
+    label: 93
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 7
+    cellType: 1
+    label: 123
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 4
+    col: 9
+    cellType: 1
+    label: 153
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 10
+    cellType: 1
+    label: 183
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 4
+    col: 12
+    cellType: 1
+    label: 213
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 13
+    cellType: 1
+    label: 243
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 4
+    col: 15
+    cellType: 1
+    label: 273
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 16
+    cellType: 1
+    label: 303
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 4
+    col: 18
+    cellType: 1
+    label: 333
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 19
+    cellType: 1
+    label: 363
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 4
+    col: 21
+    cellType: 1
+    label: 393
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 22
+    cellType: 1
+    label: 423
+    direction: 0
+    isNoRobot: 0
+  - row: 4
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 4
+    col: 24
+    cellType: 1
+    label: 453
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 1
+    cellType: 1
+    label: 4
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 5
+    col: 3
+    cellType: 1
+    label: 34
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 4
+    cellType: 1
+    label: 64
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 5
+    col: 6
+    cellType: 1
+    label: 94
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 7
+    cellType: 1
+    label: 124
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 5
+    col: 9
+    cellType: 1
+    label: 154
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 10
+    cellType: 1
+    label: 184
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 5
+    col: 12
+    cellType: 1
+    label: 214
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 13
+    cellType: 1
+    label: 244
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 5
+    col: 15
+    cellType: 1
+    label: 274
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 16
+    cellType: 1
+    label: 304
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 5
+    col: 18
+    cellType: 1
+    label: 334
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 19
+    cellType: 1
+    label: 364
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 5
+    col: 21
+    cellType: 1
+    label: 394
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 22
+    cellType: 1
+    label: 424
+    direction: 0
+    isNoRobot: 0
+  - row: 5
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 5
+    col: 24
+    cellType: 1
+    label: 454
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 1
+    cellType: 1
+    label: 5
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 6
+    col: 3
+    cellType: 1
+    label: 35
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 4
+    cellType: 1
+    label: 65
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 6
+    col: 6
+    cellType: 1
+    label: 95
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 7
+    cellType: 1
+    label: 125
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 6
+    col: 9
+    cellType: 1
+    label: 155
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 10
+    cellType: 1
+    label: 185
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 6
+    col: 12
+    cellType: 1
+    label: 215
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 13
+    cellType: 1
+    label: 245
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 6
+    col: 15
+    cellType: 1
+    label: 275
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 16
+    cellType: 1
+    label: 305
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 6
+    col: 18
+    cellType: 1
+    label: 335
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 19
+    cellType: 1
+    label: 365
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 6
+    col: 21
+    cellType: 1
+    label: 395
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 22
+    cellType: 1
+    label: 425
+    direction: 0
+    isNoRobot: 0
+  - row: 6
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 6
+    col: 24
+    cellType: 1
+    label: 455
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 1
+    cellType: 1
+    label: 6
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 7
+    col: 3
+    cellType: 1
+    label: 36
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 4
+    cellType: 1
+    label: 66
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 7
+    col: 6
+    cellType: 1
+    label: 96
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 7
+    cellType: 1
+    label: 126
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 7
+    col: 9
+    cellType: 1
+    label: 156
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 10
+    cellType: 1
+    label: 186
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 7
+    col: 12
+    cellType: 1
+    label: 216
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 13
+    cellType: 1
+    label: 246
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 7
+    col: 15
+    cellType: 1
+    label: 276
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 16
+    cellType: 1
+    label: 306
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 7
+    col: 18
+    cellType: 1
+    label: 336
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 19
+    cellType: 1
+    label: 366
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 7
+    col: 21
+    cellType: 1
+    label: 396
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 22
+    cellType: 1
+    label: 426
+    direction: 0
+    isNoRobot: 0
+  - row: 7
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 7
+    col: 24
+    cellType: 1
+    label: 456
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 1
+    cellType: 1
+    label: 7
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 8
+    col: 3
+    cellType: 1
+    label: 37
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 4
+    cellType: 1
+    label: 67
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 8
+    col: 6
+    cellType: 1
+    label: 97
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 7
+    cellType: 1
+    label: 127
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 8
+    col: 9
+    cellType: 1
+    label: 157
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 10
+    cellType: 1
+    label: 187
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 8
+    col: 12
+    cellType: 1
+    label: 217
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 13
+    cellType: 1
+    label: 247
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 8
+    col: 15
+    cellType: 1
+    label: 277
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 16
+    cellType: 1
+    label: 307
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 8
+    col: 18
+    cellType: 1
+    label: 337
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 19
+    cellType: 1
+    label: 367
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 8
+    col: 21
+    cellType: 1
+    label: 397
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 22
+    cellType: 1
+    label: 427
+    direction: 0
+    isNoRobot: 0
+  - row: 8
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 8
+    col: 24
+    cellType: 1
+    label: 457
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 1
+    cellType: 1
+    label: 8
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 9
+    col: 3
+    cellType: 1
+    label: 38
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 4
+    cellType: 1
+    label: 68
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 9
+    col: 6
+    cellType: 1
+    label: 98
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 7
+    cellType: 1
+    label: 128
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 9
+    col: 9
+    cellType: 1
+    label: 158
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 10
+    cellType: 1
+    label: 188
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 9
+    col: 12
+    cellType: 1
+    label: 218
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 13
+    cellType: 1
+    label: 248
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 9
+    col: 15
+    cellType: 1
+    label: 278
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 16
+    cellType: 1
+    label: 308
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 9
+    col: 18
+    cellType: 1
+    label: 338
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 19
+    cellType: 1
+    label: 368
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 9
+    col: 21
+    cellType: 1
+    label: 398
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 22
+    cellType: 1
+    label: 428
+    direction: 0
+    isNoRobot: 0
+  - row: 9
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 9
+    col: 24
+    cellType: 1
+    label: 458
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 1
+    cellType: 1
+    label: 9
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 10
+    col: 3
+    cellType: 1
+    label: 39
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 4
+    cellType: 1
+    label: 69
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 10
+    col: 6
+    cellType: 1
+    label: 99
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 7
+    cellType: 1
+    label: 129
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 10
+    col: 9
+    cellType: 1
+    label: 159
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 10
+    cellType: 1
+    label: 189
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 10
+    col: 12
+    cellType: 1
+    label: 219
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 13
+    cellType: 1
+    label: 249
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 10
+    col: 15
+    cellType: 1
+    label: 279
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 16
+    cellType: 1
+    label: 309
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 10
+    col: 18
+    cellType: 1
+    label: 339
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 19
+    cellType: 1
+    label: 369
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 10
+    col: 21
+    cellType: 1
+    label: 399
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 22
+    cellType: 1
+    label: 429
+    direction: 0
+    isNoRobot: 0
+  - row: 10
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 10
+    col: 24
+    cellType: 1
+    label: 459
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 1
+    cellType: 1
+    label: 10
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 11
+    col: 3
+    cellType: 1
+    label: 40
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 4
+    cellType: 1
+    label: 70
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 11
+    col: 6
+    cellType: 1
+    label: 100
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 7
+    cellType: 1
+    label: 130
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 11
+    col: 9
+    cellType: 1
+    label: 160
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 10
+    cellType: 1
+    label: 190
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 11
+    col: 12
+    cellType: 1
+    label: 220
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 13
+    cellType: 1
+    label: 250
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 11
+    col: 15
+    cellType: 1
+    label: 280
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 16
+    cellType: 1
+    label: 310
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 11
+    col: 18
+    cellType: 1
+    label: 340
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 19
+    cellType: 1
+    label: 370
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 11
+    col: 21
+    cellType: 1
+    label: 400
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 22
+    cellType: 1
+    label: 430
+    direction: 0
+    isNoRobot: 0
+  - row: 11
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 11
+    col: 24
+    cellType: 1
+    label: 460
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 1
+    cellType: 1
+    label: 11
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 12
+    col: 3
+    cellType: 1
+    label: 41
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 4
+    cellType: 1
+    label: 71
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 12
+    col: 6
+    cellType: 1
+    label: 101
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 7
+    cellType: 1
+    label: 131
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 12
+    col: 9
+    cellType: 1
+    label: 161
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 10
+    cellType: 1
+    label: 191
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 12
+    col: 12
+    cellType: 1
+    label: 221
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 13
+    cellType: 1
+    label: 251
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 12
+    col: 15
+    cellType: 1
+    label: 281
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 16
+    cellType: 1
+    label: 311
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 12
+    col: 18
+    cellType: 1
+    label: 341
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 19
+    cellType: 1
+    label: 371
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 12
+    col: 21
+    cellType: 1
+    label: 401
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 22
+    cellType: 1
+    label: 431
+    direction: 0
+    isNoRobot: 0
+  - row: 12
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 12
+    col: 24
+    cellType: 1
+    label: 461
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 1
+    cellType: 1
+    label: 12
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 13
+    col: 3
+    cellType: 1
+    label: 42
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 4
+    cellType: 1
+    label: 72
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 13
+    col: 6
+    cellType: 1
+    label: 102
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 7
+    cellType: 1
+    label: 132
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 13
+    col: 9
+    cellType: 1
+    label: 162
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 10
+    cellType: 1
+    label: 192
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 13
+    col: 12
+    cellType: 1
+    label: 222
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 13
+    cellType: 1
+    label: 252
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 13
+    col: 15
+    cellType: 1
+    label: 282
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 16
+    cellType: 1
+    label: 312
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 13
+    col: 18
+    cellType: 1
+    label: 342
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 19
+    cellType: 1
+    label: 372
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 13
+    col: 21
+    cellType: 1
+    label: 402
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 22
+    cellType: 1
+    label: 432
+    direction: 0
+    isNoRobot: 0
+  - row: 13
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 13
+    col: 24
+    cellType: 1
+    label: 462
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 1
+    cellType: 1
+    label: 13
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 14
+    col: 3
+    cellType: 1
+    label: 43
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 4
+    cellType: 1
+    label: 73
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 14
+    col: 6
+    cellType: 1
+    label: 103
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 7
+    cellType: 1
+    label: 133
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 14
+    col: 9
+    cellType: 1
+    label: 163
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 10
+    cellType: 1
+    label: 193
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 14
+    col: 12
+    cellType: 1
+    label: 223
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 13
+    cellType: 1
+    label: 253
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 14
+    col: 15
+    cellType: 1
+    label: 283
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 16
+    cellType: 1
+    label: 313
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 14
+    col: 18
+    cellType: 1
+    label: 343
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 19
+    cellType: 1
+    label: 373
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 14
+    col: 21
+    cellType: 1
+    label: 403
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 22
+    cellType: 1
+    label: 433
+    direction: 0
+    isNoRobot: 0
+  - row: 14
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 14
+    col: 24
+    cellType: 1
+    label: 463
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 1
+    cellType: 1
+    label: 14
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 15
+    col: 3
+    cellType: 1
+    label: 44
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 4
+    cellType: 1
+    label: 74
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 15
+    col: 6
+    cellType: 1
+    label: 104
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 7
+    cellType: 1
+    label: 134
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 15
+    col: 9
+    cellType: 1
+    label: 164
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 10
+    cellType: 1
+    label: 194
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 15
+    col: 12
+    cellType: 1
+    label: 224
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 13
+    cellType: 1
+    label: 254
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 15
+    col: 15
+    cellType: 1
+    label: 284
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 16
+    cellType: 1
+    label: 314
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 15
+    col: 18
+    cellType: 1
+    label: 344
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 19
+    cellType: 1
+    label: 374
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 15
+    col: 21
+    cellType: 1
+    label: 404
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 22
+    cellType: 1
+    label: 434
+    direction: 0
+    isNoRobot: 0
+  - row: 15
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 15
+    col: 24
+    cellType: 1
+    label: 464
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 1
+    cellType: 1
+    label: 15
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 16
+    col: 3
+    cellType: 1
+    label: 45
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 4
+    cellType: 1
+    label: 75
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 16
+    col: 6
+    cellType: 1
+    label: 105
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 7
+    cellType: 1
+    label: 135
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 16
+    col: 9
+    cellType: 1
+    label: 165
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 10
+    cellType: 1
+    label: 195
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 16
+    col: 12
+    cellType: 1
+    label: 225
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 13
+    cellType: 1
+    label: 255
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 16
+    col: 15
+    cellType: 1
+    label: 285
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 16
+    cellType: 1
+    label: 315
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 16
+    col: 18
+    cellType: 1
+    label: 345
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 19
+    cellType: 1
+    label: 375
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 16
+    col: 21
+    cellType: 1
+    label: 405
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 22
+    cellType: 1
+    label: 435
+    direction: 0
+    isNoRobot: 0
+  - row: 16
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 16
+    col: 24
+    cellType: 1
+    label: 465
+    direction: 0
+    isNoRobot: 0
+  - row: 17
+    col: 1
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 2
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 3
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 4
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 5
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 6
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 7
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 8
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 9
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 10
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 11
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 12
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 13
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 14
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 15
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 16
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 17
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 18
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 19
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 20
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 21
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 22
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 23
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 17
+    col: 24
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 18
+    col: 1
+    cellType: 1
+    label: 16
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 18
+    col: 3
+    cellType: 1
+    label: 46
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 4
+    cellType: 1
+    label: 76
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 18
+    col: 6
+    cellType: 1
+    label: 106
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 7
+    cellType: 1
+    label: 136
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 18
+    col: 9
+    cellType: 1
+    label: 166
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 10
+    cellType: 1
+    label: 196
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 18
+    col: 12
+    cellType: 1
+    label: 226
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 13
+    cellType: 1
+    label: 256
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 18
+    col: 15
+    cellType: 1
+    label: 286
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 16
+    cellType: 1
+    label: 316
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 18
+    col: 18
+    cellType: 1
+    label: 346
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 19
+    cellType: 1
+    label: 376
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 18
+    col: 21
+    cellType: 1
+    label: 406
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 22
+    cellType: 1
+    label: 436
+    direction: 0
+    isNoRobot: 0
+  - row: 18
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 18
+    col: 24
+    cellType: 1
+    label: 466
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 1
+    cellType: 1
+    label: 17
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 19
+    col: 3
+    cellType: 1
+    label: 47
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 4
+    cellType: 1
+    label: 77
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 19
+    col: 6
+    cellType: 1
+    label: 107
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 7
+    cellType: 1
+    label: 137
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 19
+    col: 9
+    cellType: 1
+    label: 167
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 10
+    cellType: 1
+    label: 197
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 19
+    col: 12
+    cellType: 1
+    label: 227
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 13
+    cellType: 1
+    label: 257
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 19
+    col: 15
+    cellType: 1
+    label: 287
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 16
+    cellType: 1
+    label: 317
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 19
+    col: 18
+    cellType: 1
+    label: 347
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 19
+    cellType: 1
+    label: 377
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 19
+    col: 21
+    cellType: 1
+    label: 407
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 22
+    cellType: 1
+    label: 437
+    direction: 0
+    isNoRobot: 0
+  - row: 19
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 19
+    col: 24
+    cellType: 1
+    label: 467
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 1
+    cellType: 1
+    label: 18
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 20
+    col: 3
+    cellType: 1
+    label: 48
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 4
+    cellType: 1
+    label: 78
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 20
+    col: 6
+    cellType: 1
+    label: 108
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 7
+    cellType: 1
+    label: 138
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 20
+    col: 9
+    cellType: 1
+    label: 168
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 10
+    cellType: 1
+    label: 198
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 20
+    col: 12
+    cellType: 1
+    label: 228
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 13
+    cellType: 1
+    label: 258
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 20
+    col: 15
+    cellType: 1
+    label: 288
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 16
+    cellType: 1
+    label: 318
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 20
+    col: 18
+    cellType: 1
+    label: 348
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 19
+    cellType: 1
+    label: 378
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 20
+    col: 21
+    cellType: 1
+    label: 408
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 22
+    cellType: 1
+    label: 438
+    direction: 0
+    isNoRobot: 0
+  - row: 20
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 20
+    col: 24
+    cellType: 1
+    label: 468
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 1
+    cellType: 1
+    label: 19
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 21
+    col: 3
+    cellType: 1
+    label: 49
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 4
+    cellType: 1
+    label: 79
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 21
+    col: 6
+    cellType: 1
+    label: 109
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 7
+    cellType: 1
+    label: 139
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 21
+    col: 9
+    cellType: 1
+    label: 169
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 10
+    cellType: 1
+    label: 199
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 21
+    col: 12
+    cellType: 1
+    label: 229
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 13
+    cellType: 1
+    label: 259
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 21
+    col: 15
+    cellType: 1
+    label: 289
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 16
+    cellType: 1
+    label: 319
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 21
+    col: 18
+    cellType: 1
+    label: 349
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 19
+    cellType: 1
+    label: 379
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 21
+    col: 21
+    cellType: 1
+    label: 409
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 22
+    cellType: 1
+    label: 439
+    direction: 0
+    isNoRobot: 0
+  - row: 21
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 21
+    col: 24
+    cellType: 1
+    label: 469
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 1
+    cellType: 1
+    label: 20
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 22
+    col: 3
+    cellType: 1
+    label: 50
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 4
+    cellType: 1
+    label: 80
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 22
+    col: 6
+    cellType: 1
+    label: 110
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 7
+    cellType: 1
+    label: 140
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 22
+    col: 9
+    cellType: 1
+    label: 170
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 10
+    cellType: 1
+    label: 200
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 22
+    col: 12
+    cellType: 1
+    label: 230
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 13
+    cellType: 1
+    label: 260
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 22
+    col: 15
+    cellType: 1
+    label: 290
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 16
+    cellType: 1
+    label: 320
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 22
+    col: 18
+    cellType: 1
+    label: 350
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 19
+    cellType: 1
+    label: 380
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 22
+    col: 21
+    cellType: 1
+    label: 410
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 22
+    cellType: 1
+    label: 440
+    direction: 0
+    isNoRobot: 0
+  - row: 22
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 22
+    col: 24
+    cellType: 1
+    label: 470
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 1
+    cellType: 1
+    label: 21
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 23
+    col: 3
+    cellType: 1
+    label: 51
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 4
+    cellType: 1
+    label: 81
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 23
+    col: 6
+    cellType: 1
+    label: 111
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 7
+    cellType: 1
+    label: 141
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 23
+    col: 9
+    cellType: 1
+    label: 171
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 10
+    cellType: 1
+    label: 201
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 23
+    col: 12
+    cellType: 1
+    label: 231
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 13
+    cellType: 1
+    label: 261
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 23
+    col: 15
+    cellType: 1
+    label: 291
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 16
+    cellType: 1
+    label: 321
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 23
+    col: 18
+    cellType: 1
+    label: 351
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 19
+    cellType: 1
+    label: 381
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 23
+    col: 21
+    cellType: 1
+    label: 411
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 22
+    cellType: 1
+    label: 441
+    direction: 0
+    isNoRobot: 0
+  - row: 23
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 23
+    col: 24
+    cellType: 1
+    label: 471
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 1
+    cellType: 1
+    label: 22
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 24
+    col: 3
+    cellType: 1
+    label: 52
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 4
+    cellType: 1
+    label: 82
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 24
+    col: 6
+    cellType: 1
+    label: 112
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 7
+    cellType: 1
+    label: 142
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 24
+    col: 9
+    cellType: 1
+    label: 172
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 10
+    cellType: 1
+    label: 202
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 24
+    col: 12
+    cellType: 1
+    label: 232
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 13
+    cellType: 1
+    label: 262
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 24
+    col: 15
+    cellType: 1
+    label: 292
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 16
+    cellType: 1
+    label: 322
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 24
+    col: 18
+    cellType: 1
+    label: 352
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 19
+    cellType: 1
+    label: 382
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 24
+    col: 21
+    cellType: 1
+    label: 412
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 22
+    cellType: 1
+    label: 442
+    direction: 0
+    isNoRobot: 0
+  - row: 24
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 24
+    col: 24
+    cellType: 1
+    label: 472
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 1
+    cellType: 1
+    label: 23
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 25
+    col: 3
+    cellType: 1
+    label: 53
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 4
+    cellType: 1
+    label: 83
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 25
+    col: 6
+    cellType: 1
+    label: 113
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 7
+    cellType: 1
+    label: 143
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 25
+    col: 9
+    cellType: 1
+    label: 173
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 10
+    cellType: 1
+    label: 203
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 25
+    col: 12
+    cellType: 1
+    label: 233
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 13
+    cellType: 1
+    label: 263
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 25
+    col: 15
+    cellType: 1
+    label: 293
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 16
+    cellType: 1
+    label: 323
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 25
+    col: 18
+    cellType: 1
+    label: 353
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 19
+    cellType: 1
+    label: 383
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 25
+    col: 21
+    cellType: 1
+    label: 413
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 22
+    cellType: 1
+    label: 443
+    direction: 0
+    isNoRobot: 0
+  - row: 25
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 25
+    col: 24
+    cellType: 1
+    label: 473
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 1
+    cellType: 1
+    label: 24
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 26
+    col: 3
+    cellType: 1
+    label: 54
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 4
+    cellType: 1
+    label: 84
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 26
+    col: 6
+    cellType: 1
+    label: 114
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 7
+    cellType: 1
+    label: 144
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 26
+    col: 9
+    cellType: 1
+    label: 174
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 10
+    cellType: 1
+    label: 204
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 26
+    col: 12
+    cellType: 1
+    label: 234
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 13
+    cellType: 1
+    label: 264
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 26
+    col: 15
+    cellType: 1
+    label: 294
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 16
+    cellType: 1
+    label: 324
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 26
+    col: 18
+    cellType: 1
+    label: 354
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 19
+    cellType: 1
+    label: 384
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 26
+    col: 21
+    cellType: 1
+    label: 414
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 22
+    cellType: 1
+    label: 444
+    direction: 0
+    isNoRobot: 0
+  - row: 26
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 26
+    col: 24
+    cellType: 1
+    label: 474
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 1
+    cellType: 1
+    label: 25
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 27
+    col: 3
+    cellType: 1
+    label: 55
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 4
+    cellType: 1
+    label: 85
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 27
+    col: 6
+    cellType: 1
+    label: 115
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 7
+    cellType: 1
+    label: 145
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 27
+    col: 9
+    cellType: 1
+    label: 175
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 10
+    cellType: 1
+    label: 205
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 27
+    col: 12
+    cellType: 1
+    label: 235
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 13
+    cellType: 1
+    label: 265
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 27
+    col: 15
+    cellType: 1
+    label: 295
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 16
+    cellType: 1
+    label: 325
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 27
+    col: 18
+    cellType: 1
+    label: 355
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 19
+    cellType: 1
+    label: 385
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 27
+    col: 21
+    cellType: 1
+    label: 415
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 22
+    cellType: 1
+    label: 445
+    direction: 0
+    isNoRobot: 0
+  - row: 27
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 27
+    col: 24
+    cellType: 1
+    label: 475
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 1
+    cellType: 1
+    label: 26
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 28
+    col: 3
+    cellType: 1
+    label: 56
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 4
+    cellType: 1
+    label: 86
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 28
+    col: 6
+    cellType: 1
+    label: 116
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 7
+    cellType: 1
+    label: 146
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 28
+    col: 9
+    cellType: 1
+    label: 176
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 10
+    cellType: 1
+    label: 206
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 28
+    col: 12
+    cellType: 1
+    label: 236
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 13
+    cellType: 1
+    label: 266
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 28
+    col: 15
+    cellType: 1
+    label: 296
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 16
+    cellType: 1
+    label: 326
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 28
+    col: 18
+    cellType: 1
+    label: 356
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 19
+    cellType: 1
+    label: 386
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 28
+    col: 21
+    cellType: 1
+    label: 416
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 22
+    cellType: 1
+    label: 446
+    direction: 0
+    isNoRobot: 0
+  - row: 28
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 28
+    col: 24
+    cellType: 1
+    label: 476
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 1
+    cellType: 1
+    label: 27
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 29
+    col: 3
+    cellType: 1
+    label: 57
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 4
+    cellType: 1
+    label: 87
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 29
+    col: 6
+    cellType: 1
+    label: 117
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 7
+    cellType: 1
+    label: 147
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 29
+    col: 9
+    cellType: 1
+    label: 177
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 10
+    cellType: 1
+    label: 207
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 29
+    col: 12
+    cellType: 1
+    label: 237
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 13
+    cellType: 1
+    label: 267
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 29
+    col: 15
+    cellType: 1
+    label: 297
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 16
+    cellType: 1
+    label: 327
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 29
+    col: 18
+    cellType: 1
+    label: 357
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 19
+    cellType: 1
+    label: 387
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 29
+    col: 21
+    cellType: 1
+    label: 417
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 22
+    cellType: 1
+    label: 447
+    direction: 0
+    isNoRobot: 0
+  - row: 29
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 29
+    col: 24
+    cellType: 1
+    label: 477
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 1
+    cellType: 1
+    label: 28
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 30
+    col: 3
+    cellType: 1
+    label: 58
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 4
+    cellType: 1
+    label: 88
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 30
+    col: 6
+    cellType: 1
+    label: 118
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 7
+    cellType: 1
+    label: 148
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 30
+    col: 9
+    cellType: 1
+    label: 178
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 10
+    cellType: 1
+    label: 208
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 30
+    col: 12
+    cellType: 1
+    label: 238
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 13
+    cellType: 1
+    label: 268
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 30
+    col: 15
+    cellType: 1
+    label: 298
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 16
+    cellType: 1
+    label: 328
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 30
+    col: 18
+    cellType: 1
+    label: 358
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 19
+    cellType: 1
+    label: 388
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 30
+    col: 21
+    cellType: 1
+    label: 418
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 22
+    cellType: 1
+    label: 448
+    direction: 0
+    isNoRobot: 0
+  - row: 30
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 30
+    col: 24
+    cellType: 1
+    label: 478
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 1
+    cellType: 1
+    label: 29
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 31
+    col: 3
+    cellType: 1
+    label: 59
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 4
+    cellType: 1
+    label: 89
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 31
+    col: 6
+    cellType: 1
+    label: 119
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 7
+    cellType: 1
+    label: 149
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 31
+    col: 9
+    cellType: 1
+    label: 179
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 10
+    cellType: 1
+    label: 209
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 31
+    col: 12
+    cellType: 1
+    label: 239
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 13
+    cellType: 1
+    label: 269
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 31
+    col: 15
+    cellType: 1
+    label: 299
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 16
+    cellType: 1
+    label: 329
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 31
+    col: 18
+    cellType: 1
+    label: 359
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 19
+    cellType: 1
+    label: 389
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 31
+    col: 21
+    cellType: 1
+    label: 419
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 22
+    cellType: 1
+    label: 449
+    direction: 0
+    isNoRobot: 0
+  - row: 31
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 31
+    col: 24
+    cellType: 1
+    label: 479
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 1
+    cellType: 1
+    label: 30
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 2
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 32
+    col: 3
+    cellType: 1
+    label: 60
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 4
+    cellType: 1
+    label: 90
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 5
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 32
+    col: 6
+    cellType: 1
+    label: 120
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 7
+    cellType: 1
+    label: 150
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 32
+    col: 9
+    cellType: 1
+    label: 180
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 10
+    cellType: 1
+    label: 210
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 11
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 32
+    col: 12
+    cellType: 1
+    label: 240
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 13
+    cellType: 1
+    label: 270
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 14
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 32
+    col: 15
+    cellType: 1
+    label: 300
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 16
+    cellType: 1
+    label: 330
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 17
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 32
+    col: 18
+    cellType: 1
+    label: 360
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 19
+    cellType: 1
+    label: 390
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 20
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 32
+    col: 21
+    cellType: 1
+    label: 420
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 22
+    cellType: 1
+    label: 450
+    direction: 0
+    isNoRobot: 0
+  - row: 32
+    col: 23
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 32
+    col: 24
+    cellType: 1
+    label: 480
+    direction: 0
+    isNoRobot: 0
+  - row: 33
+    col: 1
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 2
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 3
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 4
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 5
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 6
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 7
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 8
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 9
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 10
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 11
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 12
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 13
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 14
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 15
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 16
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 17
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 18
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 19
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 20
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 21
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 22
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 23
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 33
+    col: 24
+    cellType: 2
+    label: left
+    direction: 3
+    isNoRobot: 0
+  - row: 34
+    col: 1
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 2
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 3
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 4
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 5
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 6
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 7
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 8
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 9
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 10
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 11
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 12
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 13
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 14
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 15
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 16
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 17
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 18
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 19
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 20
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 21
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 22
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 23
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 34
+    col: 24
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 35
+    col: 1
+    cellType: 9
+    label: C1
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 2
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 3
+    cellType: 9
+    label: C6
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 4
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 5
+    cellType: 9
+    label: C11
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 6
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 35
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 35
+    col: 11
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 12
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 13
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 35
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 35
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 35
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 20
+    cellType: 8
+    label: St61
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 22
+    cellType: 8
+    label: St31
+    direction: 0
+    isNoRobot: 0
+  - row: 35
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 35
+    col: 24
+    cellType: 8
+    label: St1
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 1
+    cellType: 9
+    label: C2
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 2
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 3
+    cellType: 9
+    label: C7
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 4
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 5
+    cellType: 9
+    label: C12
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 6
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 36
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 36
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 12
+    cellType: 5
+    label: S29
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 36
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 36
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 36
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 20
+    cellType: 8
+    label: St62
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 22
+    cellType: 8
+    label: St32
+    direction: 0
+    isNoRobot: 0
+  - row: 36
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 36
+    col: 24
+    cellType: 8
+    label: St2
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 1
+    cellType: 9
+    label: C3
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 2
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 3
+    cellType: 9
+    label: C8
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 4
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 5
+    cellType: 9
+    label: C13
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 6
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 37
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 37
+    col: 11
+    cellType: 5
+    label: S1
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 12
+    cellType: 4
+    label: Diverter
+    direction: 0
+    isNoRobot: 1
+  - row: 37
+    col: 13
+    cellType: 5
+    label: S2
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 37
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 37
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 37
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 20
+    cellType: 8
+    label: St63
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 22
+    cellType: 8
+    label: St33
+    direction: 0
+    isNoRobot: 0
+  - row: 37
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 37
+    col: 24
+    cellType: 8
+    label: St3
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 1
+    cellType: 9
+    label: C4
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 2
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 3
+    cellType: 9
+    label: C9
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 4
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 5
+    cellType: 9
+    label: C14
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 6
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 38
+    col: 9
+    cellType: 6
+    label: E1
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 38
+    col: 11
+    cellType: 5
+    label: S3
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 38
+    col: 13
+    cellType: 5
+    label: S4
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 38
+    col: 15
+    cellType: 6
+    label: E8
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 38
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 38
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 20
+    cellType: 8
+    label: St64
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 22
+    cellType: 8
+    label: St34
+    direction: 0
+    isNoRobot: 0
+  - row: 38
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 38
+    col: 24
+    cellType: 8
+    label: St4
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 1
+    cellType: 9
+    label: C5
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 2
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 3
+    cellType: 9
+    label: C10
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 4
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 5
+    cellType: 9
+    label: C15
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 6
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 39
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 39
+    col: 11
+    cellType: 5
+    label: S5
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 39
+    col: 13
+    cellType: 5
+    label: S6
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 39
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 39
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 39
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 20
+    cellType: 8
+    label: St65
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 22
+    cellType: 8
+    label: St35
+    direction: 0
+    isNoRobot: 0
+  - row: 39
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 39
+    col: 24
+    cellType: 8
+    label: St5
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 1
+    cellType: 3
+    label: Induct Zone -No robots
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 40
+    col: 9
+    cellType: 6
+    label: E2
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 40
+    col: 11
+    cellType: 5
+    label: S7
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 40
+    col: 13
+    cellType: 5
+    label: S8
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 40
+    col: 15
+    cellType: 6
+    label: E9
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 40
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 40
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 40
+    col: 20
+    cellType: 8
+    label: St66
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 40
+    col: 22
+    cellType: 8
+    label: St36
+    direction: 0
+    isNoRobot: 0
+  - row: 40
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 40
+    col: 24
+    cellType: 8
+    label: St6
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 41
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 41
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 41
+    col: 11
+    cellType: 5
+    label: S9
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 41
+    col: 13
+    cellType: 5
+    label: S10
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 41
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 41
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 41
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 41
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 41
+    col: 20
+    cellType: 8
+    label: St67
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 41
+    col: 22
+    cellType: 8
+    label: St37
+    direction: 0
+    isNoRobot: 0
+  - row: 41
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 41
+    col: 24
+    cellType: 8
+    label: St7
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 42
+    col: 9
+    cellType: 6
+    label: E3
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 42
+    col: 11
+    cellType: 5
+    label: S11
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 42
+    col: 13
+    cellType: 5
+    label: S12
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 42
+    col: 15
+    cellType: 6
+    label: E10
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 42
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 42
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 42
+    col: 20
+    cellType: 8
+    label: St68
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 42
+    col: 22
+    cellType: 8
+    label: St38
+    direction: 0
+    isNoRobot: 0
+  - row: 42
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 42
+    col: 24
+    cellType: 8
+    label: St8
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 43
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 43
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 43
+    col: 11
+    cellType: 5
+    label: S13
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 43
+    col: 13
+    cellType: 5
+    label: S14
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 43
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 43
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 43
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 43
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 43
+    col: 20
+    cellType: 8
+    label: St69
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 43
+    col: 22
+    cellType: 8
+    label: St39
+    direction: 0
+    isNoRobot: 0
+  - row: 43
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 43
+    col: 24
+    cellType: 8
+    label: St9
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 44
+    col: 9
+    cellType: 6
+    label: E4
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 44
+    col: 11
+    cellType: 5
+    label: S15
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 44
+    col: 13
+    cellType: 5
+    label: S16
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 44
+    col: 15
+    cellType: 6
+    label: E11
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 44
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 44
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 44
+    col: 20
+    cellType: 8
+    label: St70
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 44
+    col: 22
+    cellType: 8
+    label: St40
+    direction: 0
+    isNoRobot: 0
+  - row: 44
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 44
+    col: 24
+    cellType: 8
+    label: St10
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 45
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 45
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 45
+    col: 11
+    cellType: 5
+    label: S17
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 45
+    col: 13
+    cellType: 5
+    label: S18
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 45
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 45
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 45
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 45
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 45
+    col: 20
+    cellType: 8
+    label: St71
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 45
+    col: 22
+    cellType: 8
+    label: St41
+    direction: 0
+    isNoRobot: 0
+  - row: 45
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 45
+    col: 24
+    cellType: 8
+    label: St11
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 46
+    col: 9
+    cellType: 6
+    label: E5
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 46
+    col: 11
+    cellType: 5
+    label: S19
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 46
+    col: 13
+    cellType: 5
+    label: S20
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 46
+    col: 15
+    cellType: 6
+    label: E12
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 46
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 46
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 46
+    col: 20
+    cellType: 8
+    label: St72
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 46
+    col: 22
+    cellType: 8
+    label: St42
+    direction: 0
+    isNoRobot: 0
+  - row: 46
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 46
+    col: 24
+    cellType: 8
+    label: St12
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 47
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 47
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 47
+    col: 11
+    cellType: 5
+    label: S21
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 47
+    col: 13
+    cellType: 5
+    label: S22
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 47
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 47
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 47
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 47
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 47
+    col: 20
+    cellType: 8
+    label: St73
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 47
+    col: 22
+    cellType: 8
+    label: St43
+    direction: 0
+    isNoRobot: 0
+  - row: 47
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 47
+    col: 24
+    cellType: 8
+    label: St13
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 48
+    col: 9
+    cellType: 6
+    label: E6
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 48
+    col: 11
+    cellType: 5
+    label: S23
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 48
+    col: 13
+    cellType: 5
+    label: S24
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 48
+    col: 15
+    cellType: 6
+    label: E13
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 48
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 48
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 48
+    col: 20
+    cellType: 8
+    label: St74
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 48
+    col: 22
+    cellType: 8
+    label: St44
+    direction: 0
+    isNoRobot: 0
+  - row: 48
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 48
+    col: 24
+    cellType: 8
+    label: St14
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 49
+    col: 9
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 49
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 49
+    col: 11
+    cellType: 5
+    label: S25
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 49
+    col: 13
+    cellType: 5
+    label: S26
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 49
+    col: 15
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 49
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 49
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 49
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 49
+    col: 20
+    cellType: 8
+    label: St75
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 49
+    col: 22
+    cellType: 8
+    label: St45
+    direction: 0
+    isNoRobot: 0
+  - row: 49
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 49
+    col: 24
+    cellType: 8
+    label: St15
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 8
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 50
+    col: 9
+    cellType: 6
+    label: E7
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 10
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 50
+    col: 11
+    cellType: 5
+    label: S27
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 50
+    col: 13
+    cellType: 5
+    label: S28
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 14
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 50
+    col: 15
+    cellType: 6
+    label: E14
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 50
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 50
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 50
+    col: 20
+    cellType: 8
+    label: St76
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 50
+    col: 22
+    cellType: 8
+    label: St46
+    direction: 0
+    isNoRobot: 0
+  - row: 50
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 50
+    col: 24
+    cellType: 8
+    label: St16
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 12
+    cellType: 4
+    label: Singulator
+    direction: 0
+    isNoRobot: 1
+  - row: 51
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 51
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 51
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 51
+    col: 20
+    cellType: 8
+    label: St77
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 51
+    col: 22
+    cellType: 8
+    label: St47
+    direction: 0
+    isNoRobot: 0
+  - row: 51
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 51
+    col: 24
+    cellType: 8
+    label: St17
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 52
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 52
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 52
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 52
+    col: 20
+    cellType: 8
+    label: St78
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 52
+    col: 22
+    cellType: 8
+    label: St48
+    direction: 0
+    isNoRobot: 0
+  - row: 52
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 52
+    col: 24
+    cellType: 8
+    label: St18
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 53
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 53
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 53
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 53
+    col: 20
+    cellType: 8
+    label: St79
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 53
+    col: 22
+    cellType: 8
+    label: St49
+    direction: 0
+    isNoRobot: 0
+  - row: 53
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 53
+    col: 24
+    cellType: 8
+    label: St19
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 54
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 54
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 54
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 54
+    col: 20
+    cellType: 8
+    label: St80
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 54
+    col: 22
+    cellType: 8
+    label: St50
+    direction: 0
+    isNoRobot: 0
+  - row: 54
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 54
+    col: 24
+    cellType: 8
+    label: St20
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 55
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 55
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 55
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 55
+    col: 20
+    cellType: 8
+    label: St81
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 55
+    col: 22
+    cellType: 8
+    label: St51
+    direction: 0
+    isNoRobot: 0
+  - row: 55
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 55
+    col: 24
+    cellType: 8
+    label: St21
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 56
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 56
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 56
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 56
+    col: 20
+    cellType: 8
+    label: St82
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 56
+    col: 22
+    cellType: 8
+    label: St52
+    direction: 0
+    isNoRobot: 0
+  - row: 56
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 56
+    col: 24
+    cellType: 8
+    label: St22
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 57
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 57
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 57
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 57
+    col: 20
+    cellType: 8
+    label: St83
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 57
+    col: 22
+    cellType: 8
+    label: St53
+    direction: 0
+    isNoRobot: 0
+  - row: 57
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 57
+    col: 24
+    cellType: 8
+    label: St23
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 8
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 9
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 10
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 11
+    cellType: 4
+    label: Feeder
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 13
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 58
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 58
+    col: 17
+    cellType: 2
+    label: down
+    direction: 2
+    isNoRobot: 0
+  - row: 58
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 58
+    col: 20
+    cellType: 8
+    label: St84
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 58
+    col: 22
+    cellType: 8
+    label: St54
+    direction: 0
+    isNoRobot: 0
+  - row: 58
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 58
+    col: 24
+    cellType: 8
+    label: St24
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 8
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 9
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 10
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 11
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 13
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 59
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 59
+    col: 17
+    cellType: 7
+    label: Q10
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 59
+    col: 20
+    cellType: 8
+    label: St85
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 59
+    col: 22
+    cellType: 8
+    label: St55
+    direction: 0
+    isNoRobot: 0
+  - row: 59
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 59
+    col: 24
+    cellType: 8
+    label: St25
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 12
+    cellType: 4
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 60
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 16
+    cellType: 2
+    label: up
+    direction: 1
+    isNoRobot: 0
+  - row: 60
+    col: 17
+    cellType: 7
+    label: Q9
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 60
+    col: 20
+    cellType: 8
+    label: St86
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 60
+    col: 22
+    cellType: 8
+    label: St56
+    direction: 0
+    isNoRobot: 0
+  - row: 60
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 60
+    col: 24
+    cellType: 8
+    label: St26
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 61
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 12
+    cellType: 7
+    label: Q1
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 13
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 61
+    col: 14
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 61
+    col: 15
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 61
+    col: 16
+    cellType: 2
+    label: right
+    direction: 4
+    isNoRobot: 0
+  - row: 61
+    col: 17
+    cellType: 7
+    label: Q8
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 61
+    col: 20
+    cellType: 8
+    label: St87
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 61
+    col: 22
+    cellType: 8
+    label: St57
+    direction: 0
+    isNoRobot: 0
+  - row: 61
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 61
+    col: 24
+    cellType: 8
+    label: St27
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 1
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 2
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 3
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 4
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 5
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 6
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 7
+    cellType: 3
+    label: 
+    direction: 0
+    isNoRobot: 1
+  - row: 62
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 12
+    cellType: 7
+    label: Q2
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 13
+    cellType: 7
+    label: Q3
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 14
+    cellType: 7
+    label: Q4
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 15
+    cellType: 7
+    label: Q5
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 16
+    cellType: 7
+    label: Q6
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 17
+    cellType: 7
+    label: Q7
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 62
+    col: 20
+    cellType: 8
+    label: St88
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 62
+    col: 22
+    cellType: 8
+    label: St58
+    direction: 0
+    isNoRobot: 0
+  - row: 62
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 62
+    col: 24
+    cellType: 8
+    label: St28
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 1
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 2
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 3
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 4
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 5
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 6
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 12
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 16
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 17
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 63
+    col: 20
+    cellType: 8
+    label: St89
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 63
+    col: 22
+    cellType: 8
+    label: St59
+    direction: 0
+    isNoRobot: 0
+  - row: 63
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 63
+    col: 24
+    cellType: 8
+    label: St29
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 1
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 2
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 3
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 4
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 5
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 6
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 7
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 8
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 9
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 10
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 11
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 12
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 13
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 14
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 15
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 16
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 17
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 18
+    cellType: 0
+    label: 
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 19
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 64
+    col: 20
+    cellType: 8
+    label: St90
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 21
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 64
+    col: 22
+    cellType: 8
+    label: St60
+    direction: 0
+    isNoRobot: 0
+  - row: 64
+    col: 23
+    cellType: 2
+    label: any
+    direction: 5
+    isNoRobot: 0
+  - row: 64
+    col: 24
+    cellType: 8
+    label: St30
+    direction: 0
+    isNoRobot: 0

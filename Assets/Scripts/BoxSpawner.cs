@@ -26,6 +26,7 @@ public class BoxSpawner : MonoBehaviour
     public event Action<GameObject> OnBoxSpawned;
 
     private float timer;
+    private static int _nextId = 0;
 
     private void Start()
     {
@@ -69,8 +70,9 @@ public class BoxSpawner : MonoBehaviour
                 col.material = packageMaterial;
         }
 
-        // Stamp routing address from the global address space.
+        // Stamp routing address and unique ID.
         Package pkg = box.GetComponent<Package>() ?? box.AddComponent<Package>();
+        pkg.id = _nextId++;
         int total = AddressInit.TotalAddressSpace;
         pkg.address = total > 0 ? UnityEngine.Random.Range(1, total + 1) : 1;
 

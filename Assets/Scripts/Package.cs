@@ -13,6 +13,9 @@ using UnityEngine;
 /// </summary>
 public class Package : MonoBehaviour
 {
+    [Tooltip("Unique sequential ID assigned at spawn.")]
+    public int id;
+
     [Tooltip("Destination address used by Diverter to route this package.")]
     public int address;
 

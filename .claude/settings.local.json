@@ -15,7 +15,23 @@
       "Bash(grep:*)",
       "Bash(git push:*)",
       "Bash(git add:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(python -c ':*)",
+      "Bash(where python3.exe)",
+      "Bash(where py.exe)",
+      "Read(//c/Users/Liron/AppData/Local/Programs/**)",
+      "Read(//c/Program Files/**)",
+      "Bash(/c/Users/Liron/AppData/Local/Microsoft/WindowsApps/python3.exe --version)",
+      "Bash(node -e ':*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(npm root:*)",
+      "Read(//c/Users/Liron/UnityProjects/Data/$\\(npm root -g\\)/**)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); props=[n for n in d.get\\('m_Properties',{}\\).get\\('m_NoneSerialized',[]\\) if True]; print\\(json.dumps\\(d.get\\('m_Properties',{}\\), indent=2\\)\\)\")",
+      "Bash(xargs -I{} cat \"{}\")",
+      "Bash(python3:*)",
+      "Bash(sort -t: -k2 -n)",
+      "Bash(powershell -Command \"\\(Get-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\\) -replace '  m_Intensity: 5$', '  m_Intensity: 150' | Set-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\")"
     ]
   }
 }

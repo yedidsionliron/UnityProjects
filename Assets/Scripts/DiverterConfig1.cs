@@ -33,6 +33,10 @@ public class DiverterConfig : MonoBehaviour
     [Tooltip("Minimum air gap between the belt frame outer edge and the nearest gaylord face (metres).")]
     public float gaylordGap     = 0.1f;
 
+    [Header("Overflow")]
+    [Tooltip("Place an extra gaylord at the end of the belt to catch packages that pass all divert points.")]
+    public bool addOverflowGaylord = true;
+
     /// <summary>All sort points created by the last Build(), ordered [L0, R0, L1, R1, ...].</summary>
     [HideInInspector] public SortPoint[] sortPoints;
 
@@ -67,6 +71,9 @@ public class DiverterConfig : MonoBehaviour
             sortPoints[i * 2]     = CreateSortPoint(i * 2,     DivertSide.Left,  slotCentreZ, -xOffset, diverter, gaylordZScale, groundWorldY);
             sortPoints[i * 2 + 1] = CreateSortPoint(i * 2 + 1, DivertSide.Right, slotCentreZ,  xOffset, diverter, gaylordZScale, groundWorldY);
         }
+
+        if (addOverflowGaylord)
+            PlaceOverflowGaylord(diverter, effectiveSlotPitch, gaylordZScale, groundWorldY);
 
         addressInit.Assign(sortPoints);
         EditorUtility.SetDirty(this);
@@ -136,6 +143,48 @@ public class DiverterConfig : MonoBehaviour
         // GaylordContainer creates colliders at runtime only (via OnEnable when isPlaying).
         // Do not call RebuildColliders here — it would create __GaylordColliders objects
         // in Edit mode without Undo registration, causing them to appear at scene root.
+    }
+
+    private void PlaceOverflowGaylord(Diverter diverter, float slotPitch, float zScale, float groundWorldY)
+    {
+        // Destroy any previous overflow gaylord so Build() is idempotent.
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            var child = transform.GetChild(i);
+            if (child.name == "OverflowGaylord")
+                DestroyImmediate(child.gameObject);
+        }
+
+        // Position: centred on the belt in X, one slot-pitch past the last divert point.
+        float beltEnd = diverter.beltCenterLocalZ + diverter.beltLength / 2f + slotPitch * 0.5f;
+        Vector3 worldPos = diverter.transform.TransformPoint(new Vector3(0f, 0f, beltEnd));
+        worldPos.y = groundWorldY;
+
+        var go = new GameObject("OverflowGaylord");
+        Undo.RegisterCreatedObjectUndo(go, "Create Overflow Gaylord");
+        go.transform.SetParent(transform, worldPositionStays: false);
+        go.transform.position = worldPos;
+        go.transform.rotation = diverter.transform.rotation;
+
+        var g = (GameObject)PrefabUtility.InstantiatePrefab(gaylordPrefab, go.transform);
+        if (g == null) return;
+        Undo.RegisterCreatedObjectUndo(g, "Create Overflow Gaylord Mesh");
+
+        Vector3 ps = gaylordPrefab.transform.localScale;
+        g.transform.localScale = new Vector3(ps.x, ps.y, ps.z * zScale);
+        g.transform.localPosition = Vector3.zero;
+        g.transform.localRotation = Quaternion.identity;
+
+        // Align mesh bottom to ground, centre in Z.
+        var renderers = g.GetComponentsInChildren<Renderer>(includeInactive: true);
+        if (renderers.Length > 0)
+        {
+            Bounds b = renderers[0].bounds;
+            foreach (var r in renderers) b.Encapsulate(r.bounds);
+            float lift        = go.transform.position.y - b.min.y;
+            float zCenterLocal = go.transform.InverseTransformPoint(b.center).z;
+            g.transform.localPosition = new Vector3(0f, lift, -zCenterLocal);
+        }
     }
 #endif
 }

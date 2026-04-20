@@ -60,6 +60,9 @@ public class Diverter : MonoBehaviour
     [Tooltip("Trigger zone height in Y.")]
     public float triggerHeight = 1.2f;
 
+    [Tooltip("Half the length of a typical package in Z (m). Force begins when the package front face enters the zone, so the centre lags by this amount. Default 0.3 = 60 cm package.")]
+    public float packageHalfLength = 0.3f;
+
     private void Start()
     {
         var conv = GetComponentInChildren<PCSConveyor>();
@@ -168,7 +171,10 @@ public class Diverter : MonoBehaviour
         // Diversion force starts when the package ENTERS the trigger zone (at triggerCenter - triggerDepth/2),
         // not at the trigger centre. Shift the centre forward by triggerDepth/2 so that the
         // force-start point lands exactly exitOffset before the slot centre.
-        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f;
+        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f - packageHalfLength;
+
+        if (firstPoint < 0f)
+            Debug.Log($"Diverter '{name}': firstPoint={firstPoint:F3} m — zone 0 sits {-firstPoint:F3} m before belt start (in pre-belt run). This is expected when exitOffset ({exitOffset:F3} m) is large.", this);
 
         Debug.Log($"Diverter '{name}': exitOffset={exitOffset:F3}  firstPoint={firstPoint:F3}  step={step:F3}", this);
 
@@ -229,7 +235,7 @@ public class Diverter : MonoBehaviour
         float exitOffset = ExitOffset();
         float beltStart  = beltCenterLocalZ - beltLength / 2f;
         float step       = beltLength / n;
-        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f;
+        float firstPoint = step * landingNormalized - exitOffset + triggerDepth / 2f - packageHalfLength;
         float gizmoY     = GizmoTriggerY();
 
         for (int i = 0; i < n; i++)
