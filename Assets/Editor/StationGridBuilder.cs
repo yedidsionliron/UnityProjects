@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Process = System.Diagnostics.Process;
+using ProcessStartInfo = System.Diagnostics.ProcessStartInfo;
 
 /// <summary>
 /// Editor window for building the AMR station scene from Grid.json.
@@ -13,6 +15,8 @@ public class StationGridBuilder : EditorWindow
 {
     // ── Asset paths ────────────────────────────────────────────────────────
     private const string GridJsonPath       = "Data/Grid.json";
+    private const string GridExcelPath      = "Data/Grid.xlsx";
+    private const string GridParserScriptPath = "Data/parse_grid.js";
     private const string GridDataAssetPath  = "Assets/Scripts/AMR/StationGridData.asset";
     private const string ScenePath          = "Assets/Scenes/StationScene.unity";
     private const string GaylordPrefabPath  = "Assets/LastMileAssets/Prefabs/Gaylord.prefab";
@@ -44,6 +48,25 @@ public class StationGridBuilder : EditorWindow
 
     [MenuItem("Tools/Station Builder")]
     public static void Open() => GetWindow<StationGridBuilder>("Station Builder");
+
+    [MenuItem("Tools/Station Builder/Rebuild Station Scene")]
+    public static void RebuildStationSceneFromCurrentSettings()
+    {
+        var builder = CreateInstance<StationGridBuilder>();
+        try
+        {
+            builder._settings = LoadOrCreateSettings();
+            builder.MeasureGaylord();
+            builder.ComputeCellSize(out float cellWidth, out float cellDepth);
+            if (!builder.GenerateGridJson())
+                return;
+            builder.BuildScene(cellWidth, cellDepth);
+        }
+        finally
+        {
+            DestroyImmediate(builder);
+        }
+    }
 
     // ── GUI ────────────────────────────────────────────────────────────────
 
@@ -157,16 +180,23 @@ public class StationGridBuilder : EditorWindow
         // ── Grid.json status ───────────────────────────────────────────
         EditorGUILayout.Space(8);
         string jsonPath = Path.Combine(Application.dataPath, "..", GridJsonPath).Replace('\\', '/');
+        string excelPath = Path.Combine(Application.dataPath, "..", GridExcelPath).Replace('\\', '/');
         bool   jsonExists = File.Exists(jsonPath);
+        bool   excelExists = File.Exists(excelPath);
         EditorGUILayout.HelpBox(
-            jsonExists ? $"{GridJsonPath} found." : $"{GridJsonPath} not found.\nRun:  node Data/parse_grid.js",
-            jsonExists ? MessageType.Info : MessageType.Warning);
+            excelExists
+                ? $"{GridExcelPath} found. Rebuild will refresh {GridJsonPath} automatically."
+                : $"{GridExcelPath} not found.",
+            excelExists ? MessageType.Info : MessageType.Warning);
 
         // ── Build button ───────────────────────────────────────────────
         EditorGUILayout.Space(8);
-        EditorGUI.BeginDisabledGroup(!jsonExists || _settings.gaylordPrefab == null);
+        EditorGUI.BeginDisabledGroup(!excelExists || _settings.gaylordPrefab == null);
         if (GUILayout.Button("Build Station Scene", GUILayout.Height(36)))
-            BuildScene(cellWidth, cellDepth);
+        {
+            if (GenerateGridJson())
+                BuildScene(cellWidth, cellDepth);
+        }
         EditorGUI.EndDisabledGroup();
 
         if (_settings.gaylordPrefab == null)
@@ -288,13 +318,19 @@ public class StationGridBuilder : EditorWindow
         // 7. Charging area — right of last staging column
         var chargingGo = CreateChild("ChargingArea", station);
         var ca         = chargingGo.AddComponent<ChargingArea>();
-        ca.bayCount    = 4;
-        float bayX     = origin.x + (raw.cols + 1) * cellWidth;
-        for (int b = 0; b < 4; b++)
+        const int defaultChargingBays = 4;
+        ca.bayCount    = defaultChargingBays;
+        float bayX     = origin.x + (raw.cols + 1f) * cellWidth;
+        float bayStartRow = 10f;
+        float bayRowSpacing = 2f;
+        for (int b = 0; b < defaultChargingBays; b++)
         {
             var bay = new GameObject($"Bay_{b}");
             bay.transform.SetParent(chargingGo.transform);
-            bay.transform.position = new Vector3(bayX, 0f, -(10 + b * 2) * cellDepth);
+            bay.transform.position = new Vector3(
+                bayX,
+                origin.y,
+                -(bayStartRow + b * bayRowSpacing) * cellDepth);
             ca.bayTransforms.Add(bay.transform);
         }
 
@@ -304,6 +340,76 @@ public class StationGridBuilder : EditorWindow
         Debug.Log($"StationGridBuilder: built {ScenePath}  |  " +
                   $"Grid {raw.rows}×{raw.cols}  |  " +
                   $"Cell {cellWidth:F3} m (W) × {cellDepth:F3} m (D)");
+    }
+
+    private bool GenerateGridJson()
+    {
+        string projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+        string excelPath = Path.Combine(projectRoot, GridExcelPath);
+        string scriptPath = Path.Combine(projectRoot, GridParserScriptPath);
+
+        if (!File.Exists(excelPath))
+        {
+            Debug.LogError($"StationGridBuilder: missing Excel source at {GridExcelPath}.");
+            return false;
+        }
+
+        if (!File.Exists(scriptPath))
+        {
+            Debug.LogError($"StationGridBuilder: missing parser script at {GridParserScriptPath}.");
+            return false;
+        }
+
+        var psi = new ProcessStartInfo
+        {
+            FileName = "node",
+            Arguments = $"\"{GridParserScriptPath}\"",
+            WorkingDirectory = projectRoot,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        };
+
+        try
+        {
+            using (var process = Process.Start(psi))
+            {
+                if (process == null)
+                {
+                    Debug.LogError("StationGridBuilder: failed to start node process.");
+                    return false;
+                }
+
+                string stdout = process.StandardOutput.ReadToEnd();
+                string stderr = process.StandardError.ReadToEnd();
+                process.WaitForExit();
+
+                if (!string.IsNullOrWhiteSpace(stdout))
+                    Debug.Log(stdout.Trim());
+
+                if (process.ExitCode != 0)
+                {
+                    if (!string.IsNullOrWhiteSpace(stderr))
+                        Debug.LogError(stderr.Trim());
+                    Debug.LogError($"StationGridBuilder: Grid parser failed with exit code {process.ExitCode}.");
+                    return false;
+                }
+
+                if (!string.IsNullOrWhiteSpace(stderr))
+                    Debug.LogWarning(stderr.Trim());
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError(
+                "StationGridBuilder: failed to run node. " +
+                "Make sure Node.js is installed and available on PATH.\n" + ex.Message);
+            return false;
+        }
+
+        AssetDatabase.Refresh();
+        return true;
     }
 
     // ── Helpers ────────────────────────────────────────────────────────────

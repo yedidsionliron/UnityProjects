@@ -203,7 +203,7 @@ public class PackageRouter : MonoBehaviour
     /// place its pivot at the visual base-centre, eliminating _yGroundCorrection and _zPivotNorm.
     ///
     /// How to apply:
-    ///   1. Open Assets/LastMileAssets/Gaylord.prefab in Prefab Mode.
+    ///   1. Open Assets/LastMileAssets/Prefabs/Gaylord.prefab in Prefab Mode.
     ///   2. Create an empty child GameObject named "GaylordMesh".
     ///   3. Move MeshFilter, MeshRenderer to that child.
     ///   4. Set the child's localPosition to the Y and Z values logged below.

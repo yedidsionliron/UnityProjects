@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PCS
 {
@@ -26,6 +27,9 @@ namespace PCS
 
 	public class PCSConfig : MonoBehaviour
 	{
+		private const float SideFrameAllowance = 0.4f;
+		private const float BaseBeltSurfaceWidth = 1.6f;
+
 		public enum EditModes { None, Railings }
 
 		struct PCSTransform{
@@ -33,6 +37,27 @@ namespace PCS
 			public Quaternion rotation;
 			public Vector3 scale;
 		};
+
+		struct ConveyorGeometry
+		{
+			public float beltPitch;
+			public float startCapLength;
+			public float endCapLength;
+			public float beltSurfaceWidth;
+			public float beltWidthScale;
+			public float verticalScale;
+			public float beltElevation;
+			public float runStartEdgeZ;
+			public float runEndEdgeZ;
+			public float firstTileCenterZ;
+			public float beltCenterZ;
+			public Vector3 runStart;
+			public Vector3 runEnd;
+			public Vector3 beltCenter;
+			public Vector3 startCapAnchor;
+			public Vector3 endCapAnchor;
+			public float physicalLength;
+		}
 				
 		public EditModes editMode;
 
@@ -53,6 +78,8 @@ namespace PCS
 
 		public int length = 18;
 		public float width = 2f;
+		[FormerlySerializedAs("conveyorSupportHeight")]
+		public float height = 1.05f;
 		public bool internalsEnabled = false;
 		public int internalsCount = 3;
 		public float speed = 0.6f;
@@ -60,8 +87,6 @@ namespace PCS
 		[Header("Conveyor Supports")]
 		[Tooltip("ConveyorSupport prefab to place under both ends of the conveyor.")]
 		public GameObject conveyorSupportPrefab;
-		[Tooltip("Local Y position of the support.")]
-		public float conveyorSupportHeight = 1.05f;
 		[Tooltip("Scale applied to each support. Default matches Conveyor_Long1 (13, 13, 91).")]
 		public Vector3 conveyorSupportScale = new Vector3(13f, 13f, 91f);
 		[Tooltip("Slope angle in degrees. Positive = front elevated, negative = back elevated.")]
@@ -83,12 +108,19 @@ namespace PCS
 		private PCSTransform parentTransform;
 		private GameObject _conveyorBody;
 		private GameObject _supportsParent;
+		private ConveyorGeometry _geometry;
 
 		public List<GameObject> conveyorChildren;// = new List<GameObject>();
 
 		public bool ready = false;
 
 		public PCSUVScroller[] uvS = new PCSUVScroller[4];
+
+		public float conveyorSupportHeight
+		{
+			get => height;
+			set => height = value;
+		}
 		
 #if UNITY_EDITOR
 		private void Reset() => ApplyDefaultSupportPrefab();
@@ -133,10 +165,7 @@ namespace PCS
 
 				foreach (Collider c in visibleColliders)
 				{
-					Collider newC = gameObject.AddDuplicateCollider(c);
-					newC.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
-					DestroyImmediate(c);
-
+					c.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
 				}
 
 				// Railing colliders go on physicsParent (kinematic RB) so they reliably block packages.
@@ -155,6 +184,250 @@ namespace PCS
 
 			}
 
+		}
+
+		private float GetBeltSurfaceWidth()
+		{
+			return Mathf.Max(0.01f, width - GetSideFrameAllowance());
+		}
+
+		private float GetBeltWidthScale()
+		{
+			return GetWidthScaleForSurfaceWidth(GetBeltSurfaceWidth());
+		}
+
+		public float GetSideFrameAllowance()
+		{
+			return SideFrameAllowance;
+		}
+
+		public float GetBaseBeltSurfaceWidth()
+		{
+			return BaseBeltSurfaceWidth;
+		}
+
+		public float GetWidthScaleForSurfaceWidth(float surfaceWidth)
+		{
+			return Mathf.Max(0.01f, surfaceWidth) / GetBaseBeltSurfaceWidth();
+		}
+
+		public float GetHeightForBeltTop(float beltTopHeight, float surfaceWidth)
+		{
+			return Mathf.Max(0.01f, beltTopHeight);
+		}
+
+		public float GetSupportHeightForBeltTop(float beltTopHeight, float surfaceWidth)
+		{
+			return GetHeightForBeltTop(beltTopHeight, surfaceWidth);
+		}
+
+		public float GetGroundToBeltTopHeight()
+		{
+			return Mathf.Max(0.01f, height);
+		}
+
+		private static Bounds GetCombinedRendererLocalBounds(Transform root)
+		{
+			Renderer[] renderers = root.GetComponentsInChildren<Renderer>(true);
+			Bounds combined = new Bounds(Vector3.zero, Vector3.zero);
+			bool hasBounds = false;
+			Matrix4x4 worldToLocal = root.worldToLocalMatrix;
+			foreach (Renderer r in renderers)
+			{
+				Bounds b = r.bounds;
+				Vector3 c = b.center;
+				Vector3 e = b.extents;
+				for (int xi = -1; xi <= 1; xi += 2)
+				for (int yi = -1; yi <= 1; yi += 2)
+				for (int zi = -1; zi <= 1; zi += 2)
+				{
+					Vector3 corner = c + Vector3.Scale(e, new Vector3(xi, yi, zi));
+					Vector3 localCorner = worldToLocal.MultiplyPoint3x4(corner);
+					if (!hasBounds)
+					{
+						combined = new Bounds(localCorner, Vector3.zero);
+						hasBounds = true;
+					}
+					else
+					{
+						combined.Encapsulate(localCorner);
+					}
+				}
+			}
+
+			return combined;
+		}
+
+		private static bool TryGetCombinedRendererWorldBounds(Transform root, out Bounds combined)
+		{
+			Renderer[] renderers = root.GetComponentsInChildren<Renderer>(true);
+			if (renderers == null || renderers.Length == 0)
+			{
+				combined = default;
+				return false;
+			}
+
+			combined = renderers[0].bounds;
+			for (int i = 1; i < renderers.Length; i++)
+			{
+				combined.Encapsulate(renderers[i].bounds);
+			}
+
+			return true;
+		}
+
+		private static bool TryGetCombinedRendererBoundsInSpace(Transform root, Transform reference, out Bounds combined)
+		{
+			Renderer[] renderers = root.GetComponentsInChildren<Renderer>(true);
+			if (renderers == null || renderers.Length == 0)
+			{
+				combined = default;
+				return false;
+			}
+
+			combined = default;
+			bool hasBounds = false;
+			Matrix4x4 worldToLocal = reference.worldToLocalMatrix;
+			for (int i = 0; i < renderers.Length; i++)
+			{
+				Bounds b = renderers[i].bounds;
+				Vector3 c = b.center;
+				Vector3 e = b.extents;
+				for (int xi = -1; xi <= 1; xi += 2)
+				for (int yi = -1; yi <= 1; yi += 2)
+				for (int zi = -1; zi <= 1; zi += 2)
+				{
+					Vector3 corner = c + Vector3.Scale(e, new Vector3(xi, yi, zi));
+					Vector3 localCorner = worldToLocal.MultiplyPoint3x4(corner);
+					if (!hasBounds)
+					{
+						combined = new Bounds(localCorner, Vector3.zero);
+						hasBounds = true;
+					}
+					else
+					{
+						combined.Encapsulate(localCorner);
+					}
+				}
+			}
+
+			return hasBounds;
+		}
+
+		private static void AlignVisualBounds(
+			GameObject instance,
+			Transform parent,
+			Vector3 targetLocalPosition,
+			bool alignCenterX,
+			bool alignBottomY,
+			bool alignCenterZ)
+		{
+			instance.transform.localPosition = targetLocalPosition;
+			if (!TryGetCombinedRendererBoundsInSpace(instance.transform, parent, out Bounds bounds)) return;
+
+			Vector3 delta = Vector3.zero;
+			if (alignCenterX)
+				delta.x = targetLocalPosition.x - bounds.center.x;
+			if (alignBottomY)
+				delta.y = targetLocalPosition.y - bounds.min.y;
+			if (alignCenterZ)
+				delta.z = targetLocalPosition.z - bounds.center.z;
+			if (delta.sqrMagnitude > 0.00000001f)
+				instance.transform.localPosition += delta;
+		}
+
+		private void BuildGeometry(float beltPrefabLength, float startCapPrefabLength, float endCapPrefabLength)
+		{
+			_geometry = new ConveyorGeometry
+			{
+				beltPitch = beltPrefabLength,
+				startCapLength = startCapPrefabLength,
+				endCapLength = endCapPrefabLength,
+				beltSurfaceWidth = GetBeltSurfaceWidth(),
+				beltWidthScale = GetWidthScaleForSurfaceWidth(GetBeltSurfaceWidth()),
+				verticalScale = GetVerticalScale(),
+				beltElevation = GetGroundToBeltTopHeight(),
+				runStartEdgeZ = startCapPrefabLength,
+				runEndEdgeZ = startCapPrefabLength + beltPrefabLength * length
+			};
+			_geometry.firstTileCenterZ = _geometry.runStartEdgeZ + (_geometry.beltPitch * 0.5f);
+			_geometry.beltCenterZ = (_geometry.runStartEdgeZ + _geometry.runEndEdgeZ) * 0.5f;
+			_geometry.runStart = new Vector3(0f, 0f, _geometry.firstTileCenterZ);
+			_geometry.runEnd = new Vector3(0f, 0f, _geometry.runEndEdgeZ - (_geometry.beltPitch * 0.5f));
+			_geometry.beltCenter = new Vector3(0f, 0f, _geometry.beltCenterZ);
+			_geometry.startCapAnchor = new Vector3(0f, 0f, _geometry.startCapLength * 0.5f);
+			_geometry.endCapAnchor = new Vector3(0f, 0f, _geometry.runEndEdgeZ + (_geometry.endCapLength * 0.5f));
+			_geometry.physicalLength = _geometry.startCapLength + (_geometry.beltPitch * length) + _geometry.endCapLength;
+		}
+
+		public float GetVerticalScale()
+		{
+			return GetBeltWidthScale();
+		}
+
+		public float GetSupportHalfHeight()
+		{
+			return GetGroundToBeltTopHeight() * 0.5f;
+		}
+
+		private static int GetDominantScaleAxis(Transform t, Vector3 worldDirection)
+		{
+			Vector3 dir = worldDirection.normalized;
+			float x = Mathf.Abs(Vector3.Dot(t.TransformDirection(Vector3.right).normalized, dir));
+			float y = Mathf.Abs(Vector3.Dot(t.TransformDirection(Vector3.up).normalized, dir));
+			float z = Mathf.Abs(Vector3.Dot(t.TransformDirection(Vector3.forward).normalized, dir));
+
+			if (x >= y && x >= z) return 0;
+			if (y >= z) return 1;
+			return 2;
+		}
+
+		private static float GetAxis(Vector3 value, int axis)
+		{
+			switch (axis)
+			{
+				case 0: return value.x;
+				case 1: return value.y;
+				default: return value.z;
+			}
+		}
+
+		private static Vector3 SetAxis(Vector3 value, int axis, float axisValue)
+		{
+			switch (axis)
+			{
+				case 0: value.x = axisValue; break;
+				case 1: value.y = axisValue; break;
+				default: value.z = axisValue; break;
+			}
+
+			return value;
+		}
+
+		private void FitSupportScale(GameObject support, float targetWidth, float targetHeight)
+		{
+			if (support == null) return;
+
+			if (!TryGetCombinedRendererWorldBounds(support.transform, out Bounds supportBounds)) return;
+
+			Vector3 scale = support.transform.localScale;
+
+			int widthAxis = GetDominantScaleAxis(support.transform, Vector3.right);
+			float measuredWidth = supportBounds.size.x;
+			if (measuredWidth > 0.0001f)
+			{
+				scale = SetAxis(scale, widthAxis, GetAxis(scale, widthAxis) * (targetWidth / measuredWidth));
+				support.transform.localScale = scale;
+				if (!TryGetCombinedRendererWorldBounds(support.transform, out supportBounds)) return;
+			}
+
+			int heightAxis = GetDominantScaleAxis(support.transform, Vector3.up);
+			float measuredHeight = supportBounds.size.y;
+			if (measuredHeight > 0.0001f)
+			{
+				scale = SetAxis(scale, heightAxis, GetAxis(scale, heightAxis) * (targetHeight / measuredHeight));
+				support.transform.localScale = scale;
+			}
 		}
 
 		public void CheckRailingData()
@@ -200,10 +473,6 @@ namespace PCS
 			parentTransform.position = transform.position;
 			parentTransform.rotation = transform.rotation;
 			parentTransform.scale = transform.localScale;
-
-			transform.position = Vector3.zero;
-			transform.rotation = Quaternion.identity;
-			transform.localScale = Vector3.one;
 			//-------------------------------------------------------------
 
 			//--------------------Initialise internals---------------------
@@ -240,9 +509,10 @@ namespace PCS
 			internals.renderers = new Renderer[1];
 			internals.renderers[0] = internals.prefab.GetComponent<Renderer>();
 
-			beltPrefabWidth = belt.renderers[0].bounds.size.z;
-			startCapPrefabWidth = startCap.prefab.GetComponent<Renderer>().bounds.size.z;
-			endCapPrefabWidth = endCap.prefab.GetComponent<Renderer>().bounds.size.z;
+			beltPrefabWidth = GetCombinedRendererLocalBounds(belt.prefab.transform).size.z;
+			startCapPrefabWidth = GetCombinedRendererLocalBounds(startCap.prefab.transform).size.z;
+			endCapPrefabWidth = GetCombinedRendererLocalBounds(endCap.prefab.transform).size.z;
+			BuildGeometry(beltPrefabWidth, startCapPrefabWidth, endCapPrefabWidth);
 
 			belt.positionOffset = new Vector3(0, 0, beltPrefabWidth);
 			startCap.positionOffset = new Vector3(0, 0, startCapPrefabWidth);
@@ -253,13 +523,13 @@ namespace PCS
 			//--------------------Create parent objects--------------------
 			_conveyorBody = new GameObject("Conveyor Body");
 			_conveyorBody.transform.parent = transform;
-			_conveyorBody.transform.localPosition = Vector3.zero;
-			_conveyorBody.transform.localRotation = Quaternion.identity; // rotation applied after mesh baking in ApplyTransform
+			_conveyorBody.transform.localPosition = Vector3.up * _geometry.beltElevation;
+			_conveyorBody.transform.localRotation = Quaternion.identity;
 			_conveyorBody.hideFlags = HideFlags.HideInHierarchy;
 
 			belt.parent = new GameObject("Belt");
 			belt.parent.transform.parent = _conveyorBody.transform;
-			belt.parent.transform.localPosition = PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
+			belt.parent.transform.localPosition = _geometry.beltCenter;
 			belt.parent.hideFlags = HideFlags.HideInHierarchy;
 			uvS[2] = belt.parent.AddComponent<PCSUVScroller>();
 			uvS[2].speed = speed / 0.2f;
@@ -268,7 +538,7 @@ namespace PCS
 
 			railing.parent = new GameObject("Railing");
 			railing.parent.transform.parent = _conveyorBody.transform;
-			railing.parent.transform.localPosition = PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
+			railing.parent.transform.localPosition = _geometry.beltCenter;
 			railing.parent.hideFlags = HideFlags.HideInHierarchy;
 			if (editMode == EditModes.Railings)
 				railing.parent.SetActive(false);
@@ -284,12 +554,12 @@ namespace PCS
 
 			startCap.parent = new GameObject("Start Cap");
 			startCap.parent.transform.parent = _conveyorBody.transform;
-			startCap.parent.transform.localPosition = PCSUtils.GetStartCapTopEdge(startCap.positionOffset);
+			startCap.parent.transform.localPosition = _geometry.startCapAnchor;
 			startCap.parent.hideFlags = HideFlags.HideInHierarchy;
 
 			railingStartCap.parent = new GameObject("Railing Start Cap");
 			railingStartCap.parent.transform.parent = startCap.parent.transform;
-			railingStartCap.parent.transform.position = Vector3.zero;
+			railingStartCap.parent.transform.localPosition = Vector3.zero;
 			railingStartCap.parent.hideFlags = HideFlags.HideInHierarchy;
 			if (editMode == EditModes.Railings)
 				railingStartCap.parent.SetActive(false);
@@ -304,7 +574,7 @@ namespace PCS
 
 			endCap.parent = new GameObject("End Cap");
 			endCap.parent.transform.parent = _conveyorBody.transform;
-			endCap.parent.transform.localPosition = PCSUtils.GetEndCapTopEdge(startCap.positionOffset, belt.positionOffset, length);
+			endCap.parent.transform.localPosition = _geometry.endCapAnchor;
 			endCap.parent.hideFlags = HideFlags.HideInHierarchy;
 
 			railingEndCap.parent = new GameObject("Railing End Cap");
@@ -344,11 +614,11 @@ namespace PCS
 		void InstantiateObjects()
 		{
 			//Set start point for instantiating objects
-			Vector3 instantiatePosition = startCap.positionOffset;
+			Vector3 instantiatePosition = _geometry.runStart;
 
 
 			//Instantiate belt start cap
-			startCap.gameObject = InstantiateCap(startCap.prefab, startCap.parent, instantiatePosition, startCap.mirror, "Belt Start Cap");
+			startCap.gameObject = InstantiateCap(startCap.prefab, startCap.parent, startCap.mirror, "Belt Start Cap");
 			startCap.gameObject.hideFlags = HideFlags.HideInHierarchy;
 			uvS[0] = startCap.gameObject.AddComponent<PCSUVScroller>();
 			uvS[0].speed = speed / 0.2f;
@@ -380,12 +650,11 @@ namespace PCS
 			//----------------Instantiate belt and railings----------------//---------------------------------------------------------------------------------
 			if (belt.lengthMode == PCSPart.LengthMode.Stretch)
 			{
-				belt.gameObject = Instantiate(belt.prefab, transform);
-				belt.gameObject.transform.localPosition = instantiatePosition;
-				belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3((width-0.4f)/1.6f, 1, length));
+				belt.gameObject = Instantiate(belt.prefab, belt.parent.transform);
+				belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), length));
 				if (belt.mirror)
 					belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3(1, 1, -1));
-				belt.gameObject.transform.parent = belt.parent.transform;
+				AlignVisualBounds(belt.gameObject, belt.parent.transform, Vector3.zero, true, true, true);
 			}
 
 			if (railing.lengthMode == PCSPart.LengthMode.Stretch)
@@ -496,11 +765,16 @@ namespace PCS
 				if (belt.lengthMode == PCSPart.LengthMode.Repeat)
 				{
 					//----------------------Instantiate belt-----------------------
-					belt.gameObject = Instantiate(belt.prefab, transform);
-					belt.gameObject.transform.localPosition = instantiatePosition;
+					belt.gameObject = Instantiate(belt.prefab, belt.parent.transform);
 					if (belt.mirror)
 						belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3(1, 1, -1));
-					belt.gameObject.transform.parent = belt.parent.transform;
+					AlignVisualBounds(
+						belt.gameObject,
+						belt.parent.transform,
+						instantiatePosition - belt.parent.transform.localPosition,
+						true,
+						true,
+						true);
 					//-------------------------------------------------------------
 				}
 
@@ -539,7 +813,7 @@ namespace PCS
 
 
 			//Instantiate belt end cap
-			endCap.gameObject = InstantiateCap(endCap.prefab, endCap.parent, instantiatePosition, endCap.mirror, "Belt End Cap");
+			endCap.gameObject = InstantiateCap(endCap.prefab, endCap.parent, endCap.mirror, "Belt End Cap");
 			endCap.gameObject.hideFlags = HideFlags.HideInHierarchy;
 			uvS[1] = endCap.gameObject.AddComponent<PCSUVScroller>();
 			uvS[1].speed = speed / 0.2f;
@@ -564,16 +838,16 @@ namespace PCS
 			{
 				GameObject internalPiece = Instantiate(internals.prefab);
 				internalPiece.transform.parent = internals.parent.transform;
-				internalPiece.transform.localPosition = PCSUtils.GetStartCapTopEdge(startCap.positionOffset);
-				internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3((width - 0.4f) / 1.6f, 1, 1));
+				internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 				if (internals.mirror)
 					internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+				AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runStart, true, true, true);
 
 				
 
 				if (internalsCount > 2)
 				{
-					float dist = internals.positionOffset.z + belt.positionOffset.z * length; //Vector3.Distance(PCSUtils.GetStartCapTopEdge(startCap.positionOffset), PCSUtils.GetEndCapTopEdge(startCap.positionOffset, belt.positionOffset, length));
+						float dist = internals.positionOffset.z + belt.positionOffset.z * length; //Vector3.Distance(PCSUtils.GetStartCapTopEdge(startCap.positionOffset), PCSUtils.GetEndCapTopEdge(startCap.positionOffset, belt.positionOffset, length));
 					//float gap = dist / (internalsCount - 2);
 					//dist -= gap;
 					float sep = dist / (internalsCount-1);
@@ -581,21 +855,21 @@ namespace PCS
 					{
 						internalPiece = Instantiate(internals.prefab);
 						internalPiece.transform.parent = internals.parent.transform;
-						internalPiece.transform.localPosition = PCSUtils.GetStartCapTopEdge(startCap.positionOffset) + new Vector3(0, 0, sep * i);
-						internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3((width - 0.4f) / 1.6f, 1, 1));
+						internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 						//internalPiece.transform.localPosition += 
 						if (internals.mirror)
 							internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+						AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runStart + new Vector3(0, 0, sep * i), true, true, true);
 					}
 				}
 				else
 				{
 					internalPiece = Instantiate(internals.prefab);
 					internalPiece.transform.parent = internals.parent.transform;
-					internalPiece.transform.localPosition = PCSUtils.GetEndCapTopEdge(startCap.positionOffset, belt.positionOffset, length);
-					internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3((width - 0.4f) / 1.6f, 1, 1));
+					internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 					if (!internals.mirror)
 						internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+					AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runEnd, true, true, true);
 				}
 			}
 
@@ -609,8 +883,8 @@ namespace PCS
 			if (conveyorSupportPrefab == null) return;
 
 			float angleRad = conveyorSlopeAngle * Mathf.Deg2Rad;
-			float startZ = startCap.positionOffset.z;
-			float endZ   = startCap.positionOffset.z + belt.positionOffset.z * length;
+			float startZ = _geometry.runStartEdgeZ;
+			float endZ   = _geometry.runEndEdgeZ;
 
 			// Positive angle elevates endZ (larger Z) due to Unity X-rotation convention.
 			// Front support (i=0) is assigned to endZ so it is the elevated end for positive angle.
@@ -622,42 +896,31 @@ namespace PCS
 			{
 				float capZ = bodyZ[i] * Mathf.Cos(angleRad);
 
-				// Instantiate with base scale first so we can measure the world-space depth
+				// Instantiate with the reference scale, then fit the support to the
+				// current conveyor width and required height.
 				GameObject support = Instantiate(conveyorSupportPrefab);
 				support.name = names[i];
 				support.transform.parent = _supportsParent.transform;
 				support.transform.localRotation = Quaternion.Euler(-90f, 0f, -90f);
 				support.transform.localScale = conveyorSupportScale;
 				support.transform.localPosition = Vector3.zero;
+				float capY = _geometry.beltElevation + bodyZ[i] * Mathf.Sin(angleRad);
+				float targetHeight = capY;
+				FitSupportScale(support, GetBeltSurfaceWidth(), targetHeight);
 
-				// Measure world-space Z depth of the support at base scale.
+				// Measure world-space Z depth after fitting.
 				// A vertical support of depth D at slope angle θ would pierce (D/2)*tan(θ)
 				// above the angled belt surface, blocking packages. Subtract as clearance.
 				float clearance = 0f;
-				Renderer supportRenderer = support.GetComponentInChildren<Renderer>();
-				if (supportRenderer != null && Mathf.Abs(angleRad) > 0.0001f)
-					clearance = (supportRenderer.bounds.size.z * 0.5f) * Mathf.Abs(Mathf.Tan(angleRad));
+				Bounds supportBounds = GetCombinedRendererLocalBounds(support.transform);
+				if (Mathf.Abs(angleRad) > 0.0001f)
+					clearance = (supportBounds.size.z * 0.5f) * Mathf.Abs(Mathf.Tan(angleRad));
 
 				// Belt-end Y after slope rotation, pulled back by clearance so the support
 				// top sits flush below the angled belt surface rather than piercing it.
-				float capY = bodyZ[i] * Mathf.Sin(angleRad) - clearance;
+				capY -= clearance;
 
-				// Ground level is fixed: flat support goes from Y=0 (belt) to Y=-(2*halfH)
-				float groundY = -(2f * conveyorSupportHeight);
-
-				// Support spans from belt end (top=capY) down to ground (bottom=groundY).
-				// Pivot is at center, so center = midpoint and scale.z stretches equally both ways.
-				float totalHeight = capY - groundY;
-				float centerY     = (capY + groundY) * 0.5f;
-
-				Vector3 scale = conveyorSupportScale;
-				scale.z *= totalHeight / (2f * conveyorSupportHeight);
-				support.transform.localScale = scale;
-
-				float meshCenterX = supportRenderer != null
-					? _supportsParent.transform.InverseTransformPoint(supportRenderer.bounds.center).x
-					: 0f;
-				support.transform.localPosition = new Vector3(-meshCenterX, centerY, capZ);
+				AlignVisualBounds(support, _supportsParent.transform, new Vector3(0f, 0f, capZ), true, true, true);
 
 				foreach (MeshFilter mf in support.GetComponentsInChildren<MeshFilter>())
 				{
@@ -667,47 +930,47 @@ namespace PCS
 			}
 		}
 
-		GameObject InstantiateCap(GameObject capPrefab, GameObject capParent, Vector3 instantiatePosition, bool mirrorCap, string name)
+		GameObject InstantiateCap(GameObject capPrefab, GameObject capParent, bool mirrorCap, string name)
 		{
-			GameObject cap = Instantiate(capPrefab, transform);
+			GameObject cap = Instantiate(capPrefab, capParent.transform);
 			cap.name = name;
-			cap.transform.localPosition = instantiatePosition;
-			cap.transform.localScale = Vector3.Scale(cap.transform.localScale, new Vector3((width - 0.4f) / 1.6f, 1, 1));
+			cap.transform.localScale = Vector3.Scale(cap.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 			if (mirrorCap)
 				cap.transform.localScale = Vector3.Scale(cap.transform.localScale, new Vector3(1, 1, -1));
-			cap.transform.parent = capParent.transform;
+			AlignVisualBounds(cap, capParent.transform, Vector3.zero, true, true, true);
 
 			return cap;
 		}
 
 		GameObject InstantiateRailingPiece(int side, int index, Vector3 instantiatePosition)
 		{
-			instantiatePosition = instantiatePosition + new Vector3(side == 0 ?  ((width - 0.4f)/2) + 0.1f : -(((width - 0.4f) / 2) + 0.1f), 0, 0);
+			instantiatePosition = instantiatePosition + new Vector3(side == 0 ?  (GetBeltSurfaceWidth() / 2f) + 0.1f : -((GetBeltSurfaceWidth() / 2f) + 0.1f), 0, 0);
 
 			GameObject railingPiece;
+			Transform parentTransform = _conveyorBody.transform;
 
 			//Start Cap
 			if (index == 0)
 			{
 				if (railingData[side].enabledStates[index + 1])
 				{
-					railingPiece = Instantiate(railingStartCap.prefab, transform);
-					railingPiece.transform.localPosition = instantiatePosition;
+					railingPiece = Instantiate(railingStartCap.prefab, parentTransform);
 
 					if (railingStartCap.mirror)
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 					else
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+					AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 				}
 				else
 				{
-					railingPiece = Instantiate(railingDoubleCap.prefab, transform);
-					railingPiece.transform.localPosition = instantiatePosition;
+					railingPiece = Instantiate(railingDoubleCap.prefab, parentTransform);
 
 					if (railingStartCap.mirror)
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 					else
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+					AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 				}
 			}
 			//End Cap
@@ -715,68 +978,74 @@ namespace PCS
 			{
 				if (railingData[side].enabledStates[index - 1])
 				{
-					railingPiece = Instantiate(railingEndCap.prefab, transform);
-					railingPiece.transform.localPosition = instantiatePosition;
+					railingPiece = Instantiate(railingEndCap.prefab, parentTransform);
 
 					if (railingEndCap.mirror)
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 					else
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+					AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 				}
 				else
 				{
-					railingPiece = Instantiate(railingDoubleCap.prefab, transform);
-					railingPiece.transform.localPosition = instantiatePosition;
+					railingPiece = Instantiate(railingDoubleCap.prefab, parentTransform);
 
 					if (railingEndCap.mirror)
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 					else
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+					AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 				}
 			}
 			//Regular railingPiece - double cap
 			else if (!railingData[side].enabledStates[index - 1] && !railingData[side].enabledStates[index + 1])
 			{
-				railingPiece = Instantiate(railingDoubleCap.prefab, transform);
-				railingPiece.transform.localPosition = instantiatePosition;
+				railingPiece = Instantiate(railingDoubleCap.prefab, parentTransform);
 
 				if (railingDoubleCap.mirror)
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 				else
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+				AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 			}
 			//Regular railingPiece - start cap
 			else if (!railingData[side].enabledStates[index - 1])
 			{
-				railingPiece = Instantiate(railingStartCap.prefab, transform);
-				railingPiece.transform.localPosition = instantiatePosition + Vector3.forward * railingStartCap.renderers[1].bounds.size.z;
+				railingPiece = Instantiate(railingStartCap.prefab, parentTransform);
 
 				if (railingStartCap.mirror)
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 				else
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+				AlignVisualBounds(
+					railingPiece,
+					parentTransform,
+					instantiatePosition + Vector3.forward * railingStartCap.renderers[1].bounds.size.z,
+					true,
+					true,
+					true);
 			}
 			//Regular railingPiece - end cap
 			else if (!railingData[side].enabledStates[index + 1])
 			{
-				railingPiece = Instantiate(railingEndCap.prefab, transform);
-				railingPiece.transform.localPosition = instantiatePosition;
+				railingPiece = Instantiate(railingEndCap.prefab, parentTransform);
 
 				if (railingEndCap.mirror)
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 				else
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+				AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 			}
 			//Regular railingPiece - middle piece
 			else
 			{
-				railingPiece = Instantiate(railing.prefab, transform);
-				railingPiece.transform.localPosition = instantiatePosition;
+				railingPiece = Instantiate(railing.prefab, parentTransform);
 
 				if (railing.mirror)
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 				else
 					railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
+				AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
 			}
 
 			return railingPiece;
@@ -958,21 +1227,17 @@ namespace PCS
 
 	void CreatePhysicsComponenets()
 		{
-			BoxCollider beltCollider = belt.parent.AddComponent<BoxCollider>();
-			beltCollider.size = new Vector3(beltCollider.size.x, beltCollider.size.y-0.01f, PCSUtils.GetBeltLength(belt.prefab, length, startCap.prefab, endCap.prefab));
-			visibleColliders.Add(beltCollider);
+			if (TryGetCombinedRendererBoundsInSpace(belt.parent.transform, physicsParent.transform, out Bounds beltBounds))
+			{
+				BoxCollider beltCollider = physicsParent.AddComponent<BoxCollider>();
+				beltCollider.size = new Vector3(
+					Mathf.Max(0.001f, beltBounds.size.x),
+					Mathf.Max(0.001f, beltBounds.size.y),
+					Mathf.Max(0.001f, beltBounds.size.z));
+				beltCollider.center = beltBounds.center;
+				visibleColliders.Add(beltCollider);
+			}
 
-			//MeshCollider cStart = startCap.gameObject.AddComponent<MeshCollider>();
-			//cStart.convex = true;
-			//visibleColliders.Add(cStart);
-
-			//MeshCollider cEnd = endCap.gameObject.AddComponent<MeshCollider>();
-			//cEnd.convex = true;
-			//visibleColliders.Add(cEnd);
-
-			BoxCollider conveyorCollider = physicsParent.AddComponent<BoxCollider>();
-			conveyorCollider.size = new Vector3(belt.renderers[0].bounds.size.x * ((width - 0.4f) / 1.6f), 0.01f, PCSUtils.GetBeltLength(belt.prefab, length, startCap.prefab, endCap.prefab));
-			conveyorCollider.center = belt.parent.transform.localPosition - new Vector3(0, 0.005f, 0);
 			Rigidbody coveyorRB = physicsParent.AddComponent<Rigidbody>();
 			coveyorRB.isKinematic = true;
 
@@ -1003,7 +1268,7 @@ namespace PCS
 			transform.position = parentTransform.position;
 			transform.rotation = parentTransform.rotation;
 			transform.localScale = parentTransform.scale;
-			_conveyorBody.transform.localRotation = Quaternion.Euler(-conveyorSlopeAngle, 0, 0);
+			_conveyorBody.transform.localRotation = Quaternion.Euler(-conveyorSlopeAngle, 0f, 0f);
 		}
 
 		int[] GetRailingCount()
@@ -1041,8 +1306,8 @@ namespace PCS
 				for (int j = 0; j < railingCount[i]; j++)
 				{
 					railingTempParents[i][j] = new GameObject("tempRailingParent");
-					railingTempParents[i][j].transform.parent = transform;
-					railingTempParents[i][j].transform.localPosition = PCSUtils.GetBeltTopCenter(startCap.positionOffset, belt.positionOffset, length);
+					railingTempParents[i][j].transform.parent = _conveyorBody.transform;
+					railingTempParents[i][j].transform.localPosition = _geometry.beltCenter;
 
 					for (int k = 0; k < railing.prefab.transform.childCount; k++)
 					{
@@ -1223,7 +1488,7 @@ namespace PCS
 								Gizmos.color = railingData[i].enabledStates[j] ? Color.green : Color.red;
 
 								Vector3 centre = railing.renderers[k].bounds.center;
-								Vector3 offset = new Vector3(((width - 0.4f) / 2) + 0.1f, 0 ,0);
+								Vector3 offset = new Vector3((GetBeltSurfaceWidth() / 2f) + 0.1f, 0 ,0);
 								centre.x *= (i == 0 ? 1 : -1);
 								offset.x *= (i == 0 ? 1 : -1);
 								Vector3 position = instantiatePosition + centre + offset;

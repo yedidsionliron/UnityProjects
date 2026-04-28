@@ -48,6 +48,8 @@ public class Diverter : MonoBehaviour
     [Tooltip("Length of the conveyor belt in local Z (used to space divert points evenly).")]
     public float beltLength = 6f;
 
+    [HideInInspector] public float measuredBeltLength = 0f;
+
     // triggerY is computed at runtime from the belt mesh — not a constant.
     private float triggerY;
 
@@ -77,6 +79,13 @@ public class Diverter : MonoBehaviour
 
     private void MeasureBeltLength()
     {
+        if (TryMeasureFromConveyorCollider(out float colliderLength))
+        {
+            measuredBeltLength = colliderLength;
+            Debug.Log($"Diverter '{name}': colliderLength={colliderLength:F3}  triggerWidth={triggerWidth:F3}  configuredBeltLength={beltLength:F3}  beltCenterLocalZ={beltCenterLocalZ:F3}  triggerY={triggerY:F3}", this);
+            return;
+        }
+
         var allRenderers = GetComponentsInChildren<Renderer>();
         // Exclude renderers under SortPoints (gaylords) — they inflate X bounds.
         var renderers = System.Array.FindAll(allRenderers, r => r.GetComponentInParent<SortPoint>() == null);
@@ -91,6 +100,7 @@ public class Diverter : MonoBehaviour
         float halfLen = Mathf.Abs(Vector3.Dot(wb.extents,
             new Vector3(Mathf.Abs(localZ.x), Mathf.Abs(localZ.y), Mathf.Abs(localZ.z))));
         float measured = halfLen * 2f;
+        measuredBeltLength = measured;
 
         // Project onto local X for width → drives triggerWidth and ExitOffset().
         Vector3 localX = transform.right;
@@ -109,6 +119,35 @@ public class Diverter : MonoBehaviour
         // beltLength is intentionally NOT updated here — it is configured by DiverterConfig.Build()
         // to match the gaylord row length exactly.
         Debug.Log($"Diverter '{name}': meshLength={measured:F3}  triggerWidth={triggerWidth:F3}  configuredBeltLength={beltLength:F3}  beltCenterLocalZ={beltCenterLocalZ:F3}  triggerY={triggerY:F3}", this);
+    }
+
+    private bool TryMeasureFromConveyorCollider(out float measuredLength)
+    {
+        measuredLength = 0f;
+
+        var conv = GetComponentInChildren<PCSConveyor>();
+        Collider beltCollider = conv != null ? conv.GetComponent<Collider>() : null;
+        if (beltCollider == null)
+        {
+            var singulator = GetComponentInChildren<PCSsingulator>();
+            beltCollider = singulator != null ? singulator.GetComponent<Collider>() : null;
+        }
+
+        if (beltCollider is not BoxCollider bc)
+            return false;
+
+        Transform ct = bc.transform;
+        Vector3 worldCenter = ct.TransformPoint(bc.center);
+        Vector3 worldSize = Vector3.Scale(bc.size, ct.lossyScale);
+
+        beltCenterLocalZ = transform.InverseTransformPoint(worldCenter).z;
+        triggerWidth = worldSize.x;
+
+        float worldSurfaceY = worldCenter.y + worldSize.y * 0.5f;
+        float localSurfaceY = transform.InverseTransformPoint(new Vector3(worldCenter.x, worldSurfaceY, worldCenter.z)).y;
+        triggerY = localSurfaceY + triggerHeight * 0.5f;
+        measuredLength = worldSize.z;
+        return true;
     }
 
     /// <summary>

@@ -31,7 +31,9 @@
       "Bash(xargs -I{} cat \"{}\")",
       "Bash(python3:*)",
       "Bash(sort -t: -k2 -n)",
-      "Bash(powershell -Command \"\\(Get-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\\) -replace '  m_Intensity: 5$', '  m_Intensity: 150' | Set-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\")"
+      "Bash(powershell -Command \"\\(Get-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\\) -replace '  m_Intensity: 5$', '  m_Intensity: 150' | Set-Content 'C:/Users/Liron/UnityProjects/Assets/UnityWarehouseSceneHDRP/Scene_Warehouse/WarehouseSceneSample.unity'\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File scripts/generate_fig5_timing_svg.ps1)",
+      "Bash(powershell -ExecutionPolicy Bypass -File scripts/generate_fig6_trigger_svg.ps1)"
     ]
   }
 }

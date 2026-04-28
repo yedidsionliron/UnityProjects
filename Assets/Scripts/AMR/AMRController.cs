@@ -36,8 +36,8 @@ public class AMRController : MonoBehaviour
     public AMRStationConfig config;
 
     [Header("Carry")]
-    [Tooltip("Local offset from robot pivot where the gaylord centre sits when carried.")]
-    public Vector3 carryOffset = new Vector3(0f, 0.05f, 0f);
+    [Tooltip("Optional local-space adjustment applied after the carry position is auto-derived from the picked up gaylord.")]
+    public Vector3 carryOffset = Vector3.zero;
 
     // ── Events ─────────────────────────────────────────────────────────────
     public event Action<AMRController, AMRTask> OnTaskCompleted;
@@ -53,6 +53,8 @@ public class AMRController : MonoBehaviour
     private int              _pathIndex;
     private bool             _isMoving;
     private float            _lastReplanTime = -999f;
+    private Vector3          _activeCarryOffset;
+    private bool             _hasActiveCarryOffset;
 
     private Rigidbody _rb;
 
@@ -67,7 +69,7 @@ public class AMRController : MonoBehaviour
 
     void Update()
     {
-        if (CarriedGaylord != null)
+        if (CarriedGaylord != null && State == AMRState.NavigateToDestination)
             DriveGaylordPosition();
     }
 
@@ -82,6 +84,7 @@ public class AMRController : MonoBehaviour
             return;
         }
         CurrentTask = task;
+        _hasActiveCarryOffset = false;
 
         if (task.taskType == TaskType.Charge)
         {
@@ -265,6 +268,7 @@ public class AMRController : MonoBehaviour
         Vector3 startPos = CarriedGaylord.transform.position;
         Vector3 endPos   = startPos + Vector3.up * config.liftHeight;
         yield return AnimateGaylordVertical(startPos, endPos, config.liftDuration);
+        CacheCarryOffset();
     }
 
     private IEnumerator LowerGaylord()
@@ -279,6 +283,7 @@ public class AMRController : MonoBehaviour
         // Place on destination cell
         gridMap.SetOccupied(CurrentCell, CarriedGaylord);
         CarriedGaylord = null;
+        _hasActiveCarryOffset = false;
     }
 
     private IEnumerator AnimateGaylordVertical(Vector3 from, Vector3 to, float duration)
@@ -300,8 +305,23 @@ public class AMRController : MonoBehaviour
     private void DriveGaylordPosition()
     {
         // Drive position only — rotation is intentionally left unchanged
-        Vector3 worldCarryPoint = transform.TransformPoint(carryOffset);
+        Vector3 localCarryOffset = _hasActiveCarryOffset ? _activeCarryOffset : carryOffset;
+        Vector3 worldCarryPoint = transform.TransformPoint(localCarryOffset);
         CarriedGaylord.transform.position = worldCarryPoint;
+    }
+
+    private void CacheCarryOffset()
+    {
+        if (CarriedGaylord == null)
+        {
+            _hasActiveCarryOffset = false;
+            return;
+        }
+
+        // Capture the actual post-lift relationship so carry alignment follows
+        // the current Gaylord scale/pivot instead of relying on a magic constant.
+        _activeCarryOffset = transform.InverseTransformPoint(CarriedGaylord.transform.position) + carryOffset;
+        _hasActiveCarryOffset = true;
     }
 
     // ── Gizmos ────────────────────────────────────────────────────────────

@@ -30,7 +30,7 @@ public class DiverterConfig : MonoBehaviour
     public float gaylordWidth   = 1.2f;
     [Tooltip("Gap from the physical belt edge to the gaylord centre in metres.")]
     public float gaylordDepth   = 0.8f;
-    [Tooltip("Minimum air gap between the belt frame outer edge and the nearest gaylord face (metres).")]
+    [Tooltip("Legacy side clearance term in metres. The current build places Gaylords flush to the belt edge, so this is ignored.")]
     public float gaylordGap     = 0.1f;
 
     [Header("Overflow")]
@@ -49,20 +49,21 @@ public class DiverterConfig : MonoBehaviour
     /// sized the belt via PCSConfig and measured it via Diverter.MeasureBelt().
     ///
     /// <paramref name="beltHalfX"/>: physical half-width of the belt mesh in world X,
-    ///   measured by DiverterConfigEditor from actual renderer bounds.
+    ///   measured by DiverterConfigEditor from actual belt geometry.
+    /// <paramref name="gaylordHalfX"/>: half the measured Gaylord footprint in world X.
     /// <paramref name="effectiveSlotPitch"/>: actual slot spacing in Z — at least the
     ///   gaylord prefab's measured Z footprint so gaylords never overlap each other.
     ///
     /// Returns the Diverter component used (created or existing).
     /// </summary>
-    public Diverter BuildSortPoints(Diverter diverter, float beltHalfX, float effectiveSlotPitch, float gaylordZScale, float groundWorldY)
+    public Diverter BuildSortPoints(Diverter diverter, float beltHalfX, float gaylordHalfX, float effectiveSlotPitch, float gaylordZScale, float groundWorldY)
     {
         ClearSortPoints();
         sortPoints = new SortPoint[numDivertPoints * 2];
 
         float totalLength = numDivertPoints * effectiveSlotPitch;
         float beltStart   = diverter.beltCenterLocalZ - totalLength / 2f;
-        float xOffset     = beltHalfX + gaylordGap + gaylordDepth;
+        float xOffset     = beltHalfX + gaylordHalfX;
 
         for (int i = 0; i < numDivertPoints; i++)
         {
@@ -155,8 +156,13 @@ public class DiverterConfig : MonoBehaviour
                 DestroyImmediate(child.gameObject);
         }
 
-        // Position: centred on the belt in X, one slot-pitch past the last divert point.
-        float beltEnd = diverter.beltCenterLocalZ + diverter.beltLength / 2f + slotPitch * 0.5f;
+        // Position: centred on the belt in X, immediately past the physical belt end.
+        // Use the measured belt length here rather than the logical row length, because
+        // PCS tile rounding can make the conveyor physically longer than the Gaylord row.
+        float physicalHalfLength = diverter.measuredBeltLength > 0f
+            ? diverter.measuredBeltLength * 0.5f
+            : diverter.beltLength * 0.5f;
+        float beltEnd = diverter.beltCenterLocalZ + physicalHalfLength + slotPitch * 0.5f;
         Vector3 worldPos = diverter.transform.TransformPoint(new Vector3(0f, 0f, beltEnd));
         worldPos.y = groundWorldY;
 

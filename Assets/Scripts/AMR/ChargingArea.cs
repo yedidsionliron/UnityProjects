@@ -5,8 +5,8 @@ using UnityEngine;
 /// Manages a configurable number of charging bays.
 /// Robots that have no pending task are directed here.
 ///
-/// Placement: the StationGridBuilder places this object adjacent to the staging area
-/// (right of col 24). One child GameObject per bay, named "Bay_0", "Bay_1", etc.
+/// Placement: the StationGridBuilder places this object adjacent to the staging area.
+/// One child GameObject per bay, named "Bay_0", "Bay_1", etc.
 /// </summary>
 public class ChargingArea : MonoBehaviour
 {
@@ -16,15 +16,14 @@ public class ChargingArea : MonoBehaviour
     [Tooltip("World-space positions of individual bays. Populated by StationGridBuilder.")]
     public List<Transform> bayTransforms = new List<Transform>();
 
-    // ── Runtime state ──────────────────────────────────────────────────────
     private AMRController[] _occupants; // null = bay is free
+    private GridMap _gridMap;
 
     void Awake()
     {
+        _gridMap = GetComponentInParent<GridMap>();
         _occupants = new AMRController[Mathf.Max(bayCount, bayTransforms.Count)];
     }
-
-    // ── Public API ─────────────────────────────────────────────────────────
 
     /// <summary>
     /// Request a charging bay for <paramref name="robot"/>.
@@ -60,16 +59,15 @@ public class ChargingArea : MonoBehaviour
         return false;
     }
 
-    // ── Private ────────────────────────────────────────────────────────────
-
     private System.Collections.IEnumerator NavigateRobotToBay(AMRController robot, int bayIndex)
     {
         Transform bay = bayTransforms[bayIndex];
-        Vector3   goal = bay.position;
-        float     speed = robot.config != null ? robot.config.emptySpeed : 1.5f;
+        Vector3 goal = bay.position;
+        float speed = robot.config != null ? robot.config.emptySpeed : 1.5f;
+        float arrivalThreshold = GetArrivalThreshold();
 
-        // Simple lerp to bay position (no grid pathfinding — bays are outside the grid)
-        while (Vector3.Distance(robot.transform.position, goal) > 0.02f)
+        // Bays live outside the logical grid, so this final approach is world-space only.
+        while (Vector3.Distance(robot.transform.position, goal) > arrivalThreshold)
         {
             robot.transform.position = Vector3.MoveTowards(
                 robot.transform.position, goal, speed * Time.deltaTime);
@@ -84,8 +82,21 @@ public class ChargingArea : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(0.2f, 0.8f, 0.2f, 0.5f);
+        float gizmoSize = GetBayGizmoSize();
         foreach (var t in bayTransforms)
-            if (t != null) Gizmos.DrawCube(t.position, Vector3.one * 0.4f);
+            if (t != null) Gizmos.DrawCube(t.position, Vector3.one * gizmoSize);
     }
 #endif
+
+    private float GetArrivalThreshold()
+    {
+        if (_gridMap == null) return 0.02f;
+        return Mathf.Max(0.02f, _gridMap.MinCellDimension * 0.05f);
+    }
+
+    private float GetBayGizmoSize()
+    {
+        if (_gridMap == null) return 0.4f;
+        return Mathf.Max(0.4f, _gridMap.MinCellDimension * 0.35f);
+    }
 }
