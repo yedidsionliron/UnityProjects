@@ -29,6 +29,7 @@ namespace PCS
 	{
 		private const float SideFrameAllowance = 0.4f;
 		private const float BaseBeltSurfaceWidth = 1.6f;
+		private const float BeltColliderEndOverlap = 0.1f;
 
 		public enum EditModes { None, Railings }
 
@@ -336,6 +337,23 @@ namespace PCS
 				instance.transform.localPosition += delta;
 		}
 
+		private static float GetBaseVisualHeight(GameObject prefab)
+		{
+			if (prefab == null) return 0f;
+			return GetCombinedRendererLocalBounds(prefab.transform).size.y;
+		}
+
+		private static void PreserveVisualHeight(GameObject instance, Transform parent, float targetHeight)
+		{
+			if (instance == null || parent == null || targetHeight <= 0.0001f) return;
+			if (!TryGetCombinedRendererBoundsInSpace(instance.transform, parent, out Bounds bounds)) return;
+			if (bounds.size.y <= 0.0001f) return;
+
+			Vector3 scale = instance.transform.localScale;
+			scale.y *= targetHeight / bounds.size.y;
+			instance.transform.localScale = scale;
+		}
+
 		private void BuildGeometry(float beltPrefabLength, float startCapPrefabLength, float endCapPrefabLength)
 		{
 			_geometry = new ConveyorGeometry
@@ -362,7 +380,7 @@ namespace PCS
 
 		public float GetVerticalScale()
 		{
-			return GetBeltWidthScale();
+			return 1f;
 		}
 
 		public float GetSupportHalfHeight()
@@ -654,6 +672,7 @@ namespace PCS
 				belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), length));
 				if (belt.mirror)
 					belt.gameObject.transform.localScale = Vector3.Scale(belt.gameObject.transform.localScale, new Vector3(1, 1, -1));
+				PreserveVisualHeight(belt.gameObject, belt.parent.transform, GetBaseVisualHeight(belt.prefab));
 				AlignVisualBounds(belt.gameObject, belt.parent.transform, Vector3.zero, true, true, true);
 			}
 
@@ -841,6 +860,7 @@ namespace PCS
 				internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 				if (internals.mirror)
 					internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+				PreserveVisualHeight(internalPiece, internals.parent.transform, GetBaseVisualHeight(internals.prefab));
 				AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runStart, true, true, true);
 
 				
@@ -859,6 +879,7 @@ namespace PCS
 						//internalPiece.transform.localPosition += 
 						if (internals.mirror)
 							internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+						PreserveVisualHeight(internalPiece, internals.parent.transform, GetBaseVisualHeight(internals.prefab));
 						AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runStart + new Vector3(0, 0, sep * i), true, true, true);
 					}
 				}
@@ -869,6 +890,7 @@ namespace PCS
 					internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 					if (!internals.mirror)
 						internalPiece.transform.localScale = Vector3.Scale(internalPiece.transform.localScale, new Vector3(1, 1, -1));
+					PreserveVisualHeight(internalPiece, internals.parent.transform, GetBaseVisualHeight(internals.prefab));
 					AlignVisualBounds(internalPiece, internals.parent.transform, _geometry.runEnd, true, true, true);
 				}
 			}
@@ -937,6 +959,7 @@ namespace PCS
 			cap.transform.localScale = Vector3.Scale(cap.transform.localScale, new Vector3(GetBeltWidthScale(), GetVerticalScale(), 1));
 			if (mirrorCap)
 				cap.transform.localScale = Vector3.Scale(cap.transform.localScale, new Vector3(1, 1, -1));
+			PreserveVisualHeight(cap, capParent.transform, GetBaseVisualHeight(capPrefab));
 			AlignVisualBounds(cap, capParent.transform, Vector3.zero, true, true, true);
 
 			return cap;
@@ -1229,12 +1252,15 @@ namespace PCS
 		{
 			if (TryGetCombinedRendererBoundsInSpace(belt.parent.transform, physicsParent.transform, out Bounds beltBounds))
 			{
+				float fullLength = Mathf.Max(beltBounds.size.z, _geometry.physicalLength);
+				float colliderLength = fullLength + (2f * BeltColliderEndOverlap);
+
 				BoxCollider beltCollider = physicsParent.AddComponent<BoxCollider>();
 				beltCollider.size = new Vector3(
 					Mathf.Max(0.001f, beltBounds.size.x),
 					Mathf.Max(0.001f, beltBounds.size.y),
-					Mathf.Max(0.001f, beltBounds.size.z));
-				beltCollider.center = beltBounds.center;
+					Mathf.Max(0.001f, colliderLength));
+				beltCollider.center = new Vector3(beltBounds.center.x, beltBounds.center.y, fullLength * 0.5f);
 				visibleColliders.Add(beltCollider);
 			}
 
