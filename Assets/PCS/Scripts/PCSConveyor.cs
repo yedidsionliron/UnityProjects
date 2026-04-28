@@ -17,10 +17,31 @@ namespace PCS
 
 		private BoxCollider bc;
 
+		private BoxCollider FindPrimarySurfaceCollider()
+		{
+			BoxCollider[] colliders = GetComponents<BoxCollider>();
+			BoxCollider best = null;
+			float bestScore = float.NegativeInfinity;
+
+			for (int i = 0; i < colliders.Length; i++)
+			{
+				BoxCollider candidate = colliders[i];
+				Vector3 size = Vector3.Scale(candidate.size, transform.lossyScale);
+				float score = Mathf.Abs(size.x * size.z);
+				if (best == null || score > bestScore)
+				{
+					best = candidate;
+					bestScore = score;
+				}
+			}
+
+			return best;
+		}
+
 		private void Start()
 		{
 			rb = GetComponent<Rigidbody>();
-			bc = GetComponent<BoxCollider>();
+			bc = FindPrimarySurfaceCollider();
 
 			// Zero PhysX friction — packages are driven by explicit AddForce, not surface friction.
 			// Non-zero friction here would double-drive packages (kinematic surface + explicit force)
@@ -38,13 +59,16 @@ namespace PCS
 
 		void FixedUpdate()
 		{
-			// Kinematic belt surface movement (preserves UV scrolling / visual motion)
-			transform.position -= transform.forward * speed * Time.fixedDeltaTime;
+			// Sweep the kinematic collider through the contact patch, then end the step
+			// back at the authored position so the visual conveyor stays stationary.
+			Vector3 authoredPosition = transform.position;
+			Vector3 delta = transform.forward * speed * Time.fixedDeltaTime;
+			transform.position = authoredPosition - delta;
 			Physics.SyncTransforms();
-			rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+			rb.MovePosition(authoredPosition);
 
-			// Force-based driving: explicitly push packages at belt speed regardless of
-			// PhysX material friction (essential for slanted belts or zero-friction packages).
+			// Force assist keeps packages tracking the target belt speed on slanted belts
+			// and with low-friction package colliders.
 			if (bc != null)
 				DrivePackages();
 		}
@@ -55,7 +79,7 @@ namespace PCS
 			Vector3 worldCenter = transform.TransformPoint(bc.center + Vector3.up * 0.05f);
 			Vector3 halfExtents = new Vector3(
 				bc.size.x * 0.5f * transform.lossyScale.x,
-				bc.size.y * 0.5f * transform.lossyScale.y + 0.05f,
+				Mathf.Max(0.08f, bc.size.y * 0.5f * transform.lossyScale.y + 0.05f),
 				bc.size.z * 0.5f * transform.lossyScale.z
 			);
 
@@ -76,13 +100,12 @@ namespace PCS
 				float slip = speed - Vector3.Dot(packageRb.linearVelocity, beltDir);
 				if (Mathf.Abs(slip) < 0.001f) continue;
 
-				// Normal force: project gravity onto belt's surface normal (correct for slanted belts).
-				float normalForce   = packageRb.mass * Mathf.Abs(Vector3.Dot(Physics.gravity, transform.up));
+				// Guarantee enough forward drive to converge toward belt speed within a
+				// physics step, while still allowing extra grip from the friction model.
+				float normalForce = packageRb.mass * Mathf.Abs(Vector3.Dot(Physics.gravity, transform.up));
 				float frictionForce = frictionCoefficient * normalForce;
-
-				// Cap so the package doesn't overshoot belt speed in one physics step.
-				float maxForce    = packageRb.mass * Mathf.Abs(slip) / Time.fixedDeltaTime;
-				float appliedForce = Mathf.Min(frictionForce, maxForce);
+				float catchUpForce = packageRb.mass * Mathf.Abs(slip) / Time.fixedDeltaTime;
+				float appliedForce = Mathf.Max(frictionForce, catchUpForce);
 
 				packageRb.AddForce(beltDir * Mathf.Sign(slip) * appliedForce, ForceMode.Force);
 			}

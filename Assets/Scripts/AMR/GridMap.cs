@@ -128,6 +128,12 @@ public class GridMap : MonoBehaviour
     /// <summary>Cell depth along the Z axis (metres). Set by StationGridBuilder.</summary>
     public float cellDepth = 1.2f;
 
+    /// <summary>Returns the current cell size as a 2D vector (X width, Y depth).</summary>
+    public Vector2 CellSize => new Vector2(cellWidth, cellDepth);
+
+    /// <summary>Returns the smaller of the current cell width/depth.</summary>
+    public float MinCellDimension => Mathf.Min(cellWidth, cellDepth);
+
     /// <summary>World-space origin — top-left corner of cell (0,0).</summary>
     public Vector3 gridOrigin = Vector3.zero;
 

@@ -1,0 +1,7 @@
+﻿PackageId,Address,PlannedGaylord,PlannedRangeMin,PlannedRangeMax,ActualGaylord,ActualRangeMin,ActualRangeMax,IsCorrect,SpawnTime,LandingTime
+1,990,SortPoint_19_Right,951,1000,,,,,0.398,
+2,83,SortPoint_1_Right,51,100,,,,,0.810,
+3,161,SortPoint_4_Left,144,179,,,,,1.293,
+4,195,SortPoint_5_Right,180,214,,,,,1.781,
+5,636,SortPoint_17_Right,608,643,,,,,2.211,
+6,29,SortPoint_0_Left,1,50,,,,,2.645,

@@ -11,16 +11,14 @@ namespace PCS
 
 		public static void CombineChildMeshes(this GameObject parentGameObject, Material material)
 		{
-			Vector3 position = parentGameObject.transform.position;
-			parentGameObject.transform.position = Vector3.zero;
-		
 			MeshFilter[] meshFilters = parentGameObject.GetComponentsInChildren<MeshFilter>();
 			CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+			Matrix4x4 parentWorldToLocal = parentGameObject.transform.worldToLocalMatrix;
 			int i = 0;
 			while (i < meshFilters.Length)
 			{
 				combine[i].mesh = meshFilters[i].sharedMesh;
-				combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+				combine[i].transform = parentWorldToLocal * meshFilters[i].transform.localToWorldMatrix;
 				GameObject.DestroyImmediate(meshFilters[i].gameObject);
 				i++;
 			}
@@ -31,9 +29,6 @@ namespace PCS
 			MeshRenderer parentRenderer = parentGameObject.AddComponent<MeshRenderer>();
 			parentRenderer.sharedMaterial = material;
 			parentGameObject.SetActive(true);
-
-			parentGameObject.transform.position = position;
-
 		}
 
 		public static Collider AddDuplicateCollider(this GameObject g, Collider collider)
@@ -42,9 +37,22 @@ namespace PCS
 
 			if (collider.GetType() == typeof(BoxCollider))
 			{
-				c = g.AddComponent<BoxCollider>();
-				((BoxCollider)c).center = ((BoxCollider)collider).center + collider.transform.position - g.transform.position;
-				((BoxCollider)c).size = ((BoxCollider)collider).size;
+				BoxCollider source = (BoxCollider)collider;
+				BoxCollider box = g.AddComponent<BoxCollider>();
+				Vector3 worldCenter = collider.transform.TransformPoint(source.center);
+				box.center = g.transform.InverseTransformPoint(worldCenter);
+
+				Vector3 sourceLossyScale = collider.transform.lossyScale;
+				Vector3 targetLossyScale = g.transform.lossyScale;
+				Vector3 worldSize = Vector3.Scale(source.size, new Vector3(
+					Mathf.Abs(sourceLossyScale.x),
+					Mathf.Abs(sourceLossyScale.y),
+					Mathf.Abs(sourceLossyScale.z)));
+				box.size = new Vector3(
+					targetLossyScale.x != 0f ? worldSize.x / Mathf.Abs(targetLossyScale.x) : worldSize.x,
+					targetLossyScale.y != 0f ? worldSize.y / Mathf.Abs(targetLossyScale.y) : worldSize.y,
+					targetLossyScale.z != 0f ? worldSize.z / Mathf.Abs(targetLossyScale.z) : worldSize.z);
+				c = box;
 			}
 			else if (collider.GetType() == typeof(MeshCollider))
 			{
