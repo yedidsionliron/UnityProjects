@@ -6854,15 +6854,6 @@
     {
       "row": 29,
       "col": 6,
-      "label": "down",
-      "cellType": "Corridor",
-      "direction": "down",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 29,
-      "col": 7,
       "label": "",
       "cellType": "Empty",
       "direction": null,
@@ -6871,19 +6862,28 @@
     },
     {
       "row": 29,
-      "col": 8,
-      "label": "up",
+      "col": 7,
+      "label": "down",
       "cellType": "Corridor",
-      "direction": "up",
+      "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 29,
+      "col": 8,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
       "isNoRobot": false,
       "rgbColor": null
     },
     {
       "row": 29,
       "col": 9,
-      "label": "any",
+      "label": "up",
       "cellType": "Corridor",
-      "direction": "any",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -6917,15 +6917,6 @@
     {
       "row": 29,
       "col": 13,
-      "label": "any",
-      "cellType": "Corridor",
-      "direction": "any",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 29,
-      "col": 14,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -6934,7 +6925,7 @@
     },
     {
       "row": 29,
-      "col": 15,
+      "col": 14,
       "label": "",
       "cellType": "Empty",
       "direction": null,
@@ -6943,7 +6934,7 @@
     },
     {
       "row": 29,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -6952,7 +6943,7 @@
     },
     {
       "row": 29,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -6961,10 +6952,19 @@
     },
     {
       "row": 29,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 29,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -7097,6 +7097,15 @@
     {
       "row": 30,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 30,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7105,28 +7114,19 @@
     },
     {
       "row": 30,
-      "col": 7,
+      "col": 8,
       "label": "",
       "cellType": "Empty",
       "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 30,
-      "col": 8,
-      "label": "up",
-      "cellType": "Corridor",
-      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
     {
       "row": 30,
       "col": 9,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -7160,24 +7160,15 @@
     {
       "row": 30,
       "col": 13,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
     {
       "row": 30,
       "col": 14,
-      "label": "up",
-      "cellType": "Corridor",
-      "direction": "up",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 30,
-      "col": 15,
       "label": "",
       "cellType": "Empty",
       "direction": null,
@@ -7186,7 +7177,7 @@
     },
     {
       "row": 30,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7195,7 +7186,7 @@
     },
     {
       "row": 30,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7204,10 +7195,19 @@
     },
     {
       "row": 30,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 30,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -7340,87 +7340,6 @@
     {
       "row": 31,
       "col": 6,
-      "label": "down",
-      "cellType": "Corridor",
-      "direction": "down",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 7,
-      "label": "any",
-      "cellType": "Corridor",
-      "direction": "any",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 8,
-      "label": "up",
-      "cellType": "Corridor",
-      "direction": "up",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 9,
-      "label": "S1",
-      "cellType": "SortChute",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": "8ED973"
-    },
-    {
-      "row": 31,
-      "col": 10,
-      "label": "Diverter",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 11,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 13,
-      "label": "S2",
-      "cellType": "SortChute",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": "F2CFEE"
-    },
-    {
-      "row": 31,
-      "col": 14,
-      "label": "up",
-      "cellType": "Corridor",
-      "direction": "up",
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 31,
-      "col": 15,
       "label": "",
       "cellType": "Empty",
       "direction": null,
@@ -7429,7 +7348,7 @@
     },
     {
       "row": 31,
-      "col": 16,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7438,7 +7357,16 @@
     },
     {
       "row": 31,
-      "col": 17,
+      "col": 8,
+      "label": "any",
+      "cellType": "Corridor",
+      "direction": "any",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7447,10 +7375,82 @@
     },
     {
       "row": 31,
-      "col": 18,
+      "col": 10,
+      "label": "S1",
+      "cellType": "SortChute",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": "8ED973"
+    },
+    {
+      "row": 31,
+      "col": 11,
+      "label": "Diverter",
+      "cellType": "SorterSystem",
+      "direction": null,
+      "isNoRobot": true,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 12,
+      "label": "S2",
+      "cellType": "SortChute",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": "F2CFEE"
+    },
+    {
+      "row": 31,
+      "col": 13,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 14,
+      "label": "any",
+      "cellType": "Corridor",
+      "direction": "any",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 16,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 17,
+      "label": "down",
+      "cellType": "Corridor",
+      "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 31,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -7583,6 +7583,15 @@
     {
       "row": 32,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 32,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7591,7 +7600,7 @@
     },
     {
       "row": 32,
-      "col": 7,
+      "col": 8,
       "label": "E1",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -7600,7 +7609,7 @@
     },
     {
       "row": 32,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7609,21 +7618,12 @@
     },
     {
       "row": 32,
-      "col": 9,
+      "col": 10,
       "label": "S3",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "8ED973"
-    },
-    {
-      "row": 32,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 32,
@@ -7637,15 +7637,6 @@
     {
       "row": 32,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 32,
-      "col": 13,
       "label": "S4",
       "cellType": "SortChute",
       "direction": null,
@@ -7654,7 +7645,7 @@
     },
     {
       "row": 32,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7663,7 +7654,7 @@
     },
     {
       "row": 32,
-      "col": 15,
+      "col": 14,
       "label": "E8",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -7672,7 +7663,7 @@
     },
     {
       "row": 32,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7681,7 +7672,7 @@
     },
     {
       "row": 32,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7690,10 +7681,19 @@
     },
     {
       "row": 32,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 32,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -7826,6 +7826,15 @@
     {
       "row": 33,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 33,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7834,7 +7843,7 @@
     },
     {
       "row": 33,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -7843,7 +7852,7 @@
     },
     {
       "row": 33,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7852,21 +7861,12 @@
     },
     {
       "row": 33,
-      "col": 9,
+      "col": 10,
       "label": "S5",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "8ED973"
-    },
-    {
-      "row": 33,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 33,
@@ -7880,15 +7880,6 @@
     {
       "row": 33,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 33,
-      "col": 13,
       "label": "S6",
       "cellType": "SortChute",
       "direction": null,
@@ -7897,7 +7888,7 @@
     },
     {
       "row": 33,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7906,7 +7897,7 @@
     },
     {
       "row": 33,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -7915,7 +7906,7 @@
     },
     {
       "row": 33,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -7924,7 +7915,7 @@
     },
     {
       "row": 33,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -7933,10 +7924,19 @@
     },
     {
       "row": 33,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 33,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -8069,6 +8069,15 @@
     {
       "row": 34,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 34,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8077,7 +8086,7 @@
     },
     {
       "row": 34,
-      "col": 7,
+      "col": 8,
       "label": "E2",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -8086,7 +8095,7 @@
     },
     {
       "row": 34,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8095,21 +8104,12 @@
     },
     {
       "row": 34,
-      "col": 9,
+      "col": 10,
       "label": "S7",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "8ED973"
-    },
-    {
-      "row": 34,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 34,
@@ -8123,15 +8123,6 @@
     {
       "row": 34,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 34,
-      "col": 13,
       "label": "S8",
       "cellType": "SortChute",
       "direction": null,
@@ -8140,7 +8131,7 @@
     },
     {
       "row": 34,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8149,7 +8140,7 @@
     },
     {
       "row": 34,
-      "col": 15,
+      "col": 14,
       "label": "E9",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -8158,7 +8149,7 @@
     },
     {
       "row": 34,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8167,7 +8158,7 @@
     },
     {
       "row": 34,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8176,10 +8167,19 @@
     },
     {
       "row": 34,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 34,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -8312,6 +8312,15 @@
     {
       "row": 35,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 35,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8320,7 +8329,7 @@
     },
     {
       "row": 35,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -8329,7 +8338,7 @@
     },
     {
       "row": 35,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8338,21 +8347,12 @@
     },
     {
       "row": 35,
-      "col": 9,
+      "col": 10,
       "label": "S9",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "8ED973"
-    },
-    {
-      "row": 35,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 35,
@@ -8366,15 +8366,6 @@
     {
       "row": 35,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 35,
-      "col": 13,
       "label": "S10",
       "cellType": "SortChute",
       "direction": null,
@@ -8383,7 +8374,7 @@
     },
     {
       "row": 35,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8392,7 +8383,7 @@
     },
     {
       "row": 35,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -8401,7 +8392,7 @@
     },
     {
       "row": 35,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8410,7 +8401,7 @@
     },
     {
       "row": 35,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8419,10 +8410,19 @@
     },
     {
       "row": 35,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 35,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -8555,6 +8555,15 @@
     {
       "row": 36,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 36,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8563,7 +8572,7 @@
     },
     {
       "row": 36,
-      "col": 7,
+      "col": 8,
       "label": "E3",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -8572,7 +8581,7 @@
     },
     {
       "row": 36,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8581,21 +8590,12 @@
     },
     {
       "row": 36,
-      "col": 9,
+      "col": 10,
       "label": "S11",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "B4E5A2"
-    },
-    {
-      "row": 36,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 36,
@@ -8609,15 +8609,6 @@
     {
       "row": 36,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 36,
-      "col": 13,
       "label": "S12",
       "cellType": "SortChute",
       "direction": null,
@@ -8626,7 +8617,7 @@
     },
     {
       "row": 36,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8635,7 +8626,7 @@
     },
     {
       "row": 36,
-      "col": 15,
+      "col": 14,
       "label": "E10",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -8644,7 +8635,7 @@
     },
     {
       "row": 36,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8653,7 +8644,7 @@
     },
     {
       "row": 36,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8662,10 +8653,19 @@
     },
     {
       "row": 36,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 36,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -8798,6 +8798,15 @@
     {
       "row": 37,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 37,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8806,7 +8815,7 @@
     },
     {
       "row": 37,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -8815,7 +8824,7 @@
     },
     {
       "row": 37,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8824,21 +8833,12 @@
     },
     {
       "row": 37,
-      "col": 9,
+      "col": 10,
       "label": "S13",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "B4E5A2"
-    },
-    {
-      "row": 37,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 37,
@@ -8852,15 +8852,6 @@
     {
       "row": 37,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 37,
-      "col": 13,
       "label": "S14",
       "cellType": "SortChute",
       "direction": null,
@@ -8869,7 +8860,7 @@
     },
     {
       "row": 37,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8878,7 +8869,7 @@
     },
     {
       "row": 37,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -8887,7 +8878,7 @@
     },
     {
       "row": 37,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -8896,7 +8887,7 @@
     },
     {
       "row": 37,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -8905,10 +8896,19 @@
     },
     {
       "row": 37,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 37,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -9041,6 +9041,15 @@
     {
       "row": 38,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 38,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9049,7 +9058,7 @@
     },
     {
       "row": 38,
-      "col": 7,
+      "col": 8,
       "label": "E4",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -9058,7 +9067,7 @@
     },
     {
       "row": 38,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9067,21 +9076,12 @@
     },
     {
       "row": 38,
-      "col": 9,
+      "col": 10,
       "label": "S15",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "B4E5A2"
-    },
-    {
-      "row": 38,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 38,
@@ -9095,15 +9095,6 @@
     {
       "row": 38,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 38,
-      "col": 13,
       "label": "S16",
       "cellType": "SortChute",
       "direction": null,
@@ -9112,7 +9103,7 @@
     },
     {
       "row": 38,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9121,7 +9112,7 @@
     },
     {
       "row": 38,
-      "col": 15,
+      "col": 14,
       "label": "E11",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -9130,7 +9121,7 @@
     },
     {
       "row": 38,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9139,7 +9130,7 @@
     },
     {
       "row": 38,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9148,10 +9139,19 @@
     },
     {
       "row": 38,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 38,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -9284,6 +9284,15 @@
     {
       "row": 39,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 39,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9292,7 +9301,7 @@
     },
     {
       "row": 39,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -9301,7 +9310,7 @@
     },
     {
       "row": 39,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9310,21 +9319,12 @@
     },
     {
       "row": 39,
-      "col": 9,
+      "col": 10,
       "label": "S17",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "B4E5A2"
-    },
-    {
-      "row": 39,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 39,
@@ -9338,15 +9338,6 @@
     {
       "row": 39,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 39,
-      "col": 13,
       "label": "S18",
       "cellType": "SortChute",
       "direction": null,
@@ -9355,7 +9346,7 @@
     },
     {
       "row": 39,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9364,7 +9355,7 @@
     },
     {
       "row": 39,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -9373,7 +9364,7 @@
     },
     {
       "row": 39,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9382,7 +9373,7 @@
     },
     {
       "row": 39,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9391,10 +9382,19 @@
     },
     {
       "row": 39,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 39,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -9527,6 +9527,15 @@
     {
       "row": 40,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 40,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9535,7 +9544,7 @@
     },
     {
       "row": 40,
-      "col": 7,
+      "col": 8,
       "label": "E5",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -9544,7 +9553,7 @@
     },
     {
       "row": 40,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9553,21 +9562,12 @@
     },
     {
       "row": 40,
-      "col": 9,
+      "col": 10,
       "label": "S19",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "B4E5A2"
-    },
-    {
-      "row": 40,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 40,
@@ -9581,15 +9581,6 @@
     {
       "row": 40,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 40,
-      "col": 13,
       "label": "S20",
       "cellType": "SortChute",
       "direction": null,
@@ -9598,7 +9589,7 @@
     },
     {
       "row": 40,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9607,7 +9598,7 @@
     },
     {
       "row": 40,
-      "col": 15,
+      "col": 14,
       "label": "E12",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -9616,7 +9607,7 @@
     },
     {
       "row": 40,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9625,7 +9616,7 @@
     },
     {
       "row": 40,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9634,10 +9625,19 @@
     },
     {
       "row": 40,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 40,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -9770,6 +9770,15 @@
     {
       "row": 41,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 41,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9778,7 +9787,7 @@
     },
     {
       "row": 41,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -9787,7 +9796,7 @@
     },
     {
       "row": 41,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9796,21 +9805,12 @@
     },
     {
       "row": 41,
-      "col": 9,
+      "col": 10,
       "label": "S21",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "3B7D23"
-    },
-    {
-      "row": 41,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 41,
@@ -9824,15 +9824,6 @@
     {
       "row": 41,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 41,
-      "col": 13,
       "label": "S22",
       "cellType": "SortChute",
       "direction": null,
@@ -9841,7 +9832,7 @@
     },
     {
       "row": 41,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9850,7 +9841,7 @@
     },
     {
       "row": 41,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -9859,7 +9850,7 @@
     },
     {
       "row": 41,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -9868,7 +9859,7 @@
     },
     {
       "row": 41,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -9877,10 +9868,19 @@
     },
     {
       "row": 41,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 41,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -10013,6 +10013,15 @@
     {
       "row": 42,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 42,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10021,7 +10030,7 @@
     },
     {
       "row": 42,
-      "col": 7,
+      "col": 8,
       "label": "E6",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -10030,7 +10039,7 @@
     },
     {
       "row": 42,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10039,21 +10048,12 @@
     },
     {
       "row": 42,
-      "col": 9,
+      "col": 10,
       "label": "S23",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "3B7D23"
-    },
-    {
-      "row": 42,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 42,
@@ -10067,15 +10067,6 @@
     {
       "row": 42,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 42,
-      "col": 13,
       "label": "S24",
       "cellType": "SortChute",
       "direction": null,
@@ -10084,7 +10075,7 @@
     },
     {
       "row": 42,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10093,7 +10084,7 @@
     },
     {
       "row": 42,
-      "col": 15,
+      "col": 14,
       "label": "E13",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -10102,7 +10093,7 @@
     },
     {
       "row": 42,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10111,7 +10102,7 @@
     },
     {
       "row": 42,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10120,10 +10111,19 @@
     },
     {
       "row": 42,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 42,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -10256,6 +10256,15 @@
     {
       "row": 43,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 43,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10264,7 +10273,7 @@
     },
     {
       "row": 43,
-      "col": 7,
+      "col": 8,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -10273,7 +10282,7 @@
     },
     {
       "row": 43,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10282,21 +10291,12 @@
     },
     {
       "row": 43,
-      "col": 9,
+      "col": 10,
       "label": "S25",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "3B7D23"
-    },
-    {
-      "row": 43,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 43,
@@ -10310,15 +10310,6 @@
     {
       "row": 43,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 43,
-      "col": 13,
       "label": "S26",
       "cellType": "SortChute",
       "direction": null,
@@ -10327,7 +10318,7 @@
     },
     {
       "row": 43,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10336,7 +10327,7 @@
     },
     {
       "row": 43,
-      "col": 15,
+      "col": 14,
       "label": "any",
       "cellType": "Corridor",
       "direction": "any",
@@ -10345,7 +10336,7 @@
     },
     {
       "row": 43,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10354,7 +10345,7 @@
     },
     {
       "row": 43,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10363,10 +10354,19 @@
     },
     {
       "row": 43,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 43,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -10499,6 +10499,15 @@
     {
       "row": 44,
       "col": 6,
+      "label": "",
+      "cellType": "Empty",
+      "direction": null,
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 44,
+      "col": 7,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10507,7 +10516,7 @@
     },
     {
       "row": 44,
-      "col": 7,
+      "col": 8,
       "label": "E7",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -10516,7 +10525,7 @@
     },
     {
       "row": 44,
-      "col": 8,
+      "col": 9,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10525,21 +10534,12 @@
     },
     {
       "row": 44,
-      "col": 9,
+      "col": 10,
       "label": "S27",
       "cellType": "SortChute",
       "direction": null,
       "isNoRobot": false,
       "rgbColor": "3B7D23"
-    },
-    {
-      "row": 44,
-      "col": 10,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
     },
     {
       "row": 44,
@@ -10553,15 +10553,6 @@
     {
       "row": 44,
       "col": 12,
-      "label": "",
-      "cellType": "SorterSystem",
-      "direction": null,
-      "isNoRobot": true,
-      "rgbColor": null
-    },
-    {
-      "row": 44,
-      "col": 13,
       "label": "S28",
       "cellType": "SortChute",
       "direction": null,
@@ -10570,7 +10561,7 @@
     },
     {
       "row": 44,
-      "col": 14,
+      "col": 13,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10579,7 +10570,7 @@
     },
     {
       "row": 44,
-      "col": 15,
+      "col": 14,
       "label": "E14",
       "cellType": "EmptyBuffer",
       "direction": null,
@@ -10588,7 +10579,7 @@
     },
     {
       "row": 44,
-      "col": 16,
+      "col": 15,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10597,7 +10588,7 @@
     },
     {
       "row": 44,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10606,10 +10597,19 @@
     },
     {
       "row": 44,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 44,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -10823,15 +10823,6 @@
     {
       "row": 45,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 45,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -10840,7 +10831,7 @@
     },
     {
       "row": 45,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -10849,10 +10840,19 @@
     },
     {
       "row": 45,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 45,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -11066,15 +11066,6 @@
     {
       "row": 46,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 46,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -11083,7 +11074,7 @@
     },
     {
       "row": 46,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -11092,10 +11083,19 @@
     },
     {
       "row": 46,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 46,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -11309,15 +11309,6 @@
     {
       "row": 47,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 47,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -11326,7 +11317,7 @@
     },
     {
       "row": 47,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -11335,10 +11326,19 @@
     },
     {
       "row": 47,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 47,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -11552,15 +11552,6 @@
     {
       "row": 48,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 48,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -11569,7 +11560,7 @@
     },
     {
       "row": 48,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -11578,10 +11569,19 @@
     },
     {
       "row": 48,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 48,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -11795,15 +11795,6 @@
     {
       "row": 49,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 49,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -11812,7 +11803,7 @@
     },
     {
       "row": 49,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -11821,10 +11812,19 @@
     },
     {
       "row": 49,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 49,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -12038,15 +12038,6 @@
     {
       "row": 50,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 50,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -12055,7 +12046,7 @@
     },
     {
       "row": 50,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -12064,10 +12055,19 @@
     },
     {
       "row": 50,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 50,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -12281,15 +12281,6 @@
     {
       "row": 51,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 51,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -12298,7 +12289,7 @@
     },
     {
       "row": 51,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -12307,10 +12298,19 @@
     },
     {
       "row": 51,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 51,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -12524,15 +12524,6 @@
     {
       "row": 52,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 52,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -12541,7 +12532,7 @@
     },
     {
       "row": 52,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -12550,10 +12541,19 @@
     },
     {
       "row": 52,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 52,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -12767,15 +12767,6 @@
     {
       "row": 53,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 53,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -12784,7 +12775,7 @@
     },
     {
       "row": 53,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -12793,10 +12784,19 @@
     },
     {
       "row": 53,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 53,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -13010,15 +13010,6 @@
     {
       "row": 54,
       "col": 15,
-      "label": "",
-      "cellType": "Empty",
-      "direction": null,
-      "isNoRobot": false,
-      "rgbColor": null
-    },
-    {
-      "row": 54,
-      "col": 16,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
@@ -13027,7 +13018,7 @@
     },
     {
       "row": 54,
-      "col": 17,
+      "col": 16,
       "label": "up",
       "cellType": "Corridor",
       "direction": "up",
@@ -13036,10 +13027,19 @@
     },
     {
       "row": 54,
-      "col": 18,
+      "col": 17,
       "label": "down",
       "cellType": "Corridor",
       "direction": "down",
+      "isNoRobot": false,
+      "rgbColor": null
+    },
+    {
+      "row": 54,
+      "col": 18,
+      "label": "up",
+      "cellType": "Corridor",
+      "direction": "up",
       "isNoRobot": false,
       "rgbColor": null
     },
@@ -13613,12 +13613,6 @@
   ],
   "merges": [
     {
-      "r1": 31,
-      "c1": 10,
-      "r2": 44,
-      "c2": 12
-    },
-    {
       "r1": 45,
       "c1": 10,
       "r2": 52,
@@ -13641,6 +13635,12 @@
       "c1": 6,
       "r2": 56,
       "c2": 8
+    },
+    {
+      "r1": 31,
+      "c1": 11,
+      "r2": 44,
+      "c2": 11
     }
   ]
 }

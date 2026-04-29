@@ -68,6 +68,38 @@ public class StationGridBuilder : EditorWindow
         }
     }
 
+    [MenuItem("Tools/Station Builder/Place Station Gaylords")]
+    public static void PlaceStorageGaylords()
+    {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            return;
+
+        Scene scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        GameObject station = GameObject.Find("Station");
+        if (station == null)
+        {
+            Debug.LogError($"StationGridBuilder: 'Station' root not found in {ScenePath}.");
+            return;
+        }
+
+        var builder = CreateInstance<StationGridBuilder>();
+        try
+        {
+            builder._settings = LoadOrCreateSettings();
+            var layoutBuilder = EnsureStationLayoutBuilder(station, builder._settings);
+            if (layoutBuilder == null)
+                return;
+
+            layoutBuilder.RebuildStorageGaylords();
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+        }
+        finally
+        {
+            DestroyImmediate(builder);
+        }
+    }
+
     // ── GUI ────────────────────────────────────────────────────────────────
 
     void OnEnable()
@@ -267,7 +299,7 @@ public class StationGridBuilder : EditorWindow
         var queueRoot   = CreateChild("FeederQueue",      gridRoot);
         var stagingRoot = CreateChild("StagingArea",      gridRoot);
         var noRobotRoot = CreateChild("NoRobotZones",     gridRoot);
-        CreateChild("Gaylords", station);
+        var gaylordsRoot = CreateChild("Gaylords", station);
         CreateChild("Robots",   station);
 
         Vector3 origin = Vector3.zero;
@@ -312,10 +344,21 @@ public class StationGridBuilder : EditorWindow
         gm.cellDepth  = cellDepth;
         gm.gridOrigin = origin;
 
-        // 6. ReservationTable
+        // 6. Gaylord database
+        var gaylordDatabase = station.AddComponent<GaylordDatabase>();
+
+        // 7. Station layout builder
+        var layoutBuilder = station.AddComponent<StationLayoutBuilder>();
+        layoutBuilder.gridMap              = gm;
+        layoutBuilder.gaylordDatabase      = gaylordDatabase;
+        layoutBuilder.gaylordPrefab        = _settings.gaylordPrefab;
+        layoutBuilder.gaylordsRoot         = gaylordsRoot.transform;
+        layoutBuilder.rebuildStorageOnStart = false;
+
+        // 8. ReservationTable
         station.AddComponent<ReservationTable>();
 
-        // 7. Charging area — right of last staging column
+        // 9. Charging area — right of last staging column
         var chargingGo = CreateChild("ChargingArea", station);
         var ca         = chargingGo.AddComponent<ChargingArea>();
         const int defaultChargingBays = 4;
@@ -485,6 +528,38 @@ public class StationGridBuilder : EditorWindow
         var go = new GameObject(name);
         go.transform.SetParent(parent.transform, worldPositionStays: false);
         return go;
+    }
+
+    private static StationLayoutBuilder EnsureStationLayoutBuilder(GameObject station, StationBuilderSettings settings)
+    {
+        var gridMap = station.GetComponent<GridMap>();
+        if (gridMap == null || gridMap.gridData == null)
+        {
+            Debug.LogError("StationGridBuilder: Station root is missing GridMap or gridData.");
+            return null;
+        }
+
+        var gaylordsRoot = station.transform.Find("Gaylords");
+        if (gaylordsRoot == null)
+        {
+            Debug.LogError("StationGridBuilder: Station root is missing the 'Gaylords' child.");
+            return null;
+        }
+
+        var layoutBuilder = station.GetComponent<StationLayoutBuilder>();
+        if (layoutBuilder == null)
+            layoutBuilder = station.AddComponent<StationLayoutBuilder>();
+
+        var gaylordDatabase = station.GetComponent<GaylordDatabase>();
+        if (gaylordDatabase == null)
+            gaylordDatabase = station.AddComponent<GaylordDatabase>();
+
+        layoutBuilder.gridMap = gridMap;
+        layoutBuilder.gaylordDatabase = gaylordDatabase;
+        layoutBuilder.gaylordsRoot = gaylordsRoot;
+        layoutBuilder.gaylordPrefab = settings != null ? settings.gaylordPrefab : null;
+        layoutBuilder.rebuildStorageOnStart = false;
+        return layoutBuilder;
     }
 
     private static Transform GetParent(CellType type,

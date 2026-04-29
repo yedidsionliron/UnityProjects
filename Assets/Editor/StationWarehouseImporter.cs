@@ -14,6 +14,7 @@ public static class StationWarehouseImporter
     private const string WarehouseScenePath = "Assets/Scenes/WarehouseSceneSample_Copy.unity";
     private const string StationRootName = "Station";
     private const string ImportedWarehouseRootName = "ImportedWarehouse";
+    private const float ImportedWarehouseRotationY = 180f;
 
     [MenuItem("Tools/Station Builder/Import Warehouse Into Station Scene")]
     public static void ImportWarehouseIntoStationScene()
@@ -71,18 +72,19 @@ public static class StationWarehouseImporter
 
     private static void AlignWarehouseToStation(GameObject importedWarehouseRoot, GridMap gridMap)
     {
+        importedWarehouseRoot.transform.SetPositionAndRotation(
+            Vector3.zero,
+            Quaternion.Euler(0f, ImportedWarehouseRotationY, 0f));
+
         Bounds stationBounds = GetStationBounds(gridMap);
         Bounds warehouseBounds = GetRendererBounds(importedWarehouseRoot);
 
-        Vector3 offset = Vector3.zero;
-        offset.x = stationBounds.center.x - warehouseBounds.center.x;
-        offset.z = stationBounds.center.z - warehouseBounds.center.z;
-        offset.y = 0f;
+        Vector3 offset = new Vector3(
+            stationBounds.center.x - warehouseBounds.center.x,
+            0f,
+            stationBounds.center.z - warehouseBounds.center.z);
 
-        foreach (Transform child in importedWarehouseRoot.transform)
-            child.position += offset;
-
-        importedWarehouseRoot.transform.position = Vector3.zero;
+        importedWarehouseRoot.transform.position += offset;
     }
 
     private static Bounds GetStationBounds(GridMap gridMap)
