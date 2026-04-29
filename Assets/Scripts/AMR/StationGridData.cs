@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -54,6 +55,58 @@ public class StationGridData : ScriptableObject
     {
         BuildLabelIndex();
         return _labelIndex.TryGetValue(label, out idx);
+    }
+
+    /// <summary>
+    /// Returns all cells explicitly owned by the requested system region.
+    /// </summary>
+    public List<CellData> GetCellsBySystemRegion(SystemRegion region)
+    {
+        if (_cells == null || _cells.Length == 0 || region == SystemRegion.None)
+            return new List<CellData>();
+
+        return _cells.Where(c => c.systemRegion == region).ToList();
+    }
+
+    /// <summary>
+    /// Returns a rectangular footprint for the requested region. Fails if the grid marks
+    /// a non-rectangular or sparse region, because conveyor builders require an exact box.
+    /// </summary>
+    public bool TryGetRegionRect(SystemRegion region, out RectInt rect)
+    {
+        rect = default;
+
+        List<CellData> regionCells = GetCellsBySystemRegion(region);
+        if (regionCells.Count == 0)
+            return false;
+
+        int minRow = int.MaxValue;
+        int maxRow = int.MinValue;
+        int minCol = int.MaxValue;
+        int maxCol = int.MinValue;
+
+        foreach (var cell in regionCells)
+        {
+            int row = cell.row - 1;
+            int col = cell.col - 1;
+            minRow = Mathf.Min(minRow, row);
+            maxRow = Mathf.Max(maxRow, row);
+            minCol = Mathf.Min(minCol, col);
+            maxCol = Mathf.Max(maxCol, col);
+        }
+
+        for (int row = minRow; row <= maxRow; row++)
+        {
+            for (int col = minCol; col <= maxCol; col++)
+            {
+                var cell = GetCell(row, col);
+                if (cell == null || cell.systemRegion != region)
+                    return false;
+            }
+        }
+
+        rect = new RectInt(minCol, minRow, maxCol - minCol + 1, maxRow - minRow + 1);
+        return true;
     }
 
     // ── Private helpers ────────────────────────────────────────────────────

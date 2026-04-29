@@ -295,6 +295,7 @@ public class StationGridBuilder : EditorWindow
                 col       = rc.col,
                 label     = rc.label ?? "",
                 cellType  = ParseCellType(rc.cellType),
+                systemRegion = ParseSystemRegion(rc.systemRegion),
                 direction = ParseDirection(rc.direction),
                 isNoRobot = rc.isNoRobot,
             };
@@ -665,8 +666,24 @@ public class StationGridBuilder : EditorWindow
         }
     }
 
+    private static SystemRegion ParseSystemRegion(string s)
+    {
+        if (System.Enum.TryParse<SystemRegion>(s, out var region))
+            return region;
+        return SystemRegion.None;
+    }
+
     // ── JSON shims ─────────────────────────────────────────────────────────
 
     [System.Serializable] private class GridJson  { public int rows; public int cols; public RawCell[] cells; }
-    [System.Serializable] private class RawCell   { public int row; public int col; public string label; public string cellType; public string direction; public bool isNoRobot; }
+    [System.Serializable] private class RawCell
+    {
+        public int row;
+        public int col;
+        public string label;
+        public string cellType;
+        public string systemRegion;
+        public string direction;
+        public bool isNoRobot;
+    }
 }

@@ -30,6 +30,7 @@ const DIRECTION_VALUES = new Set(['up', 'down', 'left', 'right', 'any']);
 
 // No-robot zone labels (sorter system merged cells)
 const NO_ROBOT_LABELS = new Set(['Diverter', 'Singulator', 'Feeder']);
+const SYSTEM_REGION_VALUES = new Set(['None', 'Diverter', 'Singulator', 'Feeder']);
 
 function getCellType(value, rgbColor, themeKey) {
   const v = value !== null && value !== undefined ? String(value).trim() : '';
@@ -74,10 +75,38 @@ function isNoRobotType(cellType) {
   return cellType === 'InductZone' || cellType === 'SorterSystem';
 }
 
+function normalizeSystemRegion(value) {
+  const v = value !== null && value !== undefined ? String(value).trim() : '';
+  return SYSTEM_REGION_VALUES.has(v) ? v : 'None';
+}
+
+function buildMergedSystemRegionMap(sheet) {
+  const mergedRegionByCell = new Map();
+  for (const merge of sheet['!merges'] || []) {
+    const topLeftAddr = XLSX.utils.encode_cell({ r: merge.s.r, c: merge.s.c });
+    const topLeftCell = sheet[topLeftAddr];
+    const topLeftValue = topLeftCell && topLeftCell.v !== undefined && topLeftCell.v !== null
+      ? String(topLeftCell.v).trim()
+      : '';
+
+    if (!NO_ROBOT_LABELS.has(topLeftValue))
+      continue;
+
+    for (let r = merge.s.r; r <= merge.e.r; r++) {
+      for (let c = merge.s.c; c <= merge.e.c; c++) {
+        mergedRegionByCell.set(`${r}:${c}`, topLeftValue);
+      }
+    }
+  }
+
+  return mergedRegionByCell;
+}
+
 // ── Main parse ───────────────────────────────────────────────────────────────
 const wb = XLSX.readFile(INPUT, { cellStyles: true });
 const ws = wb.Sheets[wb.SheetNames[0]];
 const range = XLSX.utils.decode_range(ws['!ref']);
+const mergedSystemRegionByCell = buildMergedSystemRegionMap(ws);
 
 const cells = [];
 
@@ -103,6 +132,10 @@ for (let r = range.s.r; r <= range.e.r; r++) {
     const cellType  = getCellType(value, rgbColor, themeKey);
     const direction = getDirection(value);
     const label     = (value !== null && value !== undefined) ? String(value).trim() : '';
+    const mergedSystemRegion = mergedSystemRegionByCell.get(`${r}:${c}`) || 'None';
+    const systemRegion = normalizeSystemRegion(
+      mergedSystemRegion !== 'None' ? mergedSystemRegion : label
+    );
 
     // row/col are 1-based to match Excel notation
     cells.push({
@@ -110,6 +143,7 @@ for (let r = range.s.r; r <= range.e.r; r++) {
       col:      c + 1,
       label:    label,
       cellType: cellType,
+      systemRegion: systemRegion,
       direction: direction,        // "up"|"down"|"left"|"right"|"any"|null
       isNoRobot: isNoRobotType(cellType),
       rgbColor:  rgbColor,

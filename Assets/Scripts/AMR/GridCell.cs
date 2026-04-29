@@ -18,6 +18,18 @@ public enum CellType
 }
 
 /// <summary>
+/// Explicit subsystem ownership carried from the grid. This is the source of truth
+/// for builder footprints inside shared sorter-space cells.
+/// </summary>
+public enum SystemRegion
+{
+    None,
+    Diverter,
+    Singulator,
+    Feeder,
+}
+
+/// <summary>
 /// Direction constraint on a corridor cell.
 /// The forbidden movement direction is the OPPOSITE of this value.
 ///   Up    → forbid South
@@ -42,6 +54,9 @@ public class CellData
     public int col;
 
     public CellType cellType;
+
+    [Tooltip("Explicit subsystem ownership for shared sorter-space cells")]
+    public SystemRegion systemRegion;
 
     [Tooltip("Text label from Excel cell, e.g. S5, E3, St12, 147, up, Diverter")]
     public string label;
