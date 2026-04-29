@@ -21,6 +21,7 @@ public class StationGridBuilder : EditorWindow
     private const string ScenePath          = "Assets/Scenes/StationScene.unity";
     private const string GaylordPrefabPath  = "Assets/LastMileAssets/Prefabs/Gaylord.prefab";
     private const string SettingsAssetPath  = "Assets/Scripts/AMR/StationBuilderSettings.asset";
+    private const string GlobalConfigAssetPath = "Assets/Config/StationLayoutConfig.asset";
 
     // ── Zone colours ───────────────────────────────────────────────────────
     private static readonly Dictionary<CellType, Color> ZoneColors = new Dictionary<CellType, Color>
@@ -40,6 +41,7 @@ public class StationGridBuilder : EditorWindow
 
     // ── Window state ───────────────────────────────────────────────────────
     private StationBuilderSettings _settings;
+    private StationLayoutConfig _globalConfig;
     private float _measuredGaylordX;
     private float _measuredGaylordZ;
     private bool  _measured;
@@ -56,6 +58,7 @@ public class StationGridBuilder : EditorWindow
         try
         {
             builder._settings = LoadOrCreateSettings();
+            builder._globalConfig = LoadOrCreateGlobalConfig();
             builder.MeasureGaylord();
             builder.ComputeCellSize(out float cellWidth, out float cellDepth);
             if (!builder.GenerateGridJson())
@@ -86,6 +89,7 @@ public class StationGridBuilder : EditorWindow
         try
         {
             builder._settings = LoadOrCreateSettings();
+            builder._globalConfig = LoadOrCreateGlobalConfig();
             var layoutBuilder = EnsureStationLayoutBuilder(station, builder._settings);
             if (layoutBuilder == null)
                 return;
@@ -105,6 +109,7 @@ public class StationGridBuilder : EditorWindow
     void OnEnable()
     {
         _settings = LoadOrCreateSettings();
+        _globalConfig = LoadOrCreateGlobalConfig();
         MeasureGaylord();
     }
 
@@ -146,6 +151,21 @@ public class StationGridBuilder : EditorWindow
             EditorGUILayout.HelpBox("No settings asset found.", MessageType.Error);
             return;
         }
+
+        if (_globalConfig == null)
+        {
+            EditorGUILayout.HelpBox("No global config asset found.", MessageType.Error);
+            return;
+        }
+
+        _settings.bufferPerSide = _globalConfig.cellBuffer;
+
+        EditorGUILayout.Space(8);
+
+        var newGlobalConfig = (StationLayoutConfig)EditorGUILayout.ObjectField(
+            "Layout Config", _globalConfig, typeof(StationLayoutConfig), false);
+        if (newGlobalConfig != _globalConfig)
+            _globalConfig = newGlobalConfig;
 
         EditorGUILayout.Space(8);
 
@@ -233,6 +253,12 @@ public class StationGridBuilder : EditorWindow
 
         if (_settings.gaylordPrefab == null)
             EditorGUILayout.HelpBox("Assign a Gaylord Prefab to enable building.", MessageType.Warning);
+
+        if (!Mathf.Approximately(_globalConfig.cellBuffer, _settings.bufferPerSide))
+        {
+            _globalConfig.cellBuffer = _settings.bufferPerSide;
+            EditorUtility.SetDirty(_globalConfig);
+        }
 
         EditorGUILayout.Space(6);
     }
@@ -465,7 +491,7 @@ public class StationGridBuilder : EditorWindow
             d = _settings.manualCellDepth;
             return;
         }
-        float buf = _settings != null ? _settings.bufferPerSide : 0.1f;
+        float buf = _globalConfig != null ? _globalConfig.cellBuffer : 0.2f;
         w = _measuredGaylordX > 0f ? _measuredGaylordX + 2f * buf : 1.4f;
         d = _measuredGaylordZ > 0f ? _measuredGaylordZ + 2f * buf : 1.2f;
     }
@@ -521,6 +547,22 @@ public class StationGridBuilder : EditorWindow
         AssetDatabase.CreateAsset(s, SettingsAssetPath);
         AssetDatabase.SaveAssets();
         return s;
+    }
+
+    private static StationLayoutConfig LoadOrCreateGlobalConfig()
+    {
+        var config = AssetDatabase.LoadAssetAtPath<StationLayoutConfig>(GlobalConfigAssetPath);
+        if (config != null) return config;
+
+        config = CreateInstance<StationLayoutConfig>();
+
+        string dir = Path.GetDirectoryName(GlobalConfigAssetPath);
+        if (!Directory.Exists(Path.Combine(Application.dataPath, "..", dir).Replace('\\', '/')))
+            Directory.CreateDirectory(Path.Combine(Application.dataPath, "..", dir).Replace('\\', '/'));
+
+        AssetDatabase.CreateAsset(config, GlobalConfigAssetPath);
+        AssetDatabase.SaveAssets();
+        return config;
     }
 
     private static GameObject CreateChild(string name, GameObject parent)

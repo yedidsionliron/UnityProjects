@@ -102,10 +102,10 @@ public class DiverterConfigEditor : Editor
         EditorGUILayout.Space(4);
 
         if (GUILayout.Button("Build", GUILayout.Height(32)))
-            Build(cfg);
+            BuildConfig(cfg);
     }
 
-    private void Build(DiverterConfig cfg)
+    public static void BuildConfig(DiverterConfig cfg)
     {
         if (!Validate(cfg)) return;
 
@@ -125,7 +125,7 @@ public class DiverterConfigEditor : Editor
         Diverter  diverter = cfg.GetComponent<Diverter>();
 
         DiverterBuildMetrics metrics = DeriveBuildMetrics(cfg, pcs);
-        cfg.gaylordWidth = metrics.SlotPitch;
+        cfg.gaylordWidth = metrics.Gaylord.Depth;
         cfg.gaylordDepth = metrics.GaylordHalfX;
         EditorUtility.SetDirty(cfg);
 
@@ -156,8 +156,7 @@ public class DiverterConfigEditor : Editor
         EditorUtility.SetDirty(diverter);
 
         // 4. Create SortPoints + gaylords + assign address ranges.
-        float gaylordZScale = metrics.Gaylord.Depth > 0f ? metrics.SlotPitch / metrics.Gaylord.Depth : 1f;
-        cfg.BuildSortPoints(diverter, beltHalfX, metrics.GaylordHalfX, metrics.SlotPitch, gaylordZScale, groundWorldY);
+        cfg.BuildSortPoints(diverter, beltHalfX, metrics.GaylordHalfX, metrics.SlotPitch, groundWorldY);
         diverter.sortPoints = cfg.sortPoints;
 
         EditorUtility.SetDirty(diverter);
@@ -167,7 +166,7 @@ public class DiverterConfigEditor : Editor
                   $"→ {cfg.numDivertPoints} positions, belt={metrics.TargetBeltLength:F2} m × {pcs.width:F3} m ({pcs.length} tiles).", cfg);
     }
 
-    private bool Validate(DiverterConfig cfg)
+    private static bool Validate(DiverterConfig cfg)
     {
         var pcs = cfg.GetComponent<PCSConfig>();
         if (pcs == null)
@@ -191,7 +190,7 @@ public class DiverterConfigEditor : Editor
         return true;
     }
 
-    private int ComputeTileCount(PCSConfig pcs, float targetLength)
+    private static int ComputeTileCount(PCSConfig pcs, float targetLength)
     {
         // belt.positionOffset.z is the per-tile Z step PCS uses when placing tiles
         // (line: endZ = startCap.positionOffset.z + belt.positionOffset.z * length).
@@ -218,13 +217,14 @@ public class DiverterConfigEditor : Editor
         return count;
     }
 
-    private DiverterBuildMetrics DeriveBuildMetrics(DiverterConfig cfg, PCSConfig pcs)
+    private static DiverterBuildMetrics DeriveBuildMetrics(DiverterConfig cfg, PCSConfig pcs)
     {
         GaylordMeasurements measured = TryMeasureGaylord(cfg.gaylordPrefab, out var gaylord)
             ? gaylord
             : new GaylordMeasurements(cfg.gaylordDepth * 2f, 0f, cfg.gaylordWidth);
 
-        float slotPitch = measured.Depth > 0f ? measured.Depth : cfg.gaylordWidth;
+        float gaylordDepth = measured.Depth > 0f ? measured.Depth : cfg.gaylordWidth;
+        float slotPitch = gaylordDepth + 2f * cfg.gaylordBufferPerSide;
         float beltSurfaceWidth = measured.Width > 0f ? measured.Width : cfg.gaylordDepth * 2f;
         float gaylordHalfX = beltSurfaceWidth * 0.5f;
         float pcsWidth = beltSurfaceWidth + pcs.GetSideFrameAllowance();
@@ -243,7 +243,7 @@ public class DiverterConfigEditor : Editor
             supportHeight);
     }
 
-    private bool TryMeasureGaylord(GameObject prefab, out GaylordMeasurements measured)
+    private static bool TryMeasureGaylord(GameObject prefab, out GaylordMeasurements measured)
     {
         measured = default;
         if (prefab == null) return false;

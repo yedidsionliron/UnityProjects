@@ -13,8 +13,7 @@ public class StationBuilderSettings : ScriptableObject
     public GameObject gaylordPrefab;
 
     [Header("Cell Size")]
-    [Tooltip("Extra clearance added to each side of the Gaylord footprint (metres). " +
-             "Total padding per axis = 2 × bufferPerSide. Default: 0.10 m (10 cm per side).")]
+    [HideInInspector]
     public float bufferPerSide = 0.1f;
 
     [Tooltip("When true, ignores the measured Gaylord size and uses the manual values below.")]

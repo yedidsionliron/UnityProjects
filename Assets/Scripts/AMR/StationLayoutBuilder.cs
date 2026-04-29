@@ -91,8 +91,26 @@ public class StationLayoutBuilder : MonoBehaviour
             return;
 
         var sortLabels = GetOrderedSortChuteLabels(includeOverflow: false);
+        string overflowLabel = GetOverflowSortChuteLabel();
+        RegisterSortChuteGaylordsFromDiverter(diverterRoot, sortLabels, overflowLabel);
+    }
+
+    public void RegisterSortChuteGaylordsFromDiverter(
+        Transform diverterRoot,
+        IReadOnlyList<string> sortLabels,
+        string overflowLabel)
+    {
+        if (!TryResolveReferences() || diverterRoot == null)
+            return;
+
         var sortPoints = diverterRoot.GetComponentsInChildren<SortPoint>(includeInactive: true);
         System.Array.Sort(sortPoints, CompareSortPoints);
+
+        if (sortLabels == null)
+        {
+            Debug.LogError("StationLayoutBuilder: sortLabels is null.", this);
+            return;
+        }
 
         if (sortPoints.Length != sortLabels.Count)
         {
@@ -107,7 +125,6 @@ public class StationLayoutBuilder : MonoBehaviour
         for (int i = 0; i < sortPoints.Length; i++)
             RegisterSortPointGaylord(sortPoints[i], sortLabels[i]);
 
-        string overflowLabel = GetOverflowSortChuteLabel();
         if (!string.IsNullOrEmpty(overflowLabel))
             RegisterOverflowGaylord(diverterRoot, overflowLabel);
     }
@@ -323,13 +340,14 @@ public class StationLayoutBuilder : MonoBehaviour
 
     private List<string> GetOrderedSortChuteLabels(bool includeOverflow)
     {
+        string overflowLabel = GetHighestSortChuteLabel();
         var labels = new List<string>();
         foreach (var cell in gridMap.gridData.AllCells)
         {
             if (!IsSortChuteCell(cell))
                 continue;
 
-            bool isOverflow = string.Equals(cell.label, "S29");
+            bool isOverflow = string.Equals(cell.label, overflowLabel);
             if (isOverflow == includeOverflow)
                 labels.Add(cell.label);
         }
@@ -338,15 +356,30 @@ public class StationLayoutBuilder : MonoBehaviour
         return labels;
     }
 
-    private string GetOverflowSortChuteLabel()
+    public string GetOverflowSortChuteLabel()
     {
+        return GetHighestSortChuteLabel();
+    }
+
+    private string GetHighestSortChuteLabel()
+    {
+        string highestLabel = null;
+        int highestNumber = int.MinValue;
+
         foreach (var cell in gridMap.gridData.AllCells)
         {
-            if (IsSortChuteCell(cell) && string.Equals(cell.label, "S29"))
-                return cell.label;
+            if (!IsSortChuteCell(cell))
+                continue;
+
+            int labelNumber = ExtractTrailingNumber(cell.label);
+            if (labelNumber > highestNumber)
+            {
+                highestNumber = labelNumber;
+                highestLabel = cell.label;
+            }
         }
 
-        return null;
+        return highestLabel;
     }
 
     private static bool ShouldPlaceGaylordAt(CellData cell)
