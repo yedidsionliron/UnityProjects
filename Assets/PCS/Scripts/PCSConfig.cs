@@ -983,7 +983,13 @@ namespace PCS
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, -1));
 					else
 						railingPiece.transform.localScale = Vector3.Scale(railingPiece.transform.localScale, new Vector3(side == 0 ? 1 : -1, 1, 1));
-					AlignVisualBounds(railingPiece, parentTransform, instantiatePosition, true, true, true);
+					AlignVisualBounds(
+						railingPiece,
+						parentTransform,
+						instantiatePosition - Vector3.forward * railingStartCap.renderers[1].bounds.size.z,
+						true,
+						true,
+						true);
 				}
 				else
 				{
